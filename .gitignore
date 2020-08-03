@@ -1,0 +1,12 @@
+.vscode/
+
+# pub/dart
+build/
+coverage/
+**/doc/api/
+.dart_tool/
+.metadata
+.packages
+.pub-cache/
+.pub/
+pubspec.lock
