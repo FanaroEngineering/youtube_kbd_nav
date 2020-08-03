@@ -1,9 +1,9 @@
 import 'dart:html';
 
 void main() {
-  final String htmlClass = 'div.ytd-rich-grid-video-renderer';
+  final String htmlElement = 'ytd-rich-item-renderer';
   final ElementList<Element> thumbnails =
-      document.querySelectorAll('div.ytd-rich-grid-video-renderer');
+      document.querySelectorAll(htmlElement);
 
   int thumbnailsIndex = -1;
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
@@ -12,7 +12,9 @@ void main() {
         thumbnailsIndex++;
         final StyleElement selectedThumbnailStyle = StyleElement()
           ..text = '''
-          $htmlClass :nth-child($thumbnailsIndex) {
+          $htmlElement :nth-child($thumbnailsIndex) {
+            border: solid;
+            border-width: .5 px;
             border-color: red;
           }
         ''';
