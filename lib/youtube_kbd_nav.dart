@@ -33,5 +33,9 @@ class YoutubeMainPage {
 }
 
 extension ThumbnailCss on YoutubeMainPage {
-  String get _css => 'color: red';
+  String get _css => '''
+    border-color: red;
+    border: solid;
+    border-width: .5 px;
+  ''';
 }
