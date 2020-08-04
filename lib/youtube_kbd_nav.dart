@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 
 class YoutubeMainPage {
   final Document _document;
-  int currentThumbnailIndex = -1;
+  int _currentThumbnailIndex = -1;
 
   YoutubeMainPage({
     @required Document input,
@@ -13,13 +13,20 @@ class YoutubeMainPage {
 
   void addBorderToNext() {
     final Element currentThumbnail = _selectNextThumbnail();
-    currentThumbnail.attributes['style'] = 'color: red';
+    currentThumbnail.attributes['style'] = _css;
   }
 
   Element _selectNextThumbnail() {
-    currentThumbnailIndex++;
     final List<Element> thumbnails =
         _document.querySelectorAll('ytd-rich-item-renderer');
-    return thumbnails[currentThumbnailIndex];
+    if (_currentThumbnailIndex >= 0) {
+      thumbnails[_currentThumbnailIndex].attributes.remove('style');
+    }
+    _currentThumbnailIndex++;
+    return thumbnails[_currentThumbnailIndex];
   }
+}
+
+extension ThumbnailCss on YoutubeMainPage {
+  String get _css => 'color: red';
 }

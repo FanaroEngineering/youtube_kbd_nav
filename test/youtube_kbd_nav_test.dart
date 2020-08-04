@@ -5,13 +5,13 @@ import 'package:test/test.dart';
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  final Document youtubeThumbnailHtml = parse(youtubeThumbnailHtmlString);
+  group('Thumbnails |', () {
+    final Document youtubeThumbnailHtml = parse(youtubeThumbnailHtmlString);
+    YoutubeMainPage youtubeMainPage;
 
-  group('Thumbnails', () {
+    setUp(() => youtubeMainPage = YoutubeMainPage(input: youtubeThumbnailHtml));
+
     test('Puts border on the first thumbnail', () {
-      final YoutubeMainPage youtubeMainPage =
-          YoutubeMainPage(input: youtubeThumbnailHtml);
-
       youtubeMainPage.addBorderToNext();
 
       final String newStyle = youtubeThumbnailHtml
@@ -20,9 +20,25 @@ void main() {
 
       expect(newStyle, isNotNull);
     });
+
+    test(
+        'Putting a border on the second thumbnail deletes the border on the '
+        'first', () {
+      youtubeMainPage.addBorderToNext();
+      youtubeMainPage.addBorderToNext();
+
+      final List<Element> thumbnails =
+          youtubeThumbnailHtml.querySelectorAll('ytd-rich-item-renderer');
+      final Element firstThumbnail = thumbnails.first;
+      final Element secondThumbnail = thumbnails.last;
+
+      expect(firstThumbnail.attributes['style'], isNull);
+      expect(secondThumbnail.attributes['style'], isNotNull);
+    });
   });
 }
 
 const String youtubeThumbnailHtmlString = '''
+<ytd-rich-item-renderer></ytd-rich-item-renderer>
 <ytd-rich-item-renderer></ytd-rich-item-renderer>
 ''';
