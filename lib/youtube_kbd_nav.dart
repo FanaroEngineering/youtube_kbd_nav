@@ -1,15 +1,17 @@
 import 'dart:html';
 
+import 'package:html/dom.dart';
+import 'package:html/parser.dart';
 import 'package:meta/meta.dart';
 
 @immutable
 class Thumbnails {
-  final String _input;
+  final Document _document;
 
-  const Thumbnails({
+  Thumbnails({
     @required String input,
-  }) : _input = input;
+  }) : _document = parse(input);
 
-  ElementList<Element> get recommendedThumbnails =>
-      document.querySelectorAll('ytd-rich-item-renderer');
+  List<Element> get recommendedThumbnails =>
+      _document.querySelectorAll('ytd-rich-item-renderer');
 }
