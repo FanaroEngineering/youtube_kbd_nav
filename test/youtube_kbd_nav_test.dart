@@ -1,20 +1,28 @@
 import 'package:html/dom.dart';
+import 'package:html/parser.dart';
 import 'package:test/test.dart';
 
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  group('Thumbnail selector', () {
-    test('Tests if we extract the correct amount of thumbnails', () {
-      final Thumbnails thumbnails = Thumbnails(input: youtubeThumbnailHtml);
-      final List<Element> recommendedThumbnails =
-          thumbnails.recommendedThumbnails;
+  final Document youtubeThumbnailHtml = parse(youtubeThumbnailHtmlString);
 
-      expect(recommendedThumbnails.length, 1);
+  group('Thumbnails', () {
+    test('Puts border on the first thumbnail', () {
+      final YoutubeMainPage youtubeMainPage =
+          YoutubeMainPage(input: youtubeThumbnailHtml);
+
+      youtubeMainPage.addBorderToNext();
+
+      final String newStyle = youtubeThumbnailHtml
+          .querySelector('ytd-rich-item-renderer')
+          .attributes['style'];
+
+      expect(newStyle, isNotNull);
     });
   });
 }
 
-const String youtubeThumbnailHtml = '''
+const String youtubeThumbnailHtmlString = '''
 <ytd-rich-item-renderer></ytd-rich-item-renderer>
 ''';

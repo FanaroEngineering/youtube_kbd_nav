@@ -1,17 +1,25 @@
 import 'dart:html';
 
 import 'package:html/dom.dart';
-import 'package:html/parser.dart';
 import 'package:meta/meta.dart';
 
-@immutable
-class Thumbnails {
+class YoutubeMainPage {
   final Document _document;
+  int currentThumbnailIndex = -1;
 
-  Thumbnails({
-    @required String input,
-  }) : _document = parse(input);
+  YoutubeMainPage({
+    @required Document input,
+  }) : _document = input;
 
-  List<Element> get recommendedThumbnails =>
-      _document.querySelectorAll('ytd-rich-item-renderer');
+  void addBorderToNext() {
+    final Element currentThumbnail = _selectNextThumbnail();
+    currentThumbnail.attributes['style'] = 'color: red';
+  }
+
+  Element _selectNextThumbnail() {
+    currentThumbnailIndex++;
+    final List<Element> thumbnails =
+        _document.querySelectorAll('ytd-rich-item-renderer');
+    return thumbnails[currentThumbnailIndex];
+  }
 }
