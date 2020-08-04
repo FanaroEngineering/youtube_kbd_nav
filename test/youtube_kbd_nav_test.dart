@@ -1,22 +1,22 @@
-import 'package:html/dom.dart';
-import 'package:html/parser.dart';
+import 'dart:html';
+
 import 'package:test/test.dart';
 
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
   group('Thumbnails |', () {
-    final Document youtubeThumbnailHtml = parse(youtubeThumbnailHtmlString);
+    document.body.append(ParagraphElement());
+    document.body.append(ParagraphElement());
+
     YoutubeMainPage youtubeMainPage;
 
-    setUp(() => youtubeMainPage = YoutubeMainPage(input: youtubeThumbnailHtml));
+    setUp(() => youtubeMainPage = YoutubeMainPage(input: document, tag: 'p'));
 
     test('Puts border on the first thumbnail', () {
       youtubeMainPage.addBorderToNext();
 
-      final String newStyle = youtubeThumbnailHtml
-          .querySelector('ytd-rich-item-renderer')
-          .attributes['style'];
+      final String newStyle = document.querySelector('p').attributes['style'];
 
       expect(newStyle, isNotNull);
     });
@@ -27,8 +27,7 @@ void main() {
       youtubeMainPage.addBorderToNext();
       youtubeMainPage.addBorderToNext();
 
-      final List<Element> thumbnails =
-          youtubeThumbnailHtml.querySelectorAll('ytd-rich-item-renderer');
+      final List<Element> thumbnails = document.querySelectorAll('p');
       final Element firstThumbnail = thumbnails.first;
       final Element secondThumbnail = thumbnails.last;
 
@@ -38,7 +37,10 @@ void main() {
   });
 }
 
-const String youtubeThumbnailHtmlString = '''
-<ytd-rich-item-renderer></ytd-rich-item-renderer>
-<ytd-rich-item-renderer></ytd-rich-item-renderer>
-''';
+class YtdRichItemRenderer extends HtmlElement {
+  static const String tag = 'ytd-rich-item-renderer';
+
+  factory YtdRichItemRenderer() => Element.tag(tag);
+
+  YtdRichItemRenderer.created() : super.created();
+}
