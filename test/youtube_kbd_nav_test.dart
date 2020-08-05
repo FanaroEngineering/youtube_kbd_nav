@@ -36,11 +36,3 @@ void main() {
     });
   });
 }
-
-class YtdRichItemRenderer extends HtmlElement {
-  static const String tag = 'ytd-rich-item-renderer';
-
-  factory YtdRichItemRenderer() => Element.tag(tag);
-
-  YtdRichItemRenderer.created() : super.created();
-}
