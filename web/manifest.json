@@ -3,21 +3,11 @@
   "name": "youtube_kbd_nav",
   "version": "0.0.1",
   "description": "YouTube keyboard navigation to the max.",
-  "permissions": [],
 
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
       "js": ["content.dart.js"]
     }
-  ],
-  "background": {
-    "scripts": ["background.dart.js"],
-    "persistent": false
-  },
-  "browser_action": {
-    "default_title": "Youtube Keyboard Navigation",
-    "default_popup": "popup.html"
-  },
-  "options_page": "options.html"
+  ]
 }
