@@ -11,7 +11,10 @@ void main() {
         youtubeMainPage.addBorderToNext();
         break;
       case 'Enter':
+        window.open('https://youtu.be/PN51zAW-JcE', '');
+        print(window.opener);
         break;
+        
     }
   });
 }

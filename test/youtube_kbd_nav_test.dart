@@ -1,11 +1,12 @@
 import 'dart:html';
+import 'dart:svg';
 
 import 'package:test/test.dart';
 
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  group('Thumbnails |', () {
+  group('Thumbnails Navigation |', () {
     document.body.append(ParagraphElement());
     document.body.append(ParagraphElement());
 
@@ -33,6 +34,30 @@ void main() {
 
       expect(firstThumbnail.attributes['style'], isNull);
       expect(secondThumbnail.attributes['style'], isNotNull);
+    });
+
+    group('Action on Thumbnail |', () {
+      final String correctUrl = 'https://hello.com';
+
+      document.body.append(DivElement());
+      document.body.querySelector('div').append(DivElement());
+      document.body
+          .querySelector('div > div')
+          .append(AnchorElement()..href = correctUrl);
+
+      YoutubeMainPage youtubeMainPage;
+
+      setUp(() {
+        youtubeMainPage = YoutubeMainPage(input: document, tag: 'div');
+      });
+
+      test('Extracts the link to the thumbnail', () {
+        youtubeMainPage.addBorderToNext();
+
+        final String extractedLink = youtubeMainPage.currentThumbnailLink;
+
+        expect(extractedLink, correctUrl);
+      });
     });
   });
 }
