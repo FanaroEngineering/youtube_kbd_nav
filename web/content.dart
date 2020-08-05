@@ -6,11 +6,12 @@ void main() {
   final YoutubeMainPage youtubeMainPage = YoutubeMainPage(input: document);
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
-    switch (keyboardEvent.keyCode) {
-      case 103: // code for the letter `g`
+    switch (keyboardEvent.key) {
+      case 'g':
         youtubeMainPage.addBorderToNext();
         break;
-      default:
+      case 'Enter':
+        break;
     }
   });
 }
