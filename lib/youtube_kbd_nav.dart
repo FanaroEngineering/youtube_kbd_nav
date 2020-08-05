@@ -21,17 +21,19 @@ class YoutubeMainPage {
 
   void addBorderToNext() {
     _deleteCurrentThumbnailCss();
-    final Element currentThumbnail = _selectNextThumbnail();
-    currentThumbnail.style.borderColor = 'red';
-    currentThumbnail.style.border = 'solid';
+    _selectNextThumbnail();
+    _changeCurrentThumbnailStyle();
   }
 
   void _deleteCurrentThumbnailCss() => _currentThumbnailIndex >= 0
       ? _thumbnailFromCurrentIndex.attributes.remove('style')
       : null;
 
-  Element _selectNextThumbnail() {
-    _currentThumbnailIndex++;
-    return _thumbnailFromCurrentIndex;
+  void _selectNextThumbnail() => _currentThumbnailIndex++;
+
+  void _changeCurrentThumbnailStyle() {
+    final Element currentThumbnail = _thumbnailFromCurrentIndex;
+    currentThumbnail.style.border = 'solid';
+    currentThumbnail.style.borderColor = 'red';
   }
 }
