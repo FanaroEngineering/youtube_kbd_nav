@@ -27,11 +27,18 @@ class MainPage {
     _changeCurrentThumbnailStyle();
   }
 
+  void addBorderToPrevious() {
+    _deleteCurrentThumbnailCss();
+    _selectPreviousThumbnail();
+    _changeCurrentThumbnailStyle();
+  }
+
   void _deleteCurrentThumbnailCss() => _currentThumbnailIndex >= 0
       ? _currentThumbnail.attributes.remove('style')
       : null;
 
   void _selectNextThumbnail() => _currentThumbnailIndex++;
+  void _selectPreviousThumbnail() => _currentThumbnailIndex--;
 
   void _changeCurrentThumbnailStyle() {
     _currentThumbnail.style.outline = 'solid red';

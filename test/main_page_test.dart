@@ -13,26 +13,41 @@ void main() {
 
     setUp(() => youtubeMainPage = MainPage(input: document, tag: 'p'));
 
-    test('Puts border on the first thumbnail', () {
-      youtubeMainPage.addBorderToNext();
+    group('Moving across thumbnails', () {
+      test('Puts border on the first thumbnail', () {
+        youtubeMainPage.addBorderToNext();
 
-      final String newStyle = document.querySelector('p').attributes['style'];
+        final String newStyle = document.querySelector('p').attributes['style'];
 
-      expect(newStyle, isNotNull);
-    });
+        expect(newStyle, isNotNull);
+      });
 
-    test(
-        'Putting a border on the second thumbnail deletes the border on the '
-        'first', () {
-      youtubeMainPage.addBorderToNext();
-      youtubeMainPage.addBorderToNext();
+      test(
+          'Putting a border on the second thumbnail deletes the border on the '
+          'first', () {
+        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorderToNext();
 
-      final List<Element> thumbnails = document.querySelectorAll('p');
-      final Element firstThumbnail = thumbnails.first;
-      final Element secondThumbnail = thumbnails.last;
+        final List<Element> thumbnails = document.querySelectorAll('p');
+        final Element firstThumbnail = thumbnails.first;
+        final Element secondThumbnail = thumbnails.last;
 
-      expect(firstThumbnail.attributes['style'], isNull);
-      expect(secondThumbnail.attributes['style'], isNotNull);
+        expect(firstThumbnail.attributes['style'], isNull);
+        expect(secondThumbnail.attributes['style'], isNotNull);
+      });
+
+      test('Can also go to the previous thumbnail', () {
+        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorderToPrevious();
+
+        final List<Element> thumbnails = document.querySelectorAll('p');
+        final Element firstThumbnail = thumbnails.first;
+        final Element secondThumbnail = thumbnails.last;
+
+        expect(firstThumbnail.attributes['style'], isNotNull);
+        expect(secondThumbnail.attributes['style'], isNull);
+      });
     });
 
     group('Action on Thumbnail |', () {
