@@ -34,8 +34,8 @@ class MainPage {
   void _selectNextThumbnail() => _currentThumbnailIndex++;
 
   void _changeCurrentThumbnailStyle() {
-    _currentThumbnail.style.border = 'solid';
-    _currentThumbnail.style.borderColor = 'red';
+    _currentThumbnail.style.outline = 'solid red';
+    _currentThumbnail.style.outlineOffset = '-1px';
   }
 
   String get currentThumbnailLink {
