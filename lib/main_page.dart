@@ -2,6 +2,11 @@ import 'dart:html';
 
 import 'package:meta/meta.dart';
 
+enum NextOrPrevious {
+  previous,
+  next,
+}
+
 class MainPage {
   final Document _document;
   List<Element> _thumbnails;
@@ -9,8 +14,8 @@ class MainPage {
 
   /// The `tag` parameter only exists because the `document.registerElement()`
   /// doesn't work as expected in Dart apparently &mdash; and neither does the
-  /// other more up-to-date option: `window.customElements.define()`. That all 
-  /// makes testing kind of a pain. However, having a `tag` parameter might be 
+  /// other more up-to-date option: `window.customElements.define()`. That all
+  /// makes testing kind of a pain. However, having a `tag` parameter might be
   /// useful for making this class more versatile.
   MainPage({
     @required Document input,
@@ -21,15 +26,16 @@ class MainPage {
 
   Element get _currentThumbnail => _thumbnails[_currentThumbnailIndex];
 
-  void addBorderToNext() {
+  void addBorder(NextOrPrevious nextOrPrevious) {
     _deleteCurrentThumbnailCss();
-    _selectNextThumbnail();
-    _changeCurrentThumbnailStyle();
-  }
-
-  void addBorderToPrevious() {
-    _deleteCurrentThumbnailCss();
-    _selectPreviousThumbnail();
+    switch (nextOrPrevious) {
+      case NextOrPrevious.next:
+        _selectNextThumbnail();
+        break;
+      case NextOrPrevious.previous:
+        _selectPreviousThumbnail();
+        break;
+    }
     _changeCurrentThumbnailStyle();
   }
 

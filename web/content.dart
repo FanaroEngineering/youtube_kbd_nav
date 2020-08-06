@@ -8,10 +8,10 @@ void main() {
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {
       case 'j':
-        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorder(NextOrPrevious.next);
         break;
       case 'k':
-        youtubeMainPage.addBorderToPrevious();
+        youtubeMainPage.addBorder(NextOrPrevious.previous);
         break;
       case 'Enter':
         final String thumbnailLink = youtubeMainPage.currentThumbnailLink;

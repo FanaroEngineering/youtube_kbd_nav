@@ -15,7 +15,7 @@ void main() {
 
     group('Moving across thumbnails', () {
       test('Puts border on the first thumbnail', () {
-        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorder(NextOrPrevious.next);
 
         final String newStyle = document.querySelector('p').attributes['style'];
 
@@ -25,8 +25,8 @@ void main() {
       test(
           'Putting a border on the second thumbnail deletes the border on the '
           'first', () {
-        youtubeMainPage.addBorderToNext();
-        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorder(NextOrPrevious.next);
+        youtubeMainPage.addBorder(NextOrPrevious.next);
 
         final List<Element> thumbnails = document.querySelectorAll('p');
         final Element firstThumbnail = thumbnails.first;
@@ -37,9 +37,9 @@ void main() {
       });
 
       test('Can also go to the previous thumbnail', () {
-        youtubeMainPage.addBorderToNext();
-        youtubeMainPage.addBorderToNext();
-        youtubeMainPage.addBorderToPrevious();
+        youtubeMainPage.addBorder(NextOrPrevious.next);
+        youtubeMainPage.addBorder(NextOrPrevious.next);
+        youtubeMainPage.addBorder(NextOrPrevious.previous);
 
         final List<Element> thumbnails = document.querySelectorAll('p');
         final Element firstThumbnail = thumbnails.first;
@@ -66,7 +66,7 @@ void main() {
       });
 
       test('Extracts the link to the thumbnail', () {
-        youtubeMainPage.addBorderToNext();
+        youtubeMainPage.addBorder(NextOrPrevious.next);
 
         final String extractedLink = youtubeMainPage.currentThumbnailLink;
 
