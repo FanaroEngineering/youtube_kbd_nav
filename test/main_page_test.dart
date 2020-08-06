@@ -59,10 +59,4 @@ void main() {
       });
     });
   });
-
-  group('Video Page Thumbnail Navigation |', () {
-    test('', () {
-      
-    });
-  });
 }
