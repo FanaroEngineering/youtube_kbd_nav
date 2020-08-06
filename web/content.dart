@@ -3,7 +3,7 @@ import 'dart:html';
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  final YoutubeMainPage youtubeMainPage = YoutubeMainPage(input: document);
+  final MainPage youtubeMainPage = MainPage(input: document);
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {

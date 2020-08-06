@@ -5,13 +5,13 @@ import 'package:test/test.dart';
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  group('Thumbnails Navigation |', () {
+  group('Main Page Thumbnails Navigation |', () {
     document.body.append(ParagraphElement());
     document.body.append(ParagraphElement());
 
-    YoutubeMainPage youtubeMainPage;
+    MainPage youtubeMainPage;
 
-    setUp(() => youtubeMainPage = YoutubeMainPage(input: document, tag: 'p'));
+    setUp(() => youtubeMainPage = MainPage(input: document, tag: 'p'));
 
     test('Puts border on the first thumbnail', () {
       youtubeMainPage.addBorderToNext();
@@ -44,10 +44,10 @@ void main() {
           .querySelector('div > div')
           .append(AnchorElement()..href = correctUrl);
 
-      YoutubeMainPage youtubeMainPage;
+      MainPage youtubeMainPage;
 
       setUp(() {
-        youtubeMainPage = YoutubeMainPage(input: document, tag: 'div');
+        youtubeMainPage = MainPage(input: document, tag: 'div');
       });
 
       test('Extracts the link to the thumbnail', () {
@@ -57,6 +57,12 @@ void main() {
 
         expect(extractedLink, correctUrl);
       });
+    });
+  });
+
+  group('Video Page Thumbnail Navigation |', () {
+    test('', () {
+      
     });
   });
 }

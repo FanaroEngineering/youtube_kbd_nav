@@ -2,15 +2,17 @@ import 'dart:html';
 
 import 'package:meta/meta.dart';
 
-class YoutubeMainPage {
+class MainPage {
   final Document _document;
   List<Element> _thumbnails;
   int _currentThumbnailIndex = -1;
 
   /// The `tag` parameter only exists because the `document.registerElement()`
   /// doesn't work as expected in Dart apparently &mdash; and neither does the
-  /// other more up-to-date option: `window.customElements.define()`.
-  YoutubeMainPage({
+  /// other more up-to-date option: `window.customElements.define()`. That all 
+  /// makes testing kind of a pain. However, having a `tag` parameter might be 
+  /// useful for making this class more versatile.
+  MainPage({
     @required Document input,
     String tag = 'ytd-rich-item-renderer',
   }) : _document = input {

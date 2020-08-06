@@ -2,4 +2,5 @@
 /// {@category Browser, Extension}
 library youtube_kbd_nav;
 
-export 'youtube_kbd_nav.dart' show YoutubeMainPage;
+export 'main_page.dart' show MainPage;
+export 'video_page.dart' show VideoPage;
