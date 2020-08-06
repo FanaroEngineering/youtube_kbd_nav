@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:svg';
 
 import 'package:test/test.dart';
 
