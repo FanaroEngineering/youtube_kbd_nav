@@ -28,6 +28,15 @@ class MainPage {
 
   void addBorder(NextOrPrevious nextOrPrevious) {
     _deleteCurrentThumbnailCss();
+    _selectPreviousOrNextThumbnail(nextOrPrevious);
+    _changeCurrentThumbnailStyle();
+  }
+
+  void _deleteCurrentThumbnailCss() => _currentThumbnailIndex >= 0
+      ? _currentThumbnail.attributes.remove('style')
+      : null;
+
+  void _selectPreviousOrNextThumbnail(NextOrPrevious nextOrPrevious) {
     switch (nextOrPrevious) {
       case NextOrPrevious.next:
         _selectNextThumbnail();
@@ -36,15 +45,13 @@ class MainPage {
         _selectPreviousThumbnail();
         break;
     }
-    _changeCurrentThumbnailStyle();
   }
 
-  void _deleteCurrentThumbnailCss() => _currentThumbnailIndex >= 0
-      ? _currentThumbnail.attributes.remove('style')
+  void _selectNextThumbnail() => _currentThumbnailIndex < _thumbnails.length - 1
+      ? _currentThumbnailIndex++
       : null;
-
-  void _selectNextThumbnail() => _currentThumbnailIndex++;
-  void _selectPreviousThumbnail() => _currentThumbnailIndex--;
+  void _selectPreviousThumbnail() =>
+      _currentThumbnailIndex > 0 ? _currentThumbnailIndex-- : null;
 
   void _changeCurrentThumbnailStyle() {
     _currentThumbnail.style.outline = 'solid red';
