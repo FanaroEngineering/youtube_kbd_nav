@@ -54,8 +54,10 @@ class Page {
       _currentThumbnailIndex > 0 ? _currentThumbnailIndex-- : null;
 
   void _changeCurrentThumbnailStyle() {
+    if (_currentThumbnailIndex >= 0) {
     _currentThumbnail.style.outline = 'solid red';
     _currentThumbnail.style.outlineOffset = '-1px';
+    }
   }
 
   String get currentThumbnailLink {
