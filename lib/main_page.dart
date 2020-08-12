@@ -7,7 +7,7 @@ enum NextOrPrevious {
   next,
 }
 
-class MainPage {
+class Page {
   final Document _document;
   List<Element> _thumbnails;
   int _currentThumbnailIndex = -1;
@@ -17,7 +17,7 @@ class MainPage {
   /// other more up-to-date option: `window.customElements.define()`. That all
   /// makes testing kind of a pain. However, having a `tag` parameter might be
   /// useful for making this class more versatile.
-  MainPage({
+  Page({
     @required Document input,
     String tag = 'ytd-rich-item-renderer',
   }) : _document = input {

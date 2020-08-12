@@ -3,11 +3,15 @@
   "name": "youtube_kbd_nav",
   "version": "0.0.1",
   "description": "YouTube keyboard navigation to the max.",
-
   "content_scripts": [
     {
-      "matches": ["*://*.youtube.com/*"],
-      "js": ["content.dart.js"]
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "content.dart.js"
+      ],
+      "run_at": "document_start"
     }
   ]
 }

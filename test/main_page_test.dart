@@ -9,9 +9,9 @@ void main() {
     document.body.append(ParagraphElement());
     document.body.append(ParagraphElement());
 
-    MainPage mainPage;
+    Page mainPage;
 
-    setUp(() => mainPage = MainPage(input: document, tag: 'p'));
+    setUp(() => mainPage = Page(input: document, tag: 'p'));
 
     group('Moving across thumbnails', () {
       test('Puts border on the first thumbnail', () {
@@ -59,9 +59,9 @@ void main() {
           .querySelector('div > div')
           .append(AnchorElement()..href = correctUrl);
 
-      MainPage youtubeMainPage;
+      Page youtubeMainPage;
 
-      setUp(() => youtubeMainPage = MainPage(input: document, tag: 'div'));
+      setUp(() => youtubeMainPage = Page(input: document, tag: 'div'));
 
       test('Extracts the link to the thumbnail', () {
         youtubeMainPage.addBorder(NextOrPrevious.next);
