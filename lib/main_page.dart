@@ -27,6 +27,7 @@ class Page {
   Element get _currentThumbnail => _thumbnails[_currentThumbnailIndex];
 
   void addBorder(NextOrPrevious nextOrPrevious) {
+    print(_thumbnails.length);
     _deleteCurrentThumbnailCss();
     _selectPreviousOrNextThumbnail(nextOrPrevious);
     _changeCurrentThumbnailStyle();
