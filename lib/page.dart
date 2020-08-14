@@ -27,7 +27,6 @@ class Page {
   Element get _currentThumbnail => _thumbnails[_currentThumbnailIndex];
 
   void addBorder(NextOrPrevious nextOrPrevious) {
-    print(_thumbnails.length);
     _deleteCurrentThumbnailCss();
     _selectPreviousOrNextThumbnail(nextOrPrevious);
     _changeCurrentThumbnailStyle();
@@ -61,11 +60,7 @@ class Page {
     }
   }
 
-  String get currentThumbnailLink {
-    if (_currentThumbnailIndex >= 0) {
-      return _currentThumbnail.querySelector('a').attributes['href'];
-    } else {
-      return '';
-    }
-  }
+  String get currentThumbnailLink => _currentThumbnailIndex >= 0
+      ? _currentThumbnail.querySelector('a')?.attributes['href']
+      : '';
 }

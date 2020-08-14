@@ -7,12 +7,10 @@ void main() {
 
   void ext(Event event) {
     if (document.baseUri.contains('watch')) {
-      print('watch');
       page = Page(
           input: document,
           tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
     } else {
-      print('main');
       page = Page(input: document);
     }
   }
@@ -22,13 +20,13 @@ void main() {
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {
       case 'z':
-        page.addBorder(NextOrPrevious.next);
+        page?.addBorder(NextOrPrevious.next);
         break;
       case 'x':
-        page.addBorder(NextOrPrevious.previous);
+        page?.addBorder(NextOrPrevious.previous);
         break;
       case 'Enter':
-        final String thumbnailLink = page.currentThumbnailLink;
+        final String thumbnailLink = page?.currentThumbnailLink;
         window.open(thumbnailLink, '');
         break;
     }
