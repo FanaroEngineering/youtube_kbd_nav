@@ -10,18 +10,17 @@ enum NextOrPrevious {
 class Page {
   final Document _document;
   List<Element> _thumbnails;
-  int _currentThumbnailIndex = -1;
+  int _currentThumbnailIndex;
 
-  /// The `tag` parameter only exists because the `document.registerElement()`
-  /// doesn't work as expected in Dart apparently &mdash; and neither does the
-  /// other more up-to-date option: `window.customElements.define()`. That all
-  /// makes testing kind of a pain. However, having a `tag` parameter might be
-  /// useful for making this class more versatile.
   Page({
     @required Document input,
     String tag = 'ytd-rich-item-renderer',
+    int index = -1,
   }) : _document = input {
     _thumbnails = _document.querySelectorAll(tag);
+    _thumbnails
+        .forEach((Element element) => element.attributes.remove('style'));
+    _currentThumbnailIndex = index < -1 ? -1 : index;
   }
 
   Element get _currentThumbnail => _thumbnails[_currentThumbnailIndex];
@@ -61,6 +60,9 @@ class Page {
   }
 
   String get currentThumbnailLink => _currentThumbnailIndex >= 0
-      ? _currentThumbnail.querySelector('a')?.attributes['href']
+      ? _prefixOrNot(_currentThumbnail.querySelector('a')?.attributes['href'])
       : '';
+
+  String _prefixOrNot(String link) =>
+      link.contains('http') ? link : 'https://www.youtube.com' + link;
 }

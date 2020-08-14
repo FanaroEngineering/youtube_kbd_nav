@@ -3,31 +3,51 @@ import 'dart:html';
 import 'package:youtube_kbd_nav/export.dart';
 
 void main() {
-  Page page;
+  // Page page;
 
-  void ext(Event event) {
-    if (document.baseUri.contains('watch')) {
-      page = Page(
-          input: document,
-          tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
-    } else {
-      page = Page(input: document);
-    }
-  }
+  // document.addEventListener('yt-navigate-finish', (Event event) {
+  //   print(document.baseUri);
 
-  window.addEventListener('yt-navigate-start', ext);
+  //   // page = Page(input: document);
 
+  //   // page = Page(
+  //   //         input: document,
+  //   //         tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
+
+  //   page = document.baseUri.contains('watch')
+  //       ? Page(
+  //           input: document,
+  //           tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer')
+  //       : Page(input: document);
+  // });
+
+  int index = 0;
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
+    // final Page page = Page(input: document);
+    // final Page page = Page(
+    //         input: document,
+    //         tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
+    final Page page = document.baseUri.contains('watch')
+        ? Page(
+            input: document,
+            tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer',
+            index: index)
+        : Page(input: document, index: index);
+
+    print(document.baseUri);
+
     switch (keyboardEvent.key) {
       case 'z':
         page?.addBorder(NextOrPrevious.next);
+        index++;
         break;
       case 'x':
         page?.addBorder(NextOrPrevious.previous);
+        index--;
         break;
       case 'Enter':
         final String thumbnailLink = page?.currentThumbnailLink;
-        window.open(thumbnailLink, '');
+        thumbnailLink != null ? window.open(thumbnailLink, '') : null;
         break;
     }
   });
