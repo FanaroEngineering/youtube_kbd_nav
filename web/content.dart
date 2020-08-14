@@ -5,21 +5,24 @@ import 'package:youtube_kbd_nav/export.dart';
 void main() {
   // Page page;
 
-  // document.addEventListener('yt-navigate-finish', (Event event) {
-  //   print(document.baseUri);
+  document.addEventListener('yt-navigate-finish', (Event event) {
+    document.querySelectorAll(
+        'ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-compact-radio-renderer')
+      ..forEach((Element element) => element.attributes.remove('style'));
+    //   print(document.baseUri);
 
-  //   // page = Page(input: document);
+    //   // page = Page(input: document);
 
-  //   // page = Page(
-  //   //         input: document,
-  //   //         tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
+    //   // page = Page(
+    //   //         input: document,
+    //   //         tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer');
 
-  //   page = document.baseUri.contains('watch')
-  //       ? Page(
-  //           input: document,
-  //           tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer')
-  //       : Page(input: document);
-  // });
+    //   page = document.baseUri.contains('watch')
+    //       ? Page(
+    //           input: document,
+    //           tag: 'ytd-compact-video-renderer, ytd-compact-radio-renderer')
+    //       : Page(input: document);
+  });
 
   int index = 0;
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
