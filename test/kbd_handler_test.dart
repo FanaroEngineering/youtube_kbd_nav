@@ -45,7 +45,7 @@ void main() {
 
   group('UI |', () {
     test('Testing if it indeed changes the UI', () {
-      final KbdHandler kbdHandler = KbdHandler(tags: 'p');
+      final KbdHandler kbdHandler = KbdHandler();
 
       final KeyboardEvent keyboardEventForwards = MockKeyboardEvent(key: 'z');
 

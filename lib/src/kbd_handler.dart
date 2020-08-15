@@ -8,17 +8,14 @@ import 'ui.dart' show Ui;
 @immutable
 class KbdHandler {
   final Cycler _cycler;
-  final String _tags;
 
   /// The [Cycler] is a parameter just so we can inject it during testing and
   /// check if everything happened as expected.
   KbdHandler({
-    Cycler cycler,
-    String tags = 'p',
-  })  : _cycler = cycler ?? Cycler(),
-        _tags = tags;
+    Cycler cycler
+  })  : _cycler = cycler ?? Cycler();
 
-  void onKeyPress(KeyboardEvent keyboardEvent) {
+  void onKeyPress(KeyboardEvent keyboardEvent, {String tags = 'p'}) {
     switch (keyboardEvent.key) {
       case 'z':
         _cycler.forwards();
@@ -27,6 +24,6 @@ class KbdHandler {
         _cycler.backwards();
         break;
     }
-    Ui(tags: _tags)..addBorder(currentIndex: _cycler.index);
+    Ui(tags: tags)..addBorder(currentIndex: _cycler.index);
   }
 }
