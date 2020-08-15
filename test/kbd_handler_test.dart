@@ -1,7 +1,7 @@
 import 'dart:html' show KeyboardEvent;
 
 import 'package:mockito/mockito.dart' show Mock;
-import 'package:test/test.dart' show test, group, setUp, expect;
+import 'package:test/test.dart' show expect, group, setUp, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, KbdHandler;
 
