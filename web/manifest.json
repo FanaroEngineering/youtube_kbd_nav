@@ -10,8 +10,7 @@
       ],
       "js": [
         "content.dart.js"
-      ],
-      "run_at": "document_start"
+      ]
     }
   ]
 }

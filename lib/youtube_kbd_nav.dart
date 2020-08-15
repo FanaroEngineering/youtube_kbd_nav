@@ -3,3 +3,4 @@
 library youtube_kbd_nav;
 
 export 'src/cycler.dart' show Cycler;
+export 'src/kbd_handler.dart' show KbdHandler;
