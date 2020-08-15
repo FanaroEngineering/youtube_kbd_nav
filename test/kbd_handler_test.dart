@@ -1,9 +1,9 @@
-import 'dart:html';
+import 'dart:html' show KeyboardEvent;
 
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
+import 'package:mockito/mockito.dart' show Mock;
+import 'package:test/test.dart' show test, group, setUp, expect;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart';
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, KbdHandler;
 
 void main() {
   group('Thumbnail Cycling |', () {

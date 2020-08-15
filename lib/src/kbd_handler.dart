@@ -1,8 +1,8 @@
-import 'dart:html';
+import 'dart:html' show KeyboardEvent;
 
-import 'package:meta/meta.dart';
+import 'package:meta/meta.dart' show immutable;
 
-import 'cycler.dart';
+import 'cycler.dart' show Cycler;
 
 @immutable
 class KbdHandler {

@@ -1,6 +1,6 @@
-import 'dart:html';
+import 'dart:html' show document, KeyboardEvent;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart';
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show KbdHandler;
 
 void main() {
   final KbdHandler kbdHandler = KbdHandler();

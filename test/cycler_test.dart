@@ -1,6 +1,6 @@
-import 'package:test/test.dart';
+import 'package:test/test.dart' show expect, group, setUp, test;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart';
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler;
 
 void main() {
   group('Cycler\'s Logic |', () {
