@@ -3,7 +3,7 @@ class Cycler {
 
   int get index => _index;
 
-  void forward() => _index++;
+  void forwards() => _index++;
 
-  void backward() => _index <= 0 ? null : _index--;
+  void backwards() => _index <= 0 ? null : _index--;
 }

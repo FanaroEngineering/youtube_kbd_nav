@@ -8,10 +8,10 @@ void main() {
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {
       case 'z':
-        cycler.forward();
+        cycler.forwards();
         break;
       case 'x':
-        cycler.backward();
+        cycler.backwards();
         break;
     }
   });

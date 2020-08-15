@@ -13,33 +13,33 @@ void main() {
     });
 
     test('Going forward adds to the index', () {
-      cycler.forward();
+      cycler.forwards();
 
       expect(cycler.index, 0);
 
-      cycler.forward();
+      cycler.forwards();
 
       expect(cycler.index, 1);
     });
 
     test('Cannot go back -1', () {
-      cycler.backward();
+      cycler.backwards();
 
       expect(cycler.index, -1);
     });
 
     test('Cannot go back 0 after having added', () {
-      cycler.forward();
-      cycler.backward();
+      cycler.forwards();
+      cycler.backwards();
 
       expect(cycler.index, 0);
     });
 
     test('Going forward 3 times and then backward returns 1', () {
-      cycler.forward();
-      cycler.forward();
-      cycler.forward();
-      cycler.backward();
+      cycler.forwards();
+      cycler.forwards();
+      cycler.forwards();
+      cycler.backwards();
 
       expect(cycler.index, 1);
     });
