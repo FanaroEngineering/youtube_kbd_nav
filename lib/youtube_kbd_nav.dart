@@ -5,3 +5,4 @@ library youtube_kbd_nav;
 export 'src/cycler.dart' show Cycler;
 export 'src/kbd_handler.dart' show KbdHandler;
 export 'src/ui.dart' show Ui;
+export 'src/url_to_tags.dart' show UrlToTags;
