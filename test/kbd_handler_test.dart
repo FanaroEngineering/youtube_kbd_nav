@@ -7,14 +7,14 @@ import 'package:youtube_kbd_nav/youtube_kbd_nav.dart';
 
 void main() {
   group('Thumbnail Cycling |', () {
-      Cycler cycler;
-      KbdHandler kbdHandler;
+    Cycler cycler;
+    KbdHandler kbdHandler;
 
     setUp(() {
       cycler = Cycler();
       kbdHandler = KbdHandler(cycler: cycler);
     });
-    
+
     test('Pressing `z` moves the cycler forwards', () {
       final KeyboardEvent keyboardEvent = MockKeyboardEvent(key: 'z');
 
@@ -40,7 +40,7 @@ void main() {
 class MockKeyboardEvent extends Mock implements KeyboardEvent {
   final String _key;
 
-  MockKeyboardEvent({String key}): _key = key;
+  MockKeyboardEvent({String key}) : _key = key;
 
   String get key => _key;
 }
