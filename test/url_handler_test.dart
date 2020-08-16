@@ -24,6 +24,18 @@ void main() {
           'ytd-compact-playlist-renderer');
     });
 
+    test('Search Results Page', () {
+      final String url = 'https://www.youtube.com/results?search';
+
+      final String tags = UrlHandler.tags(url);
+
+      expect(
+          tags,
+          'ytd-video-renderer, '
+          'ytd-radio-renderer, '
+          'ytd-playlist-renderer');
+    });
+
     test('Default Page', () {
       final String url = '';
 
