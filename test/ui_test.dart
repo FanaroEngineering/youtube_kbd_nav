@@ -1,4 +1,4 @@
-import 'dart:html' show document, Element, ParagraphElement;
+import 'dart:html' show AnchorElement, document, Element, ParagraphElement;
 
 import 'package:test/test.dart'
     show expect, group, isNull, setUp, setUpAll, test;
@@ -7,8 +7,15 @@ import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Ui;
 
 void main() {
   group('Thumbnail |', () {
+    final String exampleSite = 'https://example.com/';
+
     setUpAll(() {
       for (int i = 0; i < 2; i++) document.body.append(ParagraphElement());
+
+      final ParagraphElement paragraphWithLink = ParagraphElement();
+      paragraphWithLink.append(AnchorElement(href: exampleSite));
+
+      document.body.append(paragraphWithLink);
     });
 
     final String expectedThumbnailStyling =
@@ -53,6 +60,12 @@ void main() {
           document.querySelectorAll('p')[1].attributes['style'];
 
       expect(thumbnailStyleAfter, isNull);
+    });
+
+    test('Extracting the link from the thumbnail', () {
+      ui.addBorder(currentIndex: 2);
+      
+      expect(ui.thumbnailLink, exampleSite);
     });
   });
 }

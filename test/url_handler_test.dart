@@ -44,4 +44,14 @@ void main() {
       expect(tags, 'p');
     });
   });
+
+  group('Link Handling |', () {
+    test('Prefix a link if it has only the ending', () {
+      final String link = '/watch?v=lajd;slf';
+
+      final String completeLink = UrlHandler.prefixedLink(link);
+
+      expect(completeLink, 'https://www.youtube.com' + link);
+    });
+  });
 }

@@ -14,4 +14,7 @@ class UrlHandler {
       return 'p';
     }
   }
+
+  static String prefixedLink(String url) =>
+      url.startsWith('https://') ? url : 'https://www.youtube.com' + url;
 }

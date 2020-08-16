@@ -1,4 +1,4 @@
-import 'dart:html' show document, Element;
+import 'dart:html' show AnchorElement, document, Element;
 
 import 'package:meta/meta.dart' show required;
 
@@ -14,18 +14,25 @@ class Ui {
     _changeCurrentThumbnailStyle();
   }
 
-  void resetCurrent() => _elements[_currentIndex].attributes.remove('style');
+  Element get _currentThumbnail => _elements[_currentIndex];
+
+  String get thumbnailLink {
+    final AnchorElement anchorElement = _currentThumbnail?.querySelector('a');
+    return anchorElement?.href;
+  }
+
+  void resetCurrent() => _currentThumbnail.attributes.remove('style');
 
   void _changeCurrentThumbnailStyle() {
     if (_currentIndex >= 0) {
-      final Element thumbnail = _elements[_currentIndex];
-      thumbnail.style.outline = 'red solid';
-      thumbnail.style.outlineOffset = '-1px';
+      _currentThumbnail.style.outline = 'red solid';
+      _currentThumbnail.style.outlineOffset = '-1px';
     }
   }
 
   void _deleteNeighborsStyles() {
     final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
+    
     neighborsIndices.forEach((int neighborIndex) {
       _neighborIndexInValidRange(neighborIndex)
           ? _elements[neighborIndex].attributes.remove('style')
