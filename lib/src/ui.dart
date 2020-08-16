@@ -14,6 +14,8 @@ class Ui {
     _changeCurrentThumbnailStyle();
   }
 
+  void resetCurrent() => _elements[_currentIndex].attributes.remove('style');
+
   void _changeCurrentThumbnailStyle() {
     if (_currentIndex >= 0) {
       final Element thumbnail = _elements[_currentIndex];
@@ -25,9 +27,12 @@ class Ui {
   void _deleteNeighborsStyles() {
     final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
     neighborsIndices.forEach((int neighborIndex) {
-      neighborIndex >= 0 && neighborIndex < _elements.length
+      _neighborIndexInValidRange(neighborIndex)
           ? _elements[neighborIndex].attributes.remove('style')
           : null;
     });
   }
+
+  bool _neighborIndexInValidRange(int neighborIndex) =>
+      neighborIndex >= 0 && neighborIndex < _elements.length;
 }

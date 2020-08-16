@@ -19,6 +19,8 @@ class KbdHandler {
     _addBorder();
   }
 
+  void resetStyles() => _ui?.resetCurrent();
+
   void _keySwitch(KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {
       case 'z':

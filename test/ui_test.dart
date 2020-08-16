@@ -1,22 +1,24 @@
 import 'dart:html' show document, Element, ParagraphElement;
 
-import 'package:test/test.dart' show expect, group, isNull, setUpAll, test;
+import 'package:test/test.dart'
+    show expect, group, isNull, setUp, setUpAll, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Ui;
 
 void main() {
   group('Thumbnail |', () {
     setUpAll(() {
-      for (int i = 0; i < 2; i++) {
-        document.body.append(ParagraphElement());
-      }
+      for (int i = 0; i < 2; i++) document.body.append(ParagraphElement());
     });
 
     final String expectedThumbnailStyling =
         'outline: red solid; outline-offset: -1px;';
 
+    Ui ui;
+
+    setUp(() => ui = Ui(tags: 'p'));
+
     test('Adds border to the thumbnail', () {
-      final Ui ui = Ui(tags: 'p');
       ui.addBorder(currentIndex: 0);
 
       final String newStyle = document.querySelector('p').attributes['style'];
@@ -27,7 +29,6 @@ void main() {
     test(
         'Adding a border to the current thumbnail deletes the styling on its '
         'neighbors', () {
-      final Ui ui = Ui(tags: 'p');
       ui.addBorder(currentIndex: 1);
 
       final List<Element> thumbnails = document.querySelectorAll('p');
@@ -36,6 +37,22 @@ void main() {
 
       expect(thumbnail0Style, isNull);
       expect(thumbnail1Style, expectedThumbnailStyling);
+    });
+
+    test('Resetting the current thumbnail\'s style', () {
+      ui.addBorder(currentIndex: 1);
+
+      final String thumbnailStyleBefore =
+          document.querySelectorAll('p')[1].attributes['style'];
+
+      expect(thumbnailStyleBefore, expectedThumbnailStyling);
+
+      ui.resetCurrent();
+
+      final String thumbnailStyleAfter =
+          document.querySelectorAll('p')[1].attributes['style'];
+
+      expect(thumbnailStyleAfter, isNull);
     });
   });
 }
