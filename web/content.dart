@@ -6,5 +6,5 @@ void main() {
   final KbdHandler kbdHandler = KbdHandler();
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
-      kbdHandler.onKeyPress(keyboardEvent, tags: 'ytd-rich-item-renderer'));
+      kbdHandler.onKeyPress(keyboardEvent, url: document.baseUri));
 }

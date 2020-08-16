@@ -1,12 +1,12 @@
-import 'dart:html' show document, Element, Node;
+import 'dart:html' show document, Element;
 
 import 'package:meta/meta.dart' show required;
 
 class Ui {
-  List<Node> _nodes;
+  List<Element> _elements;
   int _currentIndex;
 
-  Ui({@required String tags}) : _nodes = document.getElementsByTagName(tags);
+  Ui({@required String tags}) : _elements = document.querySelectorAll(tags);
 
   void addBorder({@required int currentIndex}) {
     _currentIndex = currentIndex;
@@ -16,15 +16,14 @@ class Ui {
 
   void _changeCurrentThumbnailStyle() {
     if (_currentIndex >= 0) {
-      final Element thumbnail = _nodes[_currentIndex] as Element;
+      final Element thumbnail = _elements[_currentIndex];
       thumbnail.style.outline = 'red solid';
       thumbnail.style.outlineOffset = '-1px';
     }
   }
 
   void _deleteNeighborsStyles() {
-    _nodes?.forEach((Node node) {
-      final Element element = node as Element;
+    _elements?.forEach((Element element) {
       element.attributes.remove('style');
     });
   }
