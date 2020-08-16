@@ -3,8 +3,7 @@ import 'dart:html' show document, KeyboardEvent, ParagraphElement;
 import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart' show expect, group, setUp, setUpAll, test;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart'
-    show Cycler, KbdHandler;
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, KbdHandler;
 
 void main() {
   setUpAll(() {
@@ -52,8 +51,10 @@ void main() {
       kbdHandler.onKeyPress(keyboardEventForwards);
       kbdHandler.onKeyPress(keyboardEventForwards);
 
-      final String style0 = document.querySelectorAll('p')[0].attributes['style'];
-      final String style1 = document.querySelectorAll('p')[1].attributes['style'];
+      final String style0 =
+          document.querySelectorAll('p')[0].attributes['style'];
+      final String style1 =
+          document.querySelectorAll('p')[1].attributes['style'];
 
       expect(style0, '');
       expect(style1, 'outline: red solid; outline-offset: -1px;');

@@ -6,5 +6,5 @@ void main() {
   final KbdHandler kbdHandler = KbdHandler();
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
-      kbdHandler.onKeyPress(keyboardEvent, url: document.baseUri));
+      kbdHandler.onKeyPress(keyboardEvent, newUrl: document.baseUri));
 }
