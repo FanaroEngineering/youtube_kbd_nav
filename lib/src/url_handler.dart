@@ -7,7 +7,8 @@ class UrlHandler {
     } else if (url.contains('results')) {
       return 'ytd-video-renderer, '
           'ytd-radio-renderer, '
-          'ytd-playlist-renderer';
+          'ytd-playlist-renderer, '
+          'ytd-channel-renderer';
     } else if (url.contains('youtube')) {
       return 'ytd-rich-item-renderer';
     } else {

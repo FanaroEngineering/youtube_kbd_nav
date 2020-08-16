@@ -1,4 +1,4 @@
-import 'dart:html' show KeyboardEvent;
+import 'dart:html' show KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'ui.dart' show Ui;
@@ -28,6 +28,9 @@ class KbdHandler {
         break;
       case 'x':
         _cycler.backwards();
+        break;
+      case 'Enter':
+        _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
         break;
     }
   }

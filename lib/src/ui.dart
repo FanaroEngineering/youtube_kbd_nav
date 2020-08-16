@@ -21,7 +21,10 @@ class Ui {
     return anchorElement?.href;
   }
 
-  void resetCurrent() => _currentThumbnail.attributes.remove('style');
+  void resetCurrent() {
+    _currentThumbnail.attributes.remove('style');
+    _currentIndex = null;
+  }
 
   void _changeCurrentThumbnailStyle() {
     if (_currentIndex >= 0) {
@@ -32,7 +35,7 @@ class Ui {
 
   void _deleteNeighborsStyles() {
     final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
-    
+
     neighborsIndices.forEach((int neighborIndex) {
       _neighborIndexInValidRange(neighborIndex)
           ? _elements[neighborIndex].attributes.remove('style')
