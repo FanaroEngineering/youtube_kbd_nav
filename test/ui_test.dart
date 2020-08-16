@@ -64,7 +64,7 @@ void main() {
 
     test('Extracting the link from the thumbnail', () {
       ui.addBorder(currentIndex: 2);
-      
+
       expect(ui.thumbnailLink, exampleSite);
     });
   });
