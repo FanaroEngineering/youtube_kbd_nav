@@ -23,8 +23,11 @@ class Ui {
   }
 
   void _deleteNeighborsStyles() {
-    _elements?.forEach((Element element) {
-      element.attributes.remove('style');
+    final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
+    neighborsIndices.forEach((int neighborIndex) {
+      neighborIndex >= 0 && neighborIndex < _elements.length
+          ? _elements[neighborIndex].attributes.remove('style')
+          : null;
     });
   }
 }
