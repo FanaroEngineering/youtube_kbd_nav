@@ -19,7 +19,10 @@ class KbdHandler {
     _addBorder();
   }
 
-  void resetStyles() => _ui?.resetCurrent();
+  void resetStyles() {
+    _ui?.resetCurrent();
+    _cycler = Cycler();
+  }
 
   void _keySwitch(KeyboardEvent keyboardEvent) {
     switch (keyboardEvent.key) {

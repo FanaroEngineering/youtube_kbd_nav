@@ -22,7 +22,7 @@ class Ui {
   }
 
   void resetCurrent() {
-    _currentThumbnail.attributes.remove('style');
+    _currentThumbnail?.attributes?.remove('style');
     _currentIndex = null;
   }
 
