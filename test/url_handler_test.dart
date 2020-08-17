@@ -33,7 +33,8 @@ void main() {
           tags,
           'ytd-video-renderer, '
           'ytd-radio-renderer, '
-          'ytd-playlist-renderer');
+          'ytd-playlist-renderer, '
+          'ytd-channel-renderer');
     });
 
     test('Default Page', () {
