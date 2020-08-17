@@ -4,9 +4,12 @@
 
 A keyboard navigation extension to make navigating YouTube easier and possible without the need of a mouse.
 
+Do you have any complaints? [Create an issue for this project][issue_page].
+
 
 [travis_page]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
 [travis_flag]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
+[issue_page]: https://github.com/FanaroEngineering/youtube_kbd_nav/issues
 
 ## 1. Available Shortcuts
 
