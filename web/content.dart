@@ -6,7 +6,7 @@ void main() {
   final KbdHandler kbdHandler = KbdHandler();
 
   window.addEventListener(
-      'yt-navigate-start', (Event event) => kbdHandler.resetStyles());
+      'yt-navigate-start', (Event event) => kbdHandler.resetStylesAndCycler());
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
       kbdHandler.onKeyPress(keyboardEvent, newUrl: document.baseUri));

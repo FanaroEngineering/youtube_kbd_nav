@@ -19,7 +19,7 @@ class KbdHandler {
     _addBorder();
   }
 
-  void resetStyles() {
+  void resetStylesAndCycler() {
     _ui?.resetCurrent();
     _cycler = Cycler();
   }

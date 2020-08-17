@@ -61,7 +61,7 @@ void main() {
 
       expect(styleBefore, 'outline: red solid; outline-offset: -1px;');
 
-      kbdHandler.resetStyles();
+      kbdHandler.resetStylesAndCycler();
 
       final String styleAfter =
           document.querySelectorAll('p')[0].attributes['style'];
