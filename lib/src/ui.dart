@@ -47,15 +47,33 @@ class Ui {
       neighborIndex >= 0 && neighborIndex < _elements.length;
 
   /// The [query] parameter is here for 2 reasons:
-  ///  
+  ///
   /// 1. The HTML hierarchy changes when you're signed or not apparently.
   /// 1. With a parameter, we can inject a simpler tag when testing.
   void subscribe(
       {String query = '#subscribe-button.style-scope > '
           'ytd-subscribe-button-renderer > '
           'paper-button'}) {
-    final Element paperButton = document.querySelector(query);
+    final Element subscribeButton = document.querySelector(query);
 
-    paperButton?.click();
+    subscribeButton?.click();
+  }
+
+  /// Check out the [subscribe] method for more info.
+  void like(
+      {String query =
+          'ytd-menu-renderer > ' 'div > ' 'ytd-toggle-button-renderer'}) {
+    final Element likeButton = document.querySelectorAll(query)[0];
+
+    likeButton?.click();
+  }
+
+  /// Check out the [subscribe] method for more info.
+  void dislike(
+      {String query =
+          'ytd-menu-renderer > ' 'div > ' 'ytd-toggle-button-renderer'}) {
+    final Element dislikeButton = document.querySelectorAll(query)[1];
+
+    dislikeButton?.click();
   }
 }

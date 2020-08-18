@@ -75,22 +75,55 @@ void main() {
       expect(ui.thumbnailLink, exampleSite);
     });
 
+    test('Like', () {
+      ChangesOnClick changesOnLike;
+
+      final ButtonElement likeButtonElement = ButtonElement();
+      likeButtonElement.className = 'like';
+      likeButtonElement.onClick
+          .listen((MouseEvent event) => changesOnLike = ChangesOnClick.like);
+
+      document.body.append(likeButtonElement);
+
+      ui.like(query: 'button');
+
+      expect(changesOnLike, ChangesOnClick.like);
+    });
+
+    test('Dislike', () {
+      ChangesOnClick changesOnDislike;
+
+      final ButtonElement dislikeButtonElement = ButtonElement();
+      dislikeButtonElement.className = 'dislike';
+      dislikeButtonElement.onClick.listen(
+          (MouseEvent event) => changesOnDislike = ChangesOnClick.dislike);
+
+      document.body.append(dislikeButtonElement);
+
+      ui.dislike(query: 'button');
+
+      expect(changesOnDislike, ChangesOnClick.dislike);
+    });
+
     test('Subscribe', () {
-      ChangesOnClick changesOnClick;
+      ChangesOnClick changesOnSubscribe;
 
       final ButtonElement buttonElement = ButtonElement();
+      buttonElement.className = 'subscribe';
       buttonElement.onClick.listen(
-          (MouseEvent event) => changesOnClick = ChangesOnClick.subscribed);
+          (MouseEvent event) => changesOnSubscribe = ChangesOnClick.subscribed);
 
       document.body.append(buttonElement);
 
-      ui.subscribe(query: 'button');
+      ui.subscribe(query: 'button.subscribe');
 
-      expect(changesOnClick, ChangesOnClick.subscribed);
+      expect(changesOnSubscribe, ChangesOnClick.subscribed);
     });
   });
 }
 
 enum ChangesOnClick {
   subscribed,
+  like,
+  dislike,
 }

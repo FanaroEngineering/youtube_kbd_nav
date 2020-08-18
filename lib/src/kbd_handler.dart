@@ -36,13 +36,21 @@ class KbdHandler {
         window.location.href = UrlHandler.prefixedLink('/');
         break;
       case 'e':
-        if (_url.contains('watch')) _ui?.subscribe();
+        _isVideo ? _ui?.subscribe() : null;
         break;
       case 'Enter':
         _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
         break;
+      case 'v':
+        _isVideo ? _ui?.like() : null;
+        break;
+      case 'n':
+        _isVideo ? _ui?.dislike() : null;
+        break;
     }
   }
+
+  bool get _isVideo => _url.contains('watch');
 
   void _resetCyclerIfUrlChange(String newUrl) {
     if (newUrl != _url) {
