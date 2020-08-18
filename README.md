@@ -19,6 +19,9 @@ Do you have any complaints? [Create an issue for this project][issue_page].
 | <kbd>x</kbd>     | Cycle backwards on the thumbnails         |
 | <kbd>Enter</kbd> | Open a new tab for the selected thumbnail |
 | <kbd>q</kbd>     | YouTube Home                              |
+| <kbd>e</kbd>     | Subscribe to the channel<sup>*</sup>      |
+
+<sup>*</sup>: Only works when signed-in.
 
 ## 2. Future Improvements (Development)
 

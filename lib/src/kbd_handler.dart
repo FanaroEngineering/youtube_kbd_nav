@@ -35,6 +35,9 @@ class KbdHandler {
       case 'q':
         window.location.href = UrlHandler.prefixedLink('/');
         break;
+      case 'e':
+        if (_url.contains('watch')) _ui?.subscribe();
+        break;
       case 'Enter':
         _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
         break;

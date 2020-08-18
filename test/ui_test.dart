@@ -1,4 +1,11 @@
-import 'dart:html' show AnchorElement, document, Element, ParagraphElement;
+import 'dart:html'
+    show
+        AnchorElement,
+        ButtonElement,
+        document,
+        Element,
+        MouseEvent,
+        ParagraphElement;
 
 import 'package:test/test.dart'
     show expect, group, isNull, setUp, setUpAll, test;
@@ -67,5 +74,23 @@ void main() {
 
       expect(ui.thumbnailLink, exampleSite);
     });
+
+    test('Subscribe', () {
+      ChangesOnClick changesOnClick;
+
+      final ButtonElement buttonElement = ButtonElement();
+      buttonElement.onClick.listen(
+          (MouseEvent event) => changesOnClick = ChangesOnClick.subscribed);
+
+      document.body.append(buttonElement);
+
+      ui.subscribe(query: 'button');
+
+      expect(changesOnClick, ChangesOnClick.subscribed);
+    });
   });
+}
+
+enum ChangesOnClick {
+  subscribed,
 }

@@ -45,4 +45,13 @@ class Ui {
 
   bool _neighborIndexInValidRange(int neighborIndex) =>
       neighborIndex >= 0 && neighborIndex < _elements.length;
+
+  void subscribe(
+      {String query = '#subscribe-button.style-scope > '
+          'ytd-subscribe-button-renderer > '
+          'paper-button'}) {
+    final Element paperButton = document.querySelector(query);
+
+    paperButton.click();
+  }
 }
