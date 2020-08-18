@@ -4,7 +4,7 @@
 
 A keyboard navigation extension to make navigating YouTube easier and possible without the need of a mouse.
 
-Do you have any complaints? [Create an issue for this project][issue_page].
+Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page].
 
 
 [travis_page]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
