@@ -13,17 +13,19 @@ Do you have any complaints? [Create an issue for this project][issue_page].
 
 ## 1. Available Shortcuts
 
-| Shortcut         | Action                                    |
-|------------------|-------------------------------------------|
-| <kbd>z</kbd>     | Cycle forwards on the thumbnails          |
-| <kbd>x</kbd>     | Cycle backwards on the thumbnails         |
-| <kbd>Enter</kbd> | Open a new tab for the selected thumbnail |
-| <kbd>q</kbd>     | YouTube Home                              |
-| <kbd>e</kbd>     | Subscribe to the channel<sup>*</sup>      |
-| <kbd>v</kbd>     | Like the video<sup>*</sup>                |
-| <kbd>n</kbd>     | Dislike the video<sup>*</sup>             |
+| Shortcut         | Action                                            |
+|------------------|---------------------------------------------------|
+| <kbd>z</kbd>     | Cycle forwards on the thumbnails                  |
+| <kbd>x</kbd>     | Cycle backwards on the thumbnails                 |
+| <kbd>Enter</kbd> | Open a new tab for the selected thumbnail         |
+| <kbd>q</kbd>     | YouTube Home                                      |
+| <kbd>e</kbd>     | Subscribe to the channel<sup>1</sup>              |
+| <kbd>v</kbd>     | Like the video<sup>1</sup>                        |
+| <kbd>n</kbd>     | Dislike the video<sup>1</sup>                     |
+| <kbd>b</kbd>     | Copies the shortened URL of the video<sup>2</sup> |
 
-<sup>*</sup>: Only works when signed-in and on a video page.
+<sup>1</sup>: Only works when signed-in and on a video page.
+<sup>2</sup>: Only works when on a video page.
 
 ## 2. Future Improvements (Development)
 

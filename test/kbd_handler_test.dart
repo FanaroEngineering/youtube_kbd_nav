@@ -23,26 +23,26 @@ void main() {
   });
 
   group('Thumbnail Cycling |', () {
-    test('Pressing `z` moves the cycler forwards', () {
-      kbdHandler.onKeyPress(keyboardEventForwards);
+    test('Pressing `z` moves the cycler forwards', () async {
+      await kbdHandler.onKeyPress(keyboardEventForwards);
 
       expect(cycler.index, 0);
     });
 
-    test('Pressing `x` moves the cycler backwards', () {
-      kbdHandler.onKeyPress(keyboardEventForwards);
-      kbdHandler.onKeyPress(keyboardEventForwards);
-      kbdHandler.onKeyPress(keyboardEventForwards);
-      kbdHandler.onKeyPress(keyboardEventBackwards);
+    test('Pressing `x` moves the cycler backwards', () async {
+      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyPress(keyboardEventBackwards);
 
       expect(cycler.index, 1);
     });
   });
 
   group('UI |', () {
-    test('Testing if it indeed changes the UI', () {
-      kbdHandler.onKeyPress(keyboardEventForwards);
-      kbdHandler.onKeyPress(keyboardEventForwards);
+    test('Testing if it indeed changes the UI', () async {
+      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyPress(keyboardEventForwards);
 
       final String style0 =
           document.querySelectorAll('p')[0].attributes['style'];
@@ -53,8 +53,8 @@ void main() {
       expect(style1, 'outline: red solid; outline-offset: -1px;');
     });
 
-    test('Navigating to a new YouTube page resets the UI', () {
-      kbdHandler.onKeyPress(keyboardEventForwards);
+    test('Navigating to a new YouTube page resets the UI', () async {
+      await kbdHandler.onKeyPress(keyboardEventForwards);
 
       final String styleBefore =
           document.querySelectorAll('p')[0].attributes['style'];

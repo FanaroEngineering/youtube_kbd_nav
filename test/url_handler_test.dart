@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:test/test.dart' show expect, group, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show UrlHandler;
@@ -53,6 +55,17 @@ void main() {
       final String completeLink = UrlHandler.prefixedLink(link);
 
       expect(completeLink, 'https://www.youtube.com' + link);
+    });
+  });
+
+  group('Link Shortening |', () {
+    test('Same link shortening youtube does when you right-click on a video',
+        () {
+      final String completeLink = 'https://www.youtube.com/watch?v=code';
+
+      final String shortenedLink = UrlHandler.shortenLink(completeLink);
+
+      expect(shortenedLink, 'https://youtu.be/code');
     });
   });
 }

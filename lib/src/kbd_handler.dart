@@ -1,4 +1,4 @@
-import 'dart:html' show KeyboardEvent, window;
+import 'dart:html' show document, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'ui.dart' show Ui;
@@ -13,9 +13,10 @@ class KbdHandler {
   /// check if everything happened as expected.
   KbdHandler({Cycler cycler}) : _cycler = cycler ?? Cycler();
 
-  void onKeyPress(KeyboardEvent keyboardEvent, {String newUrl = ''}) {
+  Future<void> onKeyPress(KeyboardEvent keyboardEvent,
+      {String newUrl = ''}) async {
     _resetCyclerIfUrlChange(newUrl);
-    _keySwitch(keyboardEvent);
+    await _keySwitch(keyboardEvent);
     _addBorder();
   }
 
@@ -24,7 +25,7 @@ class KbdHandler {
     _cycler = Cycler();
   }
 
-  void _keySwitch(KeyboardEvent keyboardEvent) {
+  Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
     switch (keyboardEvent.key) {
       case 'z':
         _cycler.forwards();
@@ -46,6 +47,12 @@ class KbdHandler {
         break;
       case 'n':
         _isVideo ? _ui?.dislike() : null;
+        break;
+      case 'b':
+        _isVideo
+            ? await window.navigator.clipboard
+                .writeText(UrlHandler.shortenLink(_url))
+            : null;
         break;
     }
   }

@@ -18,4 +18,11 @@ class UrlHandler {
 
   static String prefixedLink(String url) =>
       url.startsWith('https://') ? url : 'https://www.youtube.com' + url;
+
+  static String shortenLink(String url) {
+    final List<String> splitLink = url.split('watch?v=');
+    final String videoCode = splitLink[1];
+
+    return 'https://youtu.be/$videoCode';
+  }
 }
