@@ -20,8 +20,10 @@ Do you have any complaints? [Create an issue for this project][issue_page].
 | <kbd>Enter</kbd> | Open a new tab for the selected thumbnail |
 | <kbd>q</kbd>     | YouTube Home                              |
 | <kbd>e</kbd>     | Subscribe to the channel<sup>*</sup>      |
+| <kbd>v</kbd>     | Like the video<sup>*</sup>                |
+| <kbd>n</kbd>     | Dislike the video<sup>*</sup>             |
 
-<sup>*</sup>: Only works when signed-in.
+<sup>*</sup>: Only works when signed-in and on a video page.
 
 ## 2. Future Improvements (Development)
 

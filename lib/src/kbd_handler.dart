@@ -35,11 +35,11 @@ class KbdHandler {
       case 'q':
         window.location.href = UrlHandler.prefixedLink('/');
         break;
-      case 'e':
-        _isVideo ? _ui?.subscribe() : null;
-        break;
       case 'Enter':
         _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
+        break;
+      case 'e':
+        _isVideo ? _ui?.subscribe() : null;
         break;
       case 'v':
         _isVideo ? _ui?.like() : null;
