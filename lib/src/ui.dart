@@ -52,6 +52,6 @@ class Ui {
           'paper-button'}) {
     final Element paperButton = document.querySelector(query);
 
-    paperButton.click();
+    paperButton?.click();
   }
 }
