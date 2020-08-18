@@ -32,6 +32,9 @@ class KbdHandler {
       case 'x':
         _cycler.backwards();
         break;
+      case 'q':
+        window.location.href = UrlHandler.prefixedLink('/');
+        break;
       case 'Enter':
         _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
         break;

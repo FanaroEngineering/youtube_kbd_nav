@@ -18,6 +18,7 @@ Do you have any complaints? [Create an issue for this project][issue_page].
 | <kbd>z</kbd>     | Cycle forwards on the thumbnails          |
 | <kbd>x</kbd>     | Cycle backwards on the thumbnails         |
 | <kbd>Enter</kbd> | Open a new tab for the selected thumbnail |
+| <kbd>q</kbd>     | YouTube Home                              |
 
 ## 2. Future Improvements (Development)
 
