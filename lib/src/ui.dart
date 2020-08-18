@@ -46,6 +46,10 @@ class Ui {
   bool _neighborIndexInValidRange(int neighborIndex) =>
       neighborIndex >= 0 && neighborIndex < _elements.length;
 
+  /// The [query] parameter is here for 2 reasons:
+  ///  
+  /// 1. The HTML hierarchy changes when you're signed or not apparently.
+  /// 1. With a parameter, we can inject a simpler tag when testing.
   void subscribe(
       {String query = '#subscribe-button.style-scope > '
           'ytd-subscribe-button-renderer > '
