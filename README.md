@@ -24,8 +24,8 @@ Do you have any complaints? [Create an issue for this project][issue_page].
 | <kbd>n</kbd>     | Dislike the video<sup>1</sup>                     |
 | <kbd>b</kbd>     | Copies the shortened URL of the video<sup>2</sup> |
 
-<sup>1</sup>: Only works when signed-in and on a video page.
-<sup>2</sup>: Only works when on a video page.
+`1`: Only works when signed-in and on a video page. \
+`2`: Only works when on a video page.
 
 ## 2. Future Improvements (Development)
 
