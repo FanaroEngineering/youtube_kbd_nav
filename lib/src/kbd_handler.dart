@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, window;
+import 'dart:html' show KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'ui.dart' show Ui;

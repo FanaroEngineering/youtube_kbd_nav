@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:test/test.dart' show expect, group, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show UrlHandler;
