@@ -1,0 +1,50 @@
+@startuml youtube_kbd_nav
+set namespaceSeparator ::
+
+class "youtube_kbd_nav::src::cycler.dart::Cycler" {
+  -int _index
+  +int index
+  +void forwards()
+  +void backwards()
+}
+
+class "youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" {
+  -Cycler _cycler
+  -String _url
+  -Ui _ui
+  -bool _isVideo
+  +Future onKeyPress()
+  +void resetStylesAndCycler()
+  -Future _keySwitch()
+  -void _resetCyclerIfUrlChange()
+  -void _addBorder()
+}
+
+"youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
+"youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" o-- "youtube_kbd_nav::src::ui.dart::Ui"
+
+class "youtube_kbd_nav::src::ui.dart::Ui" {
+  -List<Element> _elements
+  -int _currentIndex
+  -Element _currentThumbnail
+  +String thumbnailLink
+  +void addBorder()
+  +void resetCurrent()
+  -void _changeCurrentThumbnailStyle()
+  -void _deleteNeighborsStyles()
+  -bool _neighborIndexInValidRange()
+  +void subscribe()
+  +void like()
+  +void dislike()
+}
+
+"youtube_kbd_nav::src::ui.dart::Ui" o-- "dart::html::Element"
+
+class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
+  {static} +String tags()
+  {static} +String prefixedLink()
+  {static} +String shortenLink()
+}
+
+
+@enduml
