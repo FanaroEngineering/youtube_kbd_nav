@@ -19,13 +19,14 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 | <kbd>x</kbd>     | Cycle backwards on the thumbnails                 |
 | <kbd>Enter</kbd> | Open a new tab for the selected thumbnail         |
 | <kbd>q</kbd>     | YouTube Home                                      |
-| <kbd>e</kbd>     | Subscribe to the channel<sup>1</sup>              |
-| <kbd>v</kbd>     | Like the video<sup>1</sup>                        |
-| <kbd>n</kbd>     | Dislike the video<sup>1</sup>                     |
+| <kbd>e</kbd>     | Subscribe to the channel<sup>1 \| 3</sup>         |
+| <kbd>v</kbd>     | Like the video<sup>1 \| 3</sup>                   |
+| <kbd>n</kbd>     | Dislike the video<sup>1 \| 3</sup>                |
 | <kbd>b</kbd>     | Copies the shortened URL of the video<sup>2</sup> |
 
 `1`: Only works when signed-in and on a video page. \
-`2`: Only works when on a video page.
+`2`: Only works when on a video page. \
+`3`: On Firefox, you might have to actually double-click it initially.
 
 ## 2. Future Improvements (Development)                        
 
@@ -45,6 +46,7 @@ Basically, [a JS browser extension consist of very few specific JS files][mdn_ex
         dart2js --csp -On -o build/content.dart.js web/content.dart
         ```
         - The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do, the higher the more aggressive, which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
+        - The `--csp` option: *disables dynamic generation of code in the generated output. This is necessary to satisfy CSP restrictions*. Check out the [`dart2js` docs][dart2js_docs] for more info.
 1. Pack it into a zip file.
     - For example, in Powershell:
         ```powershell

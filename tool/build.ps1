@@ -6,7 +6,7 @@ If(!(test-path $path))
 
 dart2js --csp -O4 -o build/content.dart.js web/content.dart
 
-Copy-Item -Path "web/manifest.json" -Destination "build"
+Copy-Item -Force -Path "web/manifest.json" -Destination "build"
 
 $compress = @{
   Path = "build/*"

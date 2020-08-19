@@ -4,7 +4,7 @@ import 'dart:html'
         ButtonElement,
         document,
         Element,
-        MouseEvent,
+        Event,
         ParagraphElement;
 
 import 'package:test/test.dart'
@@ -81,7 +81,7 @@ void main() {
       final ButtonElement likeButtonElement = ButtonElement();
       likeButtonElement.className = 'like';
       likeButtonElement.onClick
-          .listen((MouseEvent event) => changesOnLike = ChangesOnClick.like);
+          .listen((Event event) => changesOnLike = ChangesOnClick.like);
 
       document.body.append(likeButtonElement);
 
@@ -95,8 +95,8 @@ void main() {
 
       final ButtonElement dislikeButtonElement = ButtonElement();
       dislikeButtonElement.className = 'dislike';
-      dislikeButtonElement.onClick.listen(
-          (MouseEvent event) => changesOnDislike = ChangesOnClick.dislike);
+      dislikeButtonElement.onClick
+          .listen((Event event) => changesOnDislike = ChangesOnClick.dislike);
 
       document.body.append(dislikeButtonElement);
 
@@ -111,7 +111,7 @@ void main() {
       final ButtonElement buttonElement = ButtonElement();
       buttonElement.className = 'subscribe';
       buttonElement.onClick.listen(
-          (MouseEvent event) => changesOnSubscribe = ChangesOnClick.subscribed);
+          (Event event) => changesOnSubscribe = ChangesOnClick.subscribed);
 
       document.body.append(buttonElement);
 
