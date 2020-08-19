@@ -35,25 +35,31 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 
 ## 3. Building with `dart2js`
 
-Originally, I was using the [webdev][webdev_docs] with the discontinued [webextdev][webextdev_github], but they both add way too much stuff to something that should be way simpler.
+Originally, I was using the [webdev][webdev_docs] with the discontinued [webext][webext_github], but they both add way too much stuff to something that should be way simpler.
 
 Basically, [a JS browser extension consist of very few specific JS files][mdn_ext_docs], so, when using Dart, the only things you will end up needing to do are:
 
 1. Use `dart2js` to convert Dart to JS.
+    - For example:
+        ```sh
+        dart2js -On -o build/content.dart.js web/content.dart
+        ```
+        - The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do, the higher the more aggressive, which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
 1. Pack it into a zip file.
+    - For example, in Powershell:
+        ```powershell
+        $compress = @{
+            Path = "build/*"
+            CompressionLevel = "Fastest"
+            DestinationPath = "build/build.zip"
+        }
+        Compress-Archive @compress
+        ```
 
+The script(s) to create the build are all in the `tool` folder.
 
-[mdn_ext_docs]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
-[webdev_docs]: https://dart.dev/tools/webdev
-[webextdev_github]: https://github.com/dart-browser/webext
-
-### 3.1. The Windows Version
-
-```powershell
-dart2js -On -o build/content.dart.js web/content.dart
-Compress-Archive build/* out.zip
-```
-
-The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do, the higher the more aggressive, which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
 
 [dart2js_docs]: https://dart.dev/tools/dart2js
+[mdn_ext_docs]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
+[webdev_docs]: https://dart.dev/tools/webdev
+[webext_github]: https://github.com/dart-browser/webext
