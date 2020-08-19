@@ -40,6 +40,8 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 
 Originally, I was using the [webdev][webdev_docs] with the discontinued [webext][webext_github], but they both add way too much stuff to something that should be way simpler.
 
+> If you have uploaded a local zip of a build to Firefox, rebuilding will probably give back an error because Firefox will denying overwrites or deletions of the previous build.
+
 Basically, [a JS browser extension consist of very few specific JS files][mdn_ext_docs], so, when using Dart, the only things you will end up needing to do are:
 
 1. Use `dart2js` to convert Dart to JS.
