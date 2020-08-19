@@ -4,7 +4,7 @@ If(!(test-path $path))
   New-Item -ItemType Directory -Force -Path $path
 }
 
-dart2js -O4 -o build/content.dart.js web/content.dart
+dart2js --csp -O4 -o build/content.dart.js web/content.dart
 
 Copy-Item -Path "web/manifest.json" -Destination "build"
 
