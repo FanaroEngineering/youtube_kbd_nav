@@ -42,7 +42,7 @@ Basically, [a JS browser extension consist of very few specific JS files][mdn_ex
 1. Use `dart2js` to convert Dart to JS.
     - For example:
         ```sh
-        dart2js -On -o build/content.dart.js web/content.dart
+        dart2js --csp -On -o build/content.dart.js web/content.dart
         ```
         - The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do, the higher the more aggressive, which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
 1. Pack it into a zip file.
