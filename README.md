@@ -65,3 +65,24 @@ The script(s) to create the build are all in the `tool` folder.
 [mdn_ext_docs]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
 [webdev_docs]: https://dart.dev/tools/webdev
 [webext_github]: https://github.com/dart-browser/webext
+
+# Visualizing the Extension's Design with UML
+
+The UML diagram at the root of the project has been generated with the the help of the &mdash; great &mdash; [`dcdg`][dcdg_on_pub] Dart package. The standard output is based on the PlantUML standard and, if you use VS Code, you can visualize it by installing [GraphViz][graphviz_download] and the [PlantUML VS Code Extension][plantuml_vscode].
+
+Activate `dcdg` with:
+
+```sh
+pub global activate dcdg # only necessary once
+```
+
+Then generate the UML diagram with:
+
+```sh
+pub global run dcdg -o uml.puml
+```
+
+
+[dcdg_on_pub]: https://pub.dev/packages/dcdg/install
+[graphviz_download]: https://graphviz.gitlab.io/download/
+[plantuml_vscode]: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
