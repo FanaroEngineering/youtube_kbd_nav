@@ -1,4 +1,4 @@
-import 'dart:html' show KeyboardEvent, window;
+import 'dart:html' show document, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'ui.dart' show Ui;
@@ -25,35 +25,41 @@ class KbdHandler {
     _cycler = Cycler();
   }
 
+  bool get _inputFocus =>
+      document.querySelector('div#contenteditable-root') ==
+      document.activeElement;
+
   Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
-    switch (keyboardEvent.key) {
-      case 'z':
-        _cycler.forwards();
-        break;
-      case 'x':
-        _cycler.backwards();
-        break;
-      case 'q':
-        window.location.href = UrlHandler.prefixedLink('/');
-        break;
-      case 'Enter':
-        _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
-        break;
-      case 'e':
-        _isVideo ? _ui?.subscribe() : null;
-        break;
-      case 'v':
-        _isVideo ? _ui?.like() : null;
-        break;
-      case 'n':
-        _isVideo ? _ui?.dislike() : null;
-        break;
-      case 'b':
-        _isVideo
-            ? await window.navigator.clipboard
-                .writeText(UrlHandler.shortenLink(_url))
-            : null;
-        break;
+    if (!_inputFocus) {
+      switch (keyboardEvent.key) {
+        case 'z':
+          _cycler.forwards();
+          break;
+        case 'x':
+          _cycler.backwards();
+          break;
+        case 'q':
+          window.location.href = UrlHandler.prefixedLink('/');
+          break;
+        case 'Enter':
+          _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
+          break;
+        case 'e':
+          _isVideo ? _ui?.subscribe() : null;
+          break;
+        case 'v':
+          _isVideo ? _ui?.like() : null;
+          break;
+        case 'n':
+          _isVideo ? _ui?.dislike() : null;
+          break;
+        case 'b':
+          _isVideo
+              ? await window.navigator.clipboard
+                  .writeText(UrlHandler.shortenLink(_url))
+              : null;
+          break;
+      }
     }
   }
 
