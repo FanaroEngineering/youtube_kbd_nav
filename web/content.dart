@@ -9,5 +9,5 @@ void main() async {
       'yt-navigate-start', (Event event) => kbdHandler.resetStylesAndCycler());
 
   document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
-    kbdHandler.onKeyPress(keyboardEvent, newUrl: document.baseUri));
+      kbdHandler.onKeyPress(keyboardEvent, newUrl: document.baseUri));
 }

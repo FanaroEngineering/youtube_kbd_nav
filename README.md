@@ -2,6 +2,8 @@
 
 [![Build Status][travis_flag]][travis_page]
 
+## 1. For the User
+
 A keyboard navigation extension to make navigating YouTube easier and possible without the need of a mouse.
 
 Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page].
@@ -11,7 +13,7 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 [travis_flag]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
 [issue_page]: https://github.com/FanaroEngineering/youtube_kbd_nav/issues
 
-## 1. Available Shortcuts
+### 1.1. Available Shortcuts
 
 | Shortcut         | Action                                            |
 |------------------|---------------------------------------------------|
@@ -28,15 +30,24 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 `2`: Only works when on a video page. \
 `3`: On Firefox, you might have to actually double-click it initially.
 
-## 2. For Developers
+## 2. For the Developer
 
-### 2.1. Future Improvements (Development)                        
+### 2.1. Releases
+
+Currently, this extension is in its *alpha* stage. Basically, only the first sketch is available to a small amount of users. I expect that, in 1-2 weeks, we will be able to enter a *beta*; and, hopefully, in a month, a first public release on the Chrome and Firefox's extension stores.
+
+You can directly download this extension's files from the [Releases][release_link] page.
+
+
+[release_link]: https://github.com/FanaroEngineering/youtube_kbd_nav/releases
+
+### 2.2. Future Improvements (Development)
 
 - [ ] Reorient the design towards YouTube's `yt-navigate-start` events.
 - [ ] No unit tests for the `KbdHandler`.
 - [ ] The UI should probably be the one with the `Cycler` inside, not the `KbdHandler` class.
 
-### 2.2. Building with `dart2js`
+### 2.3. Building with `dart2js`
 
 Originally, I was using the [webdev][webdev_docs] with the discontinued [webext][webext_github], but they both add way too much stuff to something that should be way simpler.
 
@@ -70,7 +81,7 @@ The script(s) to create the build are all in the `tool` folder.
 [webdev_docs]: https://dart.dev/tools/webdev
 [webext_github]: https://github.com/dart-browser/webext
 
-### 2.3 Visualizing the Extension's Design with UML
+### 2.4. Visualizing the Extension's Design with UML
 
 The UML diagram at the root of the project has been generated with the the help of the &mdash; great &mdash; [`dcdg`][dcdg_on_pub] Dart package. The standard output is based on the PlantUML standard and, if you use VS Code, you can visualize it by installing [GraphViz][graphviz_download] and the [PlantUML VS Code Extension][plantuml_vscode].
 
