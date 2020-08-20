@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "youtube_kbd_nav",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "YouTube keyboard navigation to the max.",
   "content_scripts": [
     {
