@@ -22,7 +22,28 @@ You can directly download this extension's files from the [Releases][release_lin
 
 [release_link]: https://github.com/FanaroEngineering/youtube_kbd_nav/releases
 
-### 1.2. Available Shortcuts
+### 1.2. How to install it with a zip file
+
+#### 1.2.1. Chrome
+
+1. Unzip the extension in a local folder
+1. Go to [chrome://extensions/][chrome_extensions]
+1. Activate <kbd>Developer mode</kbd> on the upper-right corner.
+1. Click on <kbd>Load unpacked</kbd> and choose the folder where you unzipped the extension.
+
+
+[chrome_extensions]: chrome://extensions/
+
+#### 1.2.2. Firefox
+
+1. Go to [about:debugging][about_debugging]
+1. Click on <kbd>This Firefox</kbd>.
+1. Click on <kbd>Load Temporary Add-on...</kbd> and load the zip file directly.
+
+
+[about_debugging]: about:debugging
+
+### 1.3. Available Shortcuts
 
 | Shortcut         | Action                                            |
 |------------------|---------------------------------------------------|
