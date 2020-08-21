@@ -26,7 +26,7 @@ You can directly download this extension's files from the [Releases][release_lin
 
 #### 1.2.1. Chrome
 
-1. Unzip the extension in a local folder
+1. Unzip the extension in a local folder.
 1. Go to [chrome://extensions/][chrome_extensions]
 1. Activate <kbd>Developer mode</kbd> on the upper-right corner.
 1. Click on <kbd>Load unpacked</kbd> and choose the folder where you unzipped the extension.
@@ -42,6 +42,16 @@ You can directly download this extension's files from the [Releases][release_lin
 
 
 [about_debugging]: about:debugging
+
+#### 1.2.3. Microsoft Edge
+
+1. Unzip the extension in a local folder.
+1. Go to [edge://extensions][edge_extensions]
+1. Activate <kbd>Developer mode</kbd> on the upper-right corner.
+1. Click on <kbd>Load unpacked</kbd> and choose the folder where you unzipped the extension.
+
+
+[edge_extensions]: edge://extensions/
 
 ### 1.3. Available Shortcuts
 
