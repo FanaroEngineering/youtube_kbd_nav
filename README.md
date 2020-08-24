@@ -104,7 +104,11 @@ Basically, [a JS browser extension consist of very few specific JS files][mdn_ex
         Compress-Archive @compress
         ```
 
-The script(s) to create the build are all in the `tool` folder.
+The script(s) to create the build are all in the `tool` folder<sup>*</sup>.
+
+<hr>
+
+<sub>\* : The shell (`build.sh`) version hasn't yet been tested.</sub>
 
 
 [dart2js_docs]: https://dart.dev/tools/dart2js
