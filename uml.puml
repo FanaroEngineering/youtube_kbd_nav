@@ -1,4 +1,4 @@
-@startum
+@startuml
 set namespaceSeparator ::
 
 class "youtube_kbd_nav::src::cycler.dart::Cycler" {
