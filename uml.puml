@@ -12,6 +12,7 @@ class "youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" {
   -Cycler _cycler
   -String _url
   -Ui _ui
+  -bool _inputFocus
   -bool _isVideo
   +Future onKeyPress()
   +void resetStylesAndCycler()
