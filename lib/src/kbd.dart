@@ -11,7 +11,11 @@ class Kbd {
 
   /// The [Cycler] is a parameter just so we can inject it during testing and
   /// check if everything happened as expected.
-  Kbd({Cycler cycler}) : _cycler = cycler ?? Cycler();
+  Kbd({Cycler cycler}) : _cycler = cycler ?? Cycler() {
+    window.addEventListener('yt-navigate-start', (_) => resetStylesAndCycler());
+    document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
+        onKeyPress(keyboardEvent, newUrl: document.baseUri));
+  }
 
   Future<void> onKeyPress(KeyboardEvent keyboardEvent,
       {String newUrl = ''}) async {
