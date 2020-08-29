@@ -63,17 +63,18 @@ You can directly download this extension's files from the [Releases][release_lin
 
 ### 1.3. Available Shortcuts
 
-| Shortcut         | Action                                            |
-|------------------|---------------------------------------------------|
-| <kbd>z</kbd>     | Cycle forwards on the thumbnails                  |
-| <kbd>x</kbd>     | Cycle backwards on the thumbnails                 |
-| <kbd>Enter</kbd> | Open a new tab for the selected thumbnail         |
-| <kbd>q</kbd>     | YouTube Home                                      |
-| <kbd>e</kbd>     | Subscribe to the channel<sup>1 \| 3</sup>         |
-| <kbd>v</kbd>     | Like the video<sup>1 \| 3</sup>                   |
-| <kbd>n</kbd>     | Dislike the video<sup>1 \| 3</sup>                |
-| <kbd>b</kbd>     | Copies the shortened URL of the video<sup>2</sup> |
-| <kbd>y</kbd>     | Opens the notification pop-up<sup>3</sup>         |
+| Shortcut                           | Action                                            |
+|------------------------------------|---------------------------------------------------|
+| <kbd>z</kbd>                       | Cycle forwards on the thumbnails                  |
+| <kbd>x</kbd>                       | Cycle backwards on the thumbnails                 |
+| <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail         |
+| <kbd>q</kbd>                       | YouTube Home                                      |
+| <kbd>e</kbd>                       | Subscribe to the channel<sup>1 \| 3</sup>         |
+| <kbd>v</kbd>                       | Like the video<sup>1 \| 3</sup>                   |
+| <kbd>n</kbd>                       | Dislike the video<sup>1 \| 3</sup>                |
+| <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup> |
+| <kbd>y</kbd>                       | Opens the notification pop-up<sup>3</sup>         |
 
 <sub>`1`: Only works when signed-in and on a video page. </sub> \
 <sub>`2`: Only works when on a video page. </sub> \
