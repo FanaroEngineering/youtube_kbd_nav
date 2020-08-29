@@ -13,8 +13,8 @@ class Kbd {
   /// check if everything happened as expected.
   Kbd({Cycler cycler}) : _cycler = cycler ?? Cycler() {
     window.addEventListener('yt-navigate-start', (_) => resetStylesAndCycler());
-    document.onKeyPress.listen((KeyboardEvent keyboardEvent) =>
-        onKeyPress(keyboardEvent, newUrl: document.baseUri));
+    document.onKeyDown.listen((KeyboardEvent keyboardEvent) =>
+        onKeyDown(keyboardEvent, newUrl: document.baseUri));
   }
 
   void resetStylesAndCycler() {
@@ -22,7 +22,7 @@ class Kbd {
     _cycler = Cycler();
   }
 
-  Future<void> onKeyPress(KeyboardEvent keyboardEvent,
+  Future<void> onKeyDown(KeyboardEvent keyboardEvent,
       {String newUrl = ''}) async {
     _resetCyclerIfUrlChange(newUrl);
     await _keySwitch(keyboardEvent);
@@ -38,12 +38,11 @@ class Kbd {
   Element get _searchBar => document.querySelector('input#search');
   Element get _commentBox => document.querySelector('div#contenteditable-root');
 
-  bool get _inputFocus =>
-      _searchBar == document.activeElement ||
-      _commentBox == document.activeElement;
+  bool get _noInputFocus => !(_searchBar == document.activeElement ||
+      _commentBox == document.activeElement);
 
   Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
-    if (!_inputFocus) {
+    if (_noInputFocus) {
       switch (keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
@@ -57,7 +56,11 @@ class Kbd {
           window.location.href = UrlHandler.prefixedLink('/');
           break;
         case 'Enter':
-          if (_cycler.total >= 0) window.open(_ui?.thumbnailLink, '');
+          if (_cycler.total >= 0) {
+            keyboardEvent.ctrlKey
+                ? window.open(_ui?.thumbnailLink, '_blank', 'noreferrer')
+                : window.location.href = _ui?.thumbnailLink;
+          }
           break;
         case 'e':
           if (_isVideo) _ui?.subscribe();

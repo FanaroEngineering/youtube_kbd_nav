@@ -12,10 +12,12 @@ class Ui {
     _currentIndex = currentIndex;
     _deleteNeighborsStyles();
     _changeCurrentThumbnailStyle();
-    _currentThumbnail.scrollIntoView();
+    _currentThumbnail?.scrollIntoView();
   }
 
-  Element get _currentThumbnail => _elements[_currentIndex];
+  Element get _currentThumbnail => (_currentIndex != null && _currentIndex >= 0)
+      ? _elements[_currentIndex]
+      : null;
 
   String get thumbnailLink {
     final AnchorElement anchorElement = _currentThumbnail?.querySelector('a');

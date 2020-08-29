@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, ParagraphElement, window;
+import 'dart:html' show document, KeyboardEvent, ParagraphElement;
 
 import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart'
@@ -24,16 +24,16 @@ void main() {
 
   group('Thumbnail Cycling |', () {
     test('Pressing `z` moves the cycler forwards', () async {
-      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
 
       expect(cycler.total, 0);
     });
 
     test('Pressing `x` moves the cycler backwards', () async {
-      await kbdHandler.onKeyPress(keyboardEventForwards);
-      await kbdHandler.onKeyPress(keyboardEventForwards);
-      await kbdHandler.onKeyPress(keyboardEventForwards);
-      await kbdHandler.onKeyPress(keyboardEventBackwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventBackwards);
 
       expect(cycler.total, 1);
     });
@@ -41,8 +41,8 @@ void main() {
 
   group('UI |', () {
     test('Testing if it indeed changes the UI', () async {
-      await kbdHandler.onKeyPress(keyboardEventForwards);
-      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
 
       final String style0 =
           document.querySelectorAll('p')[0].attributes['style'];
@@ -54,7 +54,7 @@ void main() {
     });
 
     test('Navigating to a new YouTube page resets the UI', () async {
-      await kbdHandler.onKeyPress(keyboardEventForwards);
+      await kbdHandler.onKeyDown(keyboardEventForwards);
 
       final String styleBefore =
           document.querySelectorAll('p')[0].attributes['style'];
