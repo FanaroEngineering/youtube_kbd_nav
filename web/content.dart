@@ -1,9 +1,9 @@
 import 'dart:html' show document, KeyboardEvent, window, Event;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show KbdHandler;
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Kbd;
 
 void main() async {
-  final KbdHandler kbdHandler = KbdHandler();
+  final Kbd kbdHandler = Kbd();
 
   window.addEventListener(
       'yt-navigate-start', (Event event) => kbdHandler.resetStylesAndCycler());

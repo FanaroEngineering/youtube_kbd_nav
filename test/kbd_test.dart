@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart'
     show expect, group, isNull, setUp, setUpAll, test;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, KbdHandler;
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, Kbd;
 
 void main() {
   setUpAll(() {
@@ -15,11 +15,11 @@ void main() {
   final KeyboardEvent keyboardEventBackwards = MockKeyboardEvent(key: 'x');
 
   Cycler cycler;
-  KbdHandler kbdHandler;
+  Kbd kbdHandler;
 
   setUp(() {
     cycler = Cycler();
-    kbdHandler = KbdHandler(cycler: cycler);
+    kbdHandler = Kbd(cycler: cycler);
   });
 
   group('Thumbnail Cycling |', () {
