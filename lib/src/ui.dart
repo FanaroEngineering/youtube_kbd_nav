@@ -12,6 +12,7 @@ class Ui {
     _currentIndex = currentIndex;
     _deleteNeighborsStyles();
     _changeCurrentThumbnailStyle();
+    _currentThumbnail.scrollIntoView();
   }
 
   Element get _currentThumbnail => _elements[_currentIndex];
