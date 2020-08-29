@@ -21,7 +21,7 @@ class Kbd {
   }
 
   void resetStylesAndCycler() {
-    _ui?.resetCurrent();
+    _ui?.resetCurrentThumbnail();
     _cycler = Cycler();
   }
 

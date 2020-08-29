@@ -61,7 +61,7 @@ void main() {
 
       expect(thumbnailStyleBefore, expectedThumbnailStyling);
 
-      ui.resetCurrent();
+      ui.resetCurrentThumbnail();
 
       final String thumbnailStyleAfter =
           document.querySelectorAll('p')[1].attributes['style'];
@@ -73,6 +73,21 @@ void main() {
       ui.addBorder(currentIndex: 2);
 
       expect(ui.thumbnailLink, exampleSite);
+    });
+
+    test('Subscribe', () {
+      ChangesOnClick changesOnSubscribe;
+
+      final ButtonElement buttonElement = ButtonElement();
+      buttonElement.className = 'subscribe';
+      buttonElement.onClick.listen(
+          (Event event) => changesOnSubscribe = ChangesOnClick.subscribed);
+
+      document.body.append(buttonElement);
+
+      ui.subscribe(query: 'button.subscribe');
+
+      expect(changesOnSubscribe, ChangesOnClick.subscribed);
     });
 
     test('Like', () {
@@ -103,21 +118,6 @@ void main() {
       ui.dislike(query: 'button');
 
       expect(changesOnDislike, ChangesOnClick.dislike);
-    });
-
-    test('Subscribe', () {
-      ChangesOnClick changesOnSubscribe;
-
-      final ButtonElement buttonElement = ButtonElement();
-      buttonElement.className = 'subscribe';
-      buttonElement.onClick.listen(
-          (Event event) => changesOnSubscribe = ChangesOnClick.subscribed);
-
-      document.body.append(buttonElement);
-
-      ui.subscribe(query: 'button.subscribe');
-
-      expect(changesOnSubscribe, ChangesOnClick.subscribed);
     });
   });
 }

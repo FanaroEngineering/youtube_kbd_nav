@@ -17,11 +17,10 @@ class Kbd {
       {String newUrl = ''}) async {
     _resetCyclerIfUrlChange(newUrl);
     await _keySwitch(keyboardEvent);
-    _addBorder();
   }
 
   void resetStylesAndCycler() {
-    _ui?.resetCurrent();
+    _ui?.resetCurrentThumbnail();
     _cycler = Cycler();
   }
 
@@ -35,15 +34,17 @@ class Kbd {
       switch (keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
+          _addBorder();
           break;
         case 'x':
           _cycler.backwards();
+          _addBorder();
           break;
         case 'q':
           window.location.href = UrlHandler.prefixedLink('/');
           break;
         case 'Enter':
-          if (_cycler.index >= 0) window.open(_ui?.thumbnailLink, '');
+          if (_cycler.total >= 0) window.open(_ui?.thumbnailLink, '');
           break;
         case 'e':
           if (_isVideo) _ui?.subscribe();
@@ -76,7 +77,7 @@ class Kbd {
     if (_url != null) {
       final String tags = UrlHandler.tags(_url);
       _ui = Ui(tags: tags);
-      _ui.addBorder(currentIndex: _cycler.index);
+      _ui.addBorder(currentIndex: _cycler.total);
     }
   }
 }

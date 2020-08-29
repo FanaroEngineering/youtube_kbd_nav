@@ -21,7 +21,7 @@ class Ui {
     return anchorElement?.href;
   }
 
-  void resetCurrent() {
+  void resetCurrentThumbnail() {
     _currentThumbnail?.attributes?.remove('style');
     _currentIndex = null;
   }
@@ -45,32 +45,33 @@ class Ui {
   bool _neighborIndexInValidRange(int neighborIndex) =>
       neighborIndex >= 0 && neighborIndex < _elements.length;
 
+  static const String _subscribeButton =
+      '#subscribe-button.style-scope > ytd-subscribe-button-renderer > '
+      'paper-button';
+
   /// The [query] parameter is here for 2 reasons:
   ///
-  /// 1. The HTML hierarchy changes when you're signed or not apparently.
+  /// 1. The HTML hierarchy changes when you're signed in or not, apparently.
   /// 1. With a parameter, we can inject a simpler tag when testing.
-  void subscribe(
-      {String query = '#subscribe-button.style-scope > '
-          'ytd-subscribe-button-renderer > '
-          'paper-button'}) {
+  void subscribe({String query = _subscribeButton}) {
     final Element subscribeButton = document.querySelector(query);
 
     subscribeButton?.click();
   }
 
+  static const String _likeDislikeButtons =
+      'ytd-menu-renderer > div > ytd-toggle-button-renderer > '
+      'a > yt-icon-button > button';
+
   /// Check out the [subscribe] method for more info.
-  void like(
-      {String query =
-          'ytd-menu-renderer > ' 'div > ' 'ytd-toggle-button-renderer'}) {
+  void like({String query = _likeDislikeButtons}) {
     final Element likeButton = document.querySelectorAll(query)[0];
 
     likeButton?.click();
   }
 
   /// Check out the [subscribe] method for more info.
-  void dislike(
-      {String query =
-          'ytd-menu-renderer > ' 'div > ' 'ytd-toggle-button-renderer'}) {
+  void dislike({String query = _likeDislikeButtons}) {
     final Element dislikeButton = document.querySelectorAll(query)[1];
 
     dislikeButton?.click();
