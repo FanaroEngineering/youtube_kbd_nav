@@ -26,8 +26,9 @@ class KbdHandler {
   }
 
   bool get _inputFocus =>
-      document.querySelector('div#contenteditable-root, input#search') ==
-      document.activeElement;
+      document.querySelector('div#contenteditable-root') ==
+          document.activeElement ||
+      document.querySelector('input#search') == document.activeElement;
 
   Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
     if (!_inputFocus) {
