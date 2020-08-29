@@ -1,11 +1,11 @@
 class Cycler {
-  int _index = -1;
+  int _total = -1;
 
-  int get index => _index;
+  int get total => _total;
 
-  void forwards() => _index++;
+  void forwards() => _total++;
 
   void backwards() {
-    if (_index > 0) _index--;
+    if (_total > 0) _total--;
   }
 }

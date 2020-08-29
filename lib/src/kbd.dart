@@ -43,7 +43,7 @@ class Kbd {
           window.location.href = UrlHandler.prefixedLink('/');
           break;
         case 'Enter':
-          if (_cycler.index >= 0) window.open(_ui?.thumbnailLink, '');
+          if (_cycler.total >= 0) window.open(_ui?.thumbnailLink, '');
           break;
         case 'e':
           if (_isVideo) _ui?.subscribe();
@@ -76,7 +76,7 @@ class Kbd {
     if (_url != null) {
       final String tags = UrlHandler.tags(_url);
       _ui = Ui(tags: tags);
-      _ui.addBorder(currentIndex: _cycler.index);
+      _ui.addBorder(currentIndex: _cycler.total);
     }
   }
 }

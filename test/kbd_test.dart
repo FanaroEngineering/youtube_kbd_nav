@@ -26,7 +26,7 @@ void main() {
     test('Pressing `z` moves the cycler forwards', () async {
       await kbdHandler.onKeyPress(keyboardEventForwards);
 
-      expect(cycler.index, 0);
+      expect(cycler.total, 0);
     });
 
     test('Pressing `x` moves the cycler backwards', () async {
@@ -35,7 +35,7 @@ void main() {
       await kbdHandler.onKeyPress(keyboardEventForwards);
       await kbdHandler.onKeyPress(keyboardEventBackwards);
 
-      expect(cycler.index, 1);
+      expect(cycler.total, 1);
     });
   });
 
