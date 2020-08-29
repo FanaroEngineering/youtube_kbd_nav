@@ -64,6 +64,7 @@ class Kbd {
         case 'y':
           _ui?.notiticationPopUp();
           break;
+        default:
       }
     }
   }

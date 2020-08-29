@@ -73,10 +73,11 @@ You can directly download this extension's files from the [Releases][release_lin
 | <kbd>v</kbd>     | Like the video<sup>1 \| 3</sup>                   |
 | <kbd>n</kbd>     | Dislike the video<sup>1 \| 3</sup>                |
 | <kbd>b</kbd>     | Copies the shortened URL of the video<sup>2</sup> |
+| <kbd>y</kbd>     | Opens the notification pop-up<sup>3</sup>         |
 
-`1`: Only works when signed-in and on a video page. \
-`2`: Only works when on a video page. \
-`3`: On Firefox, you might have to actually double-click it initially.
+<sub>`1`: Only works when signed-in and on a video page. </sub> \
+<sub>`2`: Only works when on a video page. </sub> \
+<sub>`3`: On Firefox, you might have to actually double-click it initially. </sub>
 
 ## 2. For the Developer
 
