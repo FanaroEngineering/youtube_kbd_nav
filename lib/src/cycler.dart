@@ -5,5 +5,7 @@ class Cycler {
 
   void forwards() => _index++;
 
-  void backwards() => _index <= 0 ? null : _index--;
+  void backwards() {
+    if (_index > 0) _index--;
+  }
 }

@@ -42,22 +42,21 @@ class KbdHandler {
           window.location.href = UrlHandler.prefixedLink('/');
           break;
         case 'Enter':
-          _cycler.index >= 0 ? window.open(_ui?.thumbnailLink, '') : null;
+          if (_cycler.index >= 0) window.open(_ui?.thumbnailLink, '');
           break;
         case 'e':
-          _isVideo ? _ui?.subscribe() : null;
+          if (_isVideo) _ui?.subscribe();
           break;
         case 'v':
-          _isVideo ? _ui?.like() : null;
+          if (_isVideo) _ui?.like();
           break;
         case 'n':
-          _isVideo ? _ui?.dislike() : null;
+          if (_isVideo) _ui?.dislike();
           break;
         case 'b':
-          _isVideo
-              ? await window.navigator.clipboard
-                  .writeText(UrlHandler.shortenLink(_url))
-              : null;
+          if (_isVideo)
+            await window.navigator.clipboard
+                .writeText(UrlHandler.shortenLink(_url));
           break;
       }
     }

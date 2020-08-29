@@ -1,17 +1,25 @@
 # YouTube Keyboard Navigation Browser Extension
 
-[![Build Status][travis_flag]][travis_page]
+[![Build Status][travis_badge]][travis_repo]
+[![CodeFactor][codefactor_badge]][codefactor_repo]
+
+
+[codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
+[codefactor_repo]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master
+[travis_badge]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
+[travis_repo]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
 
 ## 1. For the User
 
 A keyboard navigation extension to make navigating YouTube easier and possible without the need of a mouse.
 
-Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page].
+> Much of the inspiration for this extension comes from the [`web-search-navigator`][web_search_navigator] extension. Though not that well-known, the [`web-search-navigator`][web_search_navigator] is probably the most useful extension I have. The [`web-search-navigator`][web_search_navigator] extension does offer some of this extension's features, but not all &mdash; and anything beyond Google is experimental there.
+
+Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page]. Don't forget that YouTube, like Twitter, Reddit and others, already offers some shortcuts. Just press <kbd>Shift</kbd> + <kbd>?</kbd> on YouTube to see all of the native shortcuts.
 
 
-[travis_page]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
-[travis_flag]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
 [issue_page]: https://github.com/FanaroEngineering/youtube_kbd_nav/issues
+[web_search_navigator]: https://github.com/infokiller/web-search-navigator
 
 ### 1.1. Releases
 
