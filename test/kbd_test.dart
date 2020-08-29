@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, ParagraphElement;
+import 'dart:html' show document, KeyboardEvent, ParagraphElement, window;
 
 import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart'

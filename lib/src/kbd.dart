@@ -17,16 +17,22 @@ class Kbd {
         onKeyPress(keyboardEvent, newUrl: document.baseUri));
   }
 
+  void resetStylesAndCycler() {
+    _ui?.resetCurrentThumbnail();
+    _cycler = Cycler();
+  }
+
   Future<void> onKeyPress(KeyboardEvent keyboardEvent,
       {String newUrl = ''}) async {
     _resetCyclerIfUrlChange(newUrl);
     await _keySwitch(keyboardEvent);
-    _addBorder();
   }
 
-  void resetStylesAndCycler() {
-    _ui?.resetCurrentThumbnail();
-    _cycler = Cycler();
+  void _resetCyclerIfUrlChange(String newUrl) {
+    if (newUrl != _url) {
+      _url = newUrl;
+      _cycler = Cycler();
+    }
   }
 
   Element get _searchBar => document.querySelector('input#search');
@@ -41,9 +47,11 @@ class Kbd {
       switch (keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
+          _addBorder();
           break;
         case 'x':
           _cycler.backwards();
+          _addBorder();
           break;
         case 'q':
           window.location.href = UrlHandler.prefixedLink('/');
@@ -74,13 +82,6 @@ class Kbd {
   }
 
   bool get _isVideo => _url.contains('watch');
-
-  void _resetCyclerIfUrlChange(String newUrl) {
-    if (newUrl != _url) {
-      _url = newUrl;
-      _cycler = Cycler();
-    }
-  }
 
   void _addBorder() {
     if (_url != null) {
