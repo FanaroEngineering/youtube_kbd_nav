@@ -75,49 +75,68 @@ void main() {
       expect(ui.thumbnailLink, exampleSite);
     });
 
-    test('Subscribe', () {
-      ChangesOnClick changesOnSubscribe;
+    group('Clicking Buttons |', () {
+      const Map<String, String> buttonsClasses = {
+        'subscribe': 'subscribe',
+        'like': 'likeDislike',
+        'dislike': 'likeDislike',
+        'notificationPopUp': 'notificationPopUp',
+      };
 
-      final ButtonElement buttonElement = ButtonElement();
-      buttonElement.className = 'subscribe';
-      buttonElement.onClick.listen(
-          (Event event) => changesOnSubscribe = ChangesOnClick.subscribed);
+      final Map<String, ButtonElement> buttons = {};
+      buttonsClasses.forEach((String key, String className) =>
+          buttons.addAll({key: ButtonElement()..className = className}));
 
-      document.body.append(buttonElement);
+      buttons
+          .forEach((_, ButtonElement button) => document.body.append(button));
 
-      ui.subscribe(query: 'button.subscribe');
+      test('Subscribe', () {
+        ChangesOnClick changesOnSubscribe;
 
-      expect(changesOnSubscribe, ChangesOnClick.subscribed);
-    });
+        buttons['subscribe']
+            .onClick
+            .listen((_) => changesOnSubscribe = ChangesOnClick.subscribed);
 
-    test('Like', () {
-      ChangesOnClick changesOnLike;
+        ui.subscribe(query: 'button.${buttonsClasses['subscribe']}');
 
-      final ButtonElement likeButtonElement = ButtonElement();
-      likeButtonElement.className = 'like';
-      likeButtonElement.onClick
-          .listen((Event event) => changesOnLike = ChangesOnClick.like);
+        expect(changesOnSubscribe, ChangesOnClick.subscribed);
+      });
 
-      document.body.append(likeButtonElement);
+      test('Like', () {
+        ChangesOnClick changesOnLike;
 
-      ui.like(query: 'button');
+        buttons['like']
+            .onClick
+            .listen((_) => changesOnLike = ChangesOnClick.like);
 
-      expect(changesOnLike, ChangesOnClick.like);
-    });
+        ui.like(query: 'button.${buttonsClasses['like']}');
 
-    test('Dislike', () {
-      ChangesOnClick changesOnDislike;
+        expect(changesOnLike, ChangesOnClick.like);
+      });
 
-      final ButtonElement dislikeButtonElement = ButtonElement();
-      dislikeButtonElement.className = 'dislike';
-      dislikeButtonElement.onClick
-          .listen((Event event) => changesOnDislike = ChangesOnClick.dislike);
+      test('Dislike', () {
+        ChangesOnClick changesOnDislike;
 
-      document.body.append(dislikeButtonElement);
+        buttons['dislike']
+            .onClick
+            .listen((_) => changesOnDislike = ChangesOnClick.dislike);
 
-      ui.dislike(query: 'button');
+        ui.dislike(query: 'button.${buttonsClasses['dislike']}');
 
-      expect(changesOnDislike, ChangesOnClick.dislike);
+        expect(changesOnDislike, ChangesOnClick.dislike);
+      });
+
+      test('Notification Pop Up', () {
+        ChangesOnClick changesOnNotificationPopUp;
+
+        buttons['notificationPopUp'].onClick.listen((Event _) =>
+            changesOnNotificationPopUp = ChangesOnClick.notificationPopUp);
+
+        ui.notiticationPopUp(
+            query: 'button.${buttonsClasses['notificationPopUp']}');
+
+        expect(changesOnNotificationPopUp, ChangesOnClick.notificationPopUp);
+      });
     });
   });
 }
@@ -126,4 +145,5 @@ enum ChangesOnClick {
   subscribed,
   like,
   dislike,
+  notificationPopUp,
 }

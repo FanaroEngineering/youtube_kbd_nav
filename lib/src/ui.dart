@@ -77,4 +77,15 @@ class Ui {
 
     dislikeButton?.click();
   }
+
+  static const String _notificationPopUpButton =
+      'ytd-notification-topbar-button-renderer > div > a > '
+      'yt-icon-button > button';
+
+  /// Check out the [subscribe] method for more info.
+  void notiticationPopUp({String query = _notificationPopUpButton}) {
+    final Element notificationPopUpButton = document.querySelector(query);
+
+    notificationPopUpButton?.click();
+  }
 }

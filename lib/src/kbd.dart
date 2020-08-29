@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, window;
+import 'dart:html' show document, Element, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'ui.dart' show Ui;
@@ -25,10 +25,12 @@ class Kbd {
     _cycler = Cycler();
   }
 
+  Element get _searchBar => document.querySelector('input#search');
+  Element get _commentBox => document.querySelector('div#contenteditable-root');
+
   bool get _inputFocus =>
-      document.querySelector('div#contenteditable-root') ==
-          document.activeElement ||
-      document.querySelector('input#search') == document.activeElement;
+      _searchBar == document.activeElement ||
+      _commentBox == document.activeElement;
 
   Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
     if (!_inputFocus) {
@@ -58,6 +60,9 @@ class Kbd {
           if (_isVideo)
             await window.navigator.clipboard
                 .writeText(UrlHandler.shortenLink(_url));
+          break;
+        case 'y':
+          _ui?.notiticationPopUp();
           break;
       }
     }
