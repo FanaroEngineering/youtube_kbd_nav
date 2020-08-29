@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$BUILD_DIR="build"
+BUILD_DIR="build"
 
 if [[ ! -e $BUILD_DIR ]]; then
     mkdir $BUILD_DIR

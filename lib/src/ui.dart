@@ -37,9 +37,8 @@ class Ui {
     final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
 
     neighborsIndices.forEach((int neighborIndex) {
-      _neighborIndexInValidRange(neighborIndex)
-          ? _elements[neighborIndex].attributes.remove('style')
-          : null;
+      if (_neighborIndexInValidRange(neighborIndex))
+        _elements[neighborIndex].attributes.remove('style');
     });
   }
 
