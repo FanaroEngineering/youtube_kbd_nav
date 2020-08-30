@@ -2,13 +2,38 @@
 set namespaceSeparator ::
 
 class "youtube_kbd_nav::src::cycler.dart::Cycler" {
-  -int _index
-  +int index
+  -int _total
+  +int total
   +void forwards()
   +void backwards()
+  +String toString()
 }
 
-class "youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" {
+class "youtube_kbd_nav::src::kbd.dart::Kbd" {
+  -Cycler _cycler
+  -String _url
+  -Ui _ui
+  -KeyboardEvent _keyboardEvent
+  -Element _searchBar
+  -Element _commentBox
+  -Element _editCommentBox
+  -String _commentBoxQuery
+  -bool _noInputFocus
+  -bool _isVideo
+  +void resetStylesAndCycler()
+  -Future _onKeyDown()
+  -void _resetCyclerIfUrlChange()
+  -Future _keySwitch()
+  -void _addBorder()
+  -void _navigate()
+}
+
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::ui.dart::Ui"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::KeyboardEvent"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::Element"
+
+class "youtube_kbd_nav::src::kbd_handler.dart::Kbd" {
   -Cycler _cycler
   -String _url
   -Ui _ui
@@ -21,27 +46,33 @@ class "youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" {
   -void _addBorder()
 }
 
-"youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
-"youtube_kbd_nav::src::kbd_handler.dart::KbdHandler" o-- "youtube_kbd_nav::src::ui.dart::Ui"
+"youtube_kbd_nav::src::kbd_handler.dart::Kbd" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
+"youtube_kbd_nav::src::kbd_handler.dart::Kbd" o-- "youtube_kbd_nav::src::ui.dart::Ui"
 
 class "youtube_kbd_nav::src::ui.dart::Ui" {
   -List<Element> _elements
   -int _currentIndex
+  {static} -String _subscribeButton
+  {static} -String _likeDislikeButtons
+  {static} -String _notificationPopUpButton
   -Element _currentThumbnail
   +String thumbnailLink
   +void addBorder()
-  +void resetCurrent()
+  +void resetCurrentThumbnail()
   -void _changeCurrentThumbnailStyle()
   -void _deleteNeighborsStyles()
   -bool _neighborIndexInValidRange()
   +void subscribe()
   +void like()
   +void dislike()
+  +void notiticationPopUp()
 }
 
 "youtube_kbd_nav::src::ui.dart::Ui" o-- "dart::html::Element"
 
 class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
+  {static} +String youtubeHome
+  {static} +String history
   {static} +String tags()
   {static} +String prefixedLink()
   {static} +String shortenLink()

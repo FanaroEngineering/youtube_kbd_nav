@@ -11,11 +11,11 @@
 
 ## 1. For the User
 
-A keyboard navigation extension to make navigating YouTube easier and possible without the need of a mouse.
+An extension to make navigating possible with only the keyboard.
 
 > Much of the inspiration for this extension comes from the [`web-search-navigator`][web_search_navigator] extension. Though not that well-known, the [`web-search-navigator`][web_search_navigator] is probably the most useful extension I have. The [`web-search-navigator`][web_search_navigator] extension does offer some of this extension's features, but not all &mdash; and anything beyond Google is experimental there.
 
-Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page]. Don't forget that YouTube, like Twitter, Reddit and others, already offers some shortcuts. Just press <kbd>Shift</kbd> + <kbd>?</kbd> on YouTube to see all of the native shortcuts.
+Do you have any complaints? Or suggestions for improvements? Then [create an issue for this project][issue_page]. Don't forget that YouTube, like Twitter, Reddit and others, already offers some shortcuts. Just press <kbd>Shift</kbd> + <kbd>?</kbd> on YouTube to check out all of the native shortcuts.
 
 
 [issue_page]: https://github.com/FanaroEngineering/youtube_kbd_nav/issues
@@ -23,7 +23,7 @@ Do you have any complaints? Or suggestions for improvements? Then [create an iss
 
 ### 1.1. Releases
 
-Currently, this extension is in its *alpha* stage. Basically, only the first sketch is available to a small amount of users. I expect that, in 1-2 weeks, we will be able to enter a *beta*; and, hopefully, in a month, a first public release on the Chrome and Firefox's extension stores.
+Currently, this extension is in its *alpha* stage. Basically, only the first sketch is available to a small amount of users. I expect that, in 1-2 weeks, we will be able to enter a *beta*; and, hopefully, in a month, a first public release on the Chrome Firefox and Edge's extension stores.
 
 You can directly download this extension's files from the [Releases][release_link] page.
 
@@ -87,25 +87,29 @@ You can directly download this extension's files from the [Releases][release_lin
 ### 2.1. Future Improvements (Development)
 
 - [ ] Add driver tests to the `Kbd` class.
+    - The [webdriver package][webdriver] will probably be necessary.
+
+
+[webdriver]: https://pub.dev/packages/webdriver
 
 ### 2.2. Building with `dart2js`
 
 Originally, I was using the [webdev][webdev_docs] with the discontinued [webext][webext_github], but they both add way too much stuff to something that should be way simpler.
 
-> If you have uploaded a local zip of a build to Firefox, rebuilding will probably give back an error because Firefox will denying overwrites or deletions of the previous build.
+> If you have uploaded a local zip of a build to Firefox, rebuilding will probably give back an error because Firefox will deny overwrites or deletions of the previous build.
 
-Basically, [a JS browser extension consist of very few specific JS files][mdn_ext_docs], so, when using Dart, the only things you will end up needing to do are:
+Basically, [a JS browser extension consists of very few specific JS files][mdn_ext_docs], so, when using Dart, the only things you will end up needing to do are:
 
 1. Use `dart2js` to convert Dart to JS.
     - For example:
         ```sh
         dart2js --csp -On -o build/content.dart.js web/content.dart
         ```
-        - The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do, the higher the more aggressive, which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
+        - The `-O{0|1|2|3|4}` argument refers to the optimizations `dart2js` is allowed to do. The higher the more aggressive &mdash; which might cause problems. Refer to [`dart2js` docs][dart2js_docs] for more info.
         - The `--csp` option: *disables dynamic generation of code in the generated output. This is necessary to satisfy CSP restrictions*. Check out the [`dart2js` docs][dart2js_docs] for more info.
 1. Pack it into a zip file.
     - For example, in Powershell:
-        ```powershell
+        ```ps1
         $compress = @{
             Path = "build/*"
             CompressionLevel = "Fastest"
@@ -114,7 +118,7 @@ Basically, [a JS browser extension consist of very few specific JS files][mdn_ex
         Compress-Archive @compress
         ```
 
-The script(s) to create the build are all in the `tool` folder<sup>*</sup>.
+The script(s) to create the build are all in the [`tool`][tool_folder] folder<sup>*</sup>.
 
 ---
 
@@ -123,6 +127,7 @@ The script(s) to create the build are all in the `tool` folder<sup>*</sup>.
 
 [dart2js_docs]: https://dart.dev/tools/dart2js
 [mdn_ext_docs]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
+[tool_folder]: https://github.com/FanaroEngineering/youtube_kbd_nav/tree/master/tool
 [webdev_docs]: https://dart.dev/tools/webdev
 [webext_github]: https://github.com/dart-browser/webext
 
