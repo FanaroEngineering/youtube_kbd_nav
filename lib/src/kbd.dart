@@ -7,7 +7,7 @@ import 'url_handler.dart' show UrlHandler;
 class Kbd {
   Cycler _cycler;
   String _url = '';
-  Ui _ui;
+  Ui _ui = Ui(tags: 'watch');
 
   /// The [Cycler] is a parameter just so we can inject it during testing and
   /// check if everything happened as expected.

@@ -1,15 +1,12 @@
 import 'dart:html' show document, KeyboardEvent, ParagraphElement;
 
 import 'package:mockito/mockito.dart' show Mock;
-import 'package:test/test.dart'
-    show expect, group, isNull, setUp, setUpAll, test;
+import 'package:test/test.dart' show expect, group, isNull, setUp, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, Kbd;
 
 void main() {
-  setUpAll(() {
-    for (int i = 0; i < 4; i++) document.body.append(ParagraphElement());
-  });
+  for (int i = 0; i < 4; i++) document.body.append(ParagraphElement());
 
   final KeyboardEvent keyboardEventForwards = MockKeyboardEvent(key: 'z');
   final KeyboardEvent keyboardEventBackwards = MockKeyboardEvent(key: 'x');
