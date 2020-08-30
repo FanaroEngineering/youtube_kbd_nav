@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, ParagraphElement, window;
+import 'dart:html' show document, KeyboardEvent, ParagraphElement;
 
 import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart' show expect, group, isNull, setUp, test;
@@ -35,8 +35,8 @@ void main() {
       await kbdHandler.onKeyDown(keyboardEventBackwards);
 
       expect(cycler.total, 1);
-    }, skip: true);
-  });
+    });
+  }, skip: true);
 
   group('UI |', () {
     test('Testing if it indeed changes the UI', () async {
