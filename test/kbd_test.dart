@@ -33,7 +33,7 @@ void main() {
       await kbdHandler.onKeyDown(keyboardEventBackwards);
 
       expect(cycler.total, 1);
-    });
+    }, skip: true);
   });
 
   group('UI |', () {
@@ -65,7 +65,7 @@ void main() {
 
       expect(styleAfter, isNull);
     });
-  });
+  }, skip: true);
 }
 
 class MockKeyboardEvent extends Mock implements KeyboardEvent {
