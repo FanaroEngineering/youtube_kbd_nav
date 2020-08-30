@@ -8,13 +8,16 @@ class Kbd {
   Cycler _cycler;
   String _url = '';
   Ui _ui = Ui(tags: 'watch');
+  KeyboardEvent _keyboardEvent;
 
   /// The [Cycler] is a parameter just so we can inject it during testing and
   /// check if everything happened as expected.
   Kbd({Cycler cycler}) : _cycler = cycler ?? Cycler() {
     window.addEventListener('yt-navigate-start', (_) => resetStylesAndCycler());
-    document.onKeyDown.listen((KeyboardEvent keyboardEvent) =>
-        onKeyDown(keyboardEvent, newUrl: document.baseUri));
+    document.onKeyDown.listen((KeyboardEvent keyboardEvent) {
+      _keyboardEvent = keyboardEvent;
+      _onKeyDown(newUrl: document.baseUri);
+    });
   }
 
   void resetStylesAndCycler() {
@@ -22,10 +25,9 @@ class Kbd {
     _cycler = Cycler();
   }
 
-  Future<void> onKeyDown(KeyboardEvent keyboardEvent,
-      {String newUrl = ''}) async {
+  Future<void> _onKeyDown({String newUrl = ''}) async {
     _resetCyclerIfUrlChange(newUrl);
-    await _keySwitch(keyboardEvent);
+    await _keySwitch();
   }
 
   void _resetCyclerIfUrlChange(String newUrl) {
@@ -44,9 +46,9 @@ class Kbd {
       _commentBox == document.activeElement ||
       _editCommentBox == document.activeElement);
 
-  Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
+  Future<void> _keySwitch() async {
     if (_noInputFocus) {
-      switch (keyboardEvent.key) {
+      switch (_keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
           _addBorder();
@@ -56,16 +58,15 @@ class Kbd {
           _addBorder();
           break;
         case 'q':
-          keyboardEvent.ctrlKey
-              ? window.open(UrlHandler.youtubeHome, '_blank', 'noreferrer')
-              : window.location.href = UrlHandler.youtubeHome;
+          _navigate(UrlHandler.youtubeHome);
           break;
         case 'Enter':
           if (_cycler.total >= 0) {
-            keyboardEvent.ctrlKey
-                ? window.open(_ui?.thumbnailLink, '_blank', 'noreferrer')
-                : window.location.href = _ui?.thumbnailLink;
+            _navigate(_ui?.thumbnailLink);
           }
+          break;
+        case 'h':
+          _navigate(UrlHandler.history);
           break;
         case 'e':
           if (_isVideo) _ui?.subscribe();
@@ -98,4 +99,8 @@ class Kbd {
       _ui.addBorder(currentIndex: _cycler.total);
     }
   }
+
+  void _navigate(String url) => _keyboardEvent.ctrlKey
+      ? window.open(url, '_blank', 'noreferrer')
+      : window.location.href = url;
 }
