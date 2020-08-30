@@ -8,4 +8,7 @@ class Cycler {
   void backwards() {
     if (_total > 0) _total--;
   }
+
+  @override
+  String toString() => 'Cycler: $_total';
 }

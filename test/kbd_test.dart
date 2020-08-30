@@ -1,4 +1,4 @@
-import 'dart:html' show document, KeyboardEvent, ParagraphElement;
+import 'dart:html' show document, KeyboardEvent, ParagraphElement, window;
 
 import 'package:mockito/mockito.dart' show Mock;
 import 'package:test/test.dart' show expect, group, isNull, setUp, test;
@@ -8,8 +8,8 @@ import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler, Kbd;
 void main() {
   for (int i = 0; i < 4; i++) document.body.append(ParagraphElement());
 
-  final KeyboardEvent keyboardEventForwards = MockKeyboardEvent(key: 'z');
-  final KeyboardEvent keyboardEventBackwards = MockKeyboardEvent(key: 'x');
+  final KeyboardEvent keyboardEventForwards = MockKeyboardEvent(key: 'z'),
+      keyboardEventBackwards = MockKeyboardEvent(key: 'x');
 
   Cycler cycler;
   Kbd kbdHandler;
@@ -22,6 +22,8 @@ void main() {
   group('Thumbnail Cycling |', () {
     test('Pressing `z` moves the cycler forwards', () async {
       await kbdHandler.onKeyDown(keyboardEventForwards);
+
+      print(cycler.total);
 
       expect(cycler.total, 0);
     });

@@ -49,6 +49,7 @@ class Kbd {
       switch (keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
+          print(_cycler);
           _addBorder();
           break;
         case 'x':
