@@ -86,9 +86,7 @@ You can directly download this extension's files from the [Releases][release_lin
 
 ### 2.1. Future Improvements (Development)
 
-- [ ] Reorient the design towards YouTube's `yt-navigate-start` events.
-- [ ] No unit tests for the `KbdHandler`.
-- [ ] The UI should probably be the one with the `Cycler` inside, not the `KbdHandler` class.
+- [ ] Add driver tests to the `Kbd` class.
 
 ### 2.2. Building with `dart2js`
 
