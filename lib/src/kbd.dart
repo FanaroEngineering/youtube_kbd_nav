@@ -36,10 +36,13 @@ class Kbd {
   }
 
   Element get _searchBar => document.querySelector('input#search');
-  Element get _commentBox => document.querySelector('div#contenteditable-root');
+  Element get _commentBox => document.querySelectorAll(_commentBoxQuery)[0];
+  Element get _editCommentBox => document.querySelectorAll(_commentBoxQuery)[1];
+  String get _commentBoxQuery => 'yt-formatted-string.ytd-commentbox > div';
 
   bool get _noInputFocus => !(_searchBar == document.activeElement ||
-      _commentBox == document.activeElement);
+      _commentBox == document.activeElement ||
+      _editCommentBox == document.activeElement);
 
   Future<void> _keySwitch(KeyboardEvent keyboardEvent) async {
     if (_noInputFocus) {
