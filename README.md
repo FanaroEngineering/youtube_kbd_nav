@@ -71,6 +71,8 @@ You can directly download this extension's files from the [Releases][release_lin
 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail         |
 | <kbd>q</kbd>                       | YouTube Home                                      |
 | <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                           |
+| <kbd>h</kbd>                       | YouTube History                                   |
+| <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                        |
 | <kbd>e</kbd>                       | Subscribe to the channel<sup>1</sup>              |
 | <kbd>v</kbd>                       | Like the video<sup>1</sup>                        |
 | <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                     |
