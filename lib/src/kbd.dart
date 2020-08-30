@@ -56,7 +56,9 @@ class Kbd {
           _addBorder();
           break;
         case 'q':
-          window.location.href = UrlHandler.prefixedLink('/');
+          keyboardEvent.ctrlKey
+              ? window.open(UrlHandler.youtubeHome, '_blank', 'noreferrer')
+              : window.location.href = UrlHandler.youtubeHome;
           break;
         case 'Enter':
           if (_cycler.total >= 0) {

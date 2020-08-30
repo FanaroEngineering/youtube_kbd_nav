@@ -1,4 +1,6 @@
 class UrlHandler {
+  static const String youtubeHome = 'https://www.youtube.com';
+
   static String tags(String url) {
     if (url.contains('watch')) {
       return 'ytd-compact-video-renderer, '
@@ -17,7 +19,7 @@ class UrlHandler {
   }
 
   static String prefixedLink(String url) =>
-      url.startsWith('https://') ? url : 'https://www.youtube.com' + url;
+      url.startsWith('https://') ? url : youtubeHome + url;
 
   static String shortenLink(String url) {
     final List<String> splitLink = url.split('watch?v=');
