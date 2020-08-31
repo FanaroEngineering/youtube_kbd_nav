@@ -101,10 +101,12 @@ class Kbd {
   }
 
   void _navigate(String url) {
-    final bool key = window.navigator.appVersion.contains('Mac')
+    final bool modifierKey = window.navigator.appVersion.contains('Mac')
         ? _keyboardEvent.metaKey
         : _keyboardEvent.ctrlKey;
 
-    key ? window.open(url, '_blank', 'noreferrer') : window.location.href = url;
+    modifierKey
+        ? window.open(url, '_blank', 'noreferrer')
+        : window.location.href = url;
   }
 }

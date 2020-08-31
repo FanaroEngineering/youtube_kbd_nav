@@ -7,7 +7,9 @@ class UrlHandler {
       return 'ytd-compact-video-renderer, '
           'ytd-compact-radio-renderer, '
           'ytd-compact-playlist-renderer';
-    } else if (url.contains('results') || url.contains('history')) {
+    } else if (url.contains('history')) {
+      return 'ytd-video-renderer';
+    } else if (url.contains('results')) {
       return 'ytd-video-renderer, '
           'ytd-radio-renderer, '
           'ytd-playlist-renderer, '
