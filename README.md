@@ -63,6 +63,8 @@ You can directly download this extension's files from the [Releases][release_lin
 
 ### 1.3. Available Shortcuts
 
+If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e. <kbd>command</kbd>.
+
 | Shortcut                           | Action                                            |
 |------------------------------------|---------------------------------------------------|
 | <kbd>z</kbd>                       | Cycle forwards on the thumbnails                  |
