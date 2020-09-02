@@ -3,7 +3,7 @@
 [![Build Status][travis_badge]][travis_repo]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
 
-<a href="https://www.buymeacoffee.com/psygo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/arial-orange.png" alt="Buy Me A Coffee" style="height: 35px !important;width: 125px !important;" ></a>
+<a href="https://www.buymeacoffee.com/psygo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/arial-orange.png" alt="Buy Me A Coffee" style="height: 12px !important;width: 40px !important;" ></a>
 
 
 [codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
