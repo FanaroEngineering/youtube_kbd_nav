@@ -4,11 +4,12 @@
 [![CodeFactor][codefactor_badge]][codefactor_repo]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
+
 [codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
 [codefactor_repo]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master
 [travis_badge]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
 [travis_repo]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
-[buy_me_a_coffee_badge]: https://img.shields.io/badge/donate-buy%20me%20a%20coffee-orange
+[buy_me_a_coffee_badge]: assets/buy_me_a_coffee_shield.svg
 [buy_me_a_coffee_donation]: https://www.buymeacoffee.com/psygo
 
 ## 1. For the User
