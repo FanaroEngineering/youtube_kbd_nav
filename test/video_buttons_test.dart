@@ -15,9 +15,7 @@ void main() {
   test('Subscribe', () {
     ChangesOnClick changesOnSubscribe;
 
-    final Element subscribeButton =
-        document.querySelector('#subscribe-button.style-scope > '
-            'ytd-subscribe-button-renderer > paper-button');
+    final Element subscribeButton = document.querySelector('paper-button');
 
     subscribeButton.onClick
         .listen((_) => changesOnSubscribe = ChangesOnClick.subscribed);
@@ -25,6 +23,30 @@ void main() {
     videoButtons.subscribe();
 
     expect(changesOnSubscribe, ChangesOnClick.subscribed);
+  });
+
+  test('Like', () {
+    ChangesOnClick changesOnLike;
+
+    final Element likeButton = document.querySelectorAll('button')[0];
+
+    likeButton.onClick.listen((_) => changesOnLike = ChangesOnClick.like);
+
+    videoButtons.like();
+
+    expect(changesOnLike, ChangesOnClick.like);
+  });
+
+  test('Dislike', () {
+    ChangesOnClick changesOnDislike;
+
+    final Element likeButton = document.querySelectorAll('button')[1];
+
+    likeButton.onClick.listen((_) => changesOnDislike = ChangesOnClick.dislike);
+
+    videoButtons.dislike();
+
+    expect(changesOnDislike, ChangesOnClick.dislike);
   });
 }
 
@@ -41,14 +63,14 @@ const String buttonsHtmlAsString = '''
       <ytd-toggle-button-renderer>
         <a>
           <yt-icon-button>
-            <button>
+            <button></button>
           </yt-icon-button>
         </a>
       </ytd-toggle-button-renderer>
       <ytd-toggle-button-renderer>
         <a>
           <yt-icon-button>
-            <button>
+            <button></button>
           </yt-icon-button>
         </a>
       </ytd-toggle-button-renderer>
@@ -60,30 +82,6 @@ const String buttonsHtmlAsString = '''
     </ytd-subscribe-button-renderer>
   </div>
 ''';
-
-//       test('Like', () {
-//         ChangesOnClick changesOnLike;
-
-//         buttons['like']
-//             .onClick
-//             .listen((_) => changesOnLike = ChangesOnClick.like);
-
-//         ui.like(query: 'button.${buttonsClasses['like']}');
-
-//         expect(changesOnLike, ChangesOnClick.like);
-//       });
-
-//       test('Dislike', () {
-//         ChangesOnClick changesOnDislike;
-
-//         buttons['dislike']
-//             .onClick
-//             .listen((_) => changesOnDislike = ChangesOnClick.dislike);
-
-//         ui.dislike(query: 'button.${buttonsClasses['dislike']}');
-
-//         expect(changesOnDislike, ChangesOnClick.dislike);
-//       });
 
 //       test('Notification Pop Up', () {
 //         ChangesOnClick changesOnNotificationPopUp;
