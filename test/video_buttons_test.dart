@@ -77,6 +77,7 @@ const String buttonsHtmlAsString = '''
       <paper-button>
     </ytd-subscribe-button-renderer>
   </div>
+  
   <ytd-menu-renderer>
     <div>
       <ytd-toggle-button-renderer>
@@ -95,6 +96,7 @@ const String buttonsHtmlAsString = '''
       </ytd-toggle-button-renderer>
     </div>
   </ytd-menu-renderer>
+
   <ytd-notification-topbar-button-renderer>
     <div>
       <a>

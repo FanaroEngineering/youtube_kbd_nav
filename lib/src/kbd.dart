@@ -8,7 +8,7 @@ import 'video_buttons.dart' show VideoButtons;
 class Kbd {
   Cycler _cycler;
   String _url = '';
-  Thumbnails _thumbnails = Thumbnails(tags: 'watch');
+  Thumbnails _thumbnails = Thumbnails(tags: UrlHandler.tags('watch'));
   VideoButtons _videoButtons = VideoButtons();
   KeyboardEvent _keyboardEvent;
 
