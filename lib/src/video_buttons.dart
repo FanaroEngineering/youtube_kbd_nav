@@ -15,27 +15,25 @@ class VideoButtons {
 
   void like() {
     final Element likeButton =
-        _document.querySelectorAll(_likeDislikeButtons)[0];
+        _document.querySelectorAll(_likeDislikeButtonsQuery).first;
     likeButton?.click();
   }
 
-  static const String _likeDislikeButtons = 'ytd-menu-renderer > div > '
+  static const String _likeDislikeButtonsQuery = 'ytd-menu-renderer > div > '
       'ytd-toggle-button-renderer > a > yt-icon-button > button';
 
   void dislike() {
     final Element dislikeButton =
-        _document.querySelectorAll(_likeDislikeButtons)[1];
+        _document.querySelectorAll(_likeDislikeButtonsQuery).last;
     dislikeButton?.click();
   }
 
-  static const String _notificationPopUpButton =
-      'ytd-notification-topbar-button-renderer > div > a > '
-      'yt-icon-button > button';
-
-  /// Check out the [subscribe] method for more info.
-  void notiticationPopUp({String query = _notificationPopUpButton}) {
-    final Element notificationPopUpButton = _document.querySelector(query);
-
+  void notiticationPopUp() {
+    const String notificationPopUpButtonQuery =
+        'ytd-notification-topbar-button-renderer > '
+        'div > a > yt-icon-button > button';
+    final Element notificationPopUpButton =
+        _document.querySelector(notificationPopUpButtonQuery);
     notificationPopUpButton?.click();
   }
 }

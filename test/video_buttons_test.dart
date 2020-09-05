@@ -40,13 +40,27 @@ void main() {
   test('Dislike', () {
     ChangesOnClick changesOnDislike;
 
-    final Element likeButton = document.querySelectorAll('button')[1];
+    final Element dislikeButton = document.querySelectorAll('button')[1];
 
-    likeButton.onClick.listen((_) => changesOnDislike = ChangesOnClick.dislike);
+    dislikeButton.onClick
+        .listen((_) => changesOnDislike = ChangesOnClick.dislike);
 
     videoButtons.dislike();
 
     expect(changesOnDislike, ChangesOnClick.dislike);
+  });
+
+  test('Notification Pop Up', () {
+    ChangesOnClick changesOnNotificationPopUp;
+
+    final Element notificationButton = document.querySelectorAll('button')[2];
+
+    notificationButton.onClick.listen(
+        (_) => changesOnNotificationPopUp = ChangesOnClick.notificationPopUp);
+
+    videoButtons.notiticationPopUp();
+
+    expect(changesOnNotificationPopUp, ChangesOnClick.notificationPopUp);
   });
 }
 
@@ -58,6 +72,11 @@ enum ChangesOnClick {
 }
 
 const String buttonsHtmlAsString = '''
+  <div id="subscribe-button" class="style-scope">
+    <ytd-subscribe-button-renderer>
+      <paper-button>
+    </ytd-subscribe-button-renderer>
+  </div>
   <ytd-menu-renderer>
     <div>
       <ytd-toggle-button-renderer>
@@ -76,23 +95,13 @@ const String buttonsHtmlAsString = '''
       </ytd-toggle-button-renderer>
     </div>
   </ytd-menu-renderer>
-  <div id="subscribe-button" class="style-scope">
-    <ytd-subscribe-button-renderer>
-      <paper-button>
-    </ytd-subscribe-button-renderer>
-  </div>
+  <ytd-notification-topbar-button-renderer>
+    <div>
+      <a>
+        <yt-icon-button>
+          <button></button>
+        </yt-icon-button>
+      </a>
+    </div>
+  </ytd-notification-topbar-button-renderer>
 ''';
-
-//       test('Notification Pop Up', () {
-//         ChangesOnClick changesOnNotificationPopUp;
-
-//         buttons['notificationPopUp'].onClick.listen((Event _) =>
-//             changesOnNotificationPopUp = ChangesOnClick.notificationPopUp);
-
-//         ui.notiticationPopUp(
-//             query: 'button.${buttonsClasses['notificationPopUp']}');
-
-//         expect(changesOnNotificationPopUp, ChangesOnClick.notificationPopUp);
-//       });
-//     });
-//   });
