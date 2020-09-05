@@ -8,7 +8,7 @@ void main() {
   const String mainTag = 'ytd-rich-item-renderer';
 
   final Document document =
-      DomParser().parseFromString(uiHtmlAsString, 'text/html');
+      DomParser().parseFromString(thumbnailsHtmlAsString, 'text/html');
 
   const String expectedThumbnailStyling =
       'outline: red solid; outline-offset: -1px;';
@@ -62,27 +62,27 @@ void main() {
   });
 }
 
-const String uiHtmlAsString = '''
-    <ytd-rich-item-renderer>
-      <div>
-        <ytd-rich-grid-video-renderer>
-          <div>
-            <ytd-thumbnail>
-              <a href="/watch?v=asdf"></a>
-            </ytd-thumbnail>
-          </div>
-        </ytd-rich-grid-video-renderer>
-      </div>
-    </ytd-rich-item-renderer>
-    <ytd-rich-item-renderer>
-      <div>
-        <ytd-rich-grid-video-renderer>
-          <div>
-            <ytd-thumbnail>
-              <a href="/watch?v=qwerty"></a>
-            </ytd-thumbnail>
-          </div>
-        </ytd-rich-grid-video-renderer>
-      </div>
-    </ytd-rich-item-renderer>
-  ''';
+const String thumbnailsHtmlAsString = '''
+  <ytd-rich-item-renderer>
+    <div>
+      <ytd-rich-grid-video-renderer>
+        <div>
+          <ytd-thumbnail>
+            <a href="/watch?v=asdf"></a>
+          </ytd-thumbnail>
+        </div>
+      </ytd-rich-grid-video-renderer>
+    </div>
+  </ytd-rich-item-renderer>
+  <ytd-rich-item-renderer>
+    <div>
+      <ytd-rich-grid-video-renderer>
+        <div>
+          <ytd-thumbnail>
+            <a href="/watch?v=qwerty"></a>
+          </ytd-thumbnail>
+        </div>
+      </ytd-rich-grid-video-renderer>
+    </div>
+  </ytd-rich-item-renderer>
+''';

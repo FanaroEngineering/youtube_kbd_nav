@@ -6,7 +6,7 @@ class Thumbnails {
   List<Element> _thumbnails;
   int _currentIndex;
 
-  /// [doc] is a parameter for injecting a [Document] during tests.
+  /// [doc] is a parameter mainly for injecting a [Document] during tests.
   Thumbnails({@required String tags, Document doc})
       : _thumbnails = (doc ?? document).querySelectorAll(tags);
 

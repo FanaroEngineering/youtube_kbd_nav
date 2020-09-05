@@ -1,17 +1,40 @@
+import 'dart:html' show Document, DomParser;
+
 import 'package:test/test.dart' show expect, test;
 
+import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
+
 void main() {
+  final Document document =
+      DomParser().parseFromString(buttonsHtmlAsString, 'text/html');
+
+  VideoButtons videoButtons;
+
   test('', () {
     
   });
 }
 
-//   group('Thumbnail |', () {
-//     test('Extracting the link from the thumbnail', () {
-//       ui.addBorder(currentIndex: 2);
-
-//       expect(ui.thumbnailLink, exampleSite);
-//     });
+const String buttonsHtmlAsString = '''
+  <ytd-menu-renderer>
+    <div>
+      <ytd-toggle-button-renderer>
+        <a>
+          <yt-icon-button>
+            <button>
+          </yt-icon-button>
+        </a>
+      </ytd-toggle-button-renderer>
+      <ytd-toggle-button-renderer>
+        <a>
+          <yt-icon-button>
+            <button>
+          </yt-icon-button>
+        </a>
+      </ytd-toggle-button-renderer>
+    </div>
+  </ytd-menu-renderer>
+''';
 
 //     group('Clicking Buttons |', () {
 //       const Map<String, String> buttonsClasses = {
