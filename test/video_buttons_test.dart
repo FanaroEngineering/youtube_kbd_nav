@@ -1,6 +1,6 @@
-import 'dart:html' show Document, DomParser;
+import 'dart:html' show Document, DomParser, Element;
 
-import 'package:test/test.dart' show expect, test;
+import 'package:test/test.dart' show expect, setUp, test;
 
 import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
 
@@ -10,9 +10,29 @@ void main() {
 
   VideoButtons videoButtons;
 
-  test('', () {
-    
+  setUp(() => videoButtons = VideoButtons(doc: document));
+
+  test('Subscribe', () {
+    ChangesOnClick changesOnSubscribe;
+
+    final Element subscribeButton =
+        document.querySelector('#subscribe-button.style-scope > '
+            'ytd-subscribe-button-renderer > paper-button');
+
+    subscribeButton.onClick
+        .listen((_) => changesOnSubscribe = ChangesOnClick.subscribed);
+
+    videoButtons.subscribe();
+
+    expect(changesOnSubscribe, ChangesOnClick.subscribed);
   });
+}
+
+enum ChangesOnClick {
+  subscribed,
+  like,
+  dislike,
+  notificationPopUp,
 }
 
 const String buttonsHtmlAsString = '''
@@ -34,34 +54,12 @@ const String buttonsHtmlAsString = '''
       </ytd-toggle-button-renderer>
     </div>
   </ytd-menu-renderer>
+  <div id="subscribe-button" class="style-scope">
+    <ytd-subscribe-button-renderer>
+      <paper-button>
+    </ytd-subscribe-button-renderer>
+  </div>
 ''';
-
-//     group('Clicking Buttons |', () {
-//       const Map<String, String> buttonsClasses = {
-//         'subscribe': 'subscribe',
-//         'like': 'likeDislike',
-//         'dislike': 'likeDislike',
-//         'notificationPopUp': 'notificationPopUp',
-//       };
-
-//       final Map<String, ButtonElement> buttons = {};
-//       buttonsClasses.forEach((String key, String className) =>
-//           buttons.addAll({key: ButtonElement()..className = className}));
-
-//       buttons
-//           .forEach((_, ButtonElement button) => document.body.append(button));
-
-//       test('Subscribe', () {
-//         ChangesOnClick changesOnSubscribe;
-
-//         buttons['subscribe']
-//             .onClick
-//             .listen((_) => changesOnSubscribe = ChangesOnClick.subscribed);
-
-//         ui.subscribe(query: 'button.${buttonsClasses['subscribe']}');
-
-//         expect(changesOnSubscribe, ChangesOnClick.subscribed);
-//       });
 
 //       test('Like', () {
 //         ChangesOnClick changesOnLike;
@@ -100,10 +98,3 @@ const String buttonsHtmlAsString = '''
 //       });
 //     });
 //   });
-
-// enum ChangesOnClick {
-//   subscribed,
-//   like,
-//   dislike,
-//   notificationPopUp,
-// }
