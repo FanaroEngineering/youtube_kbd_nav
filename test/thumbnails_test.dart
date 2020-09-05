@@ -1,6 +1,6 @@
-import 'dart:html' show Document, DomParser;
+import 'dart:html' show Document, DomParser, Element;
 
-import 'package:test/test.dart' show expect, group, setUp, test;
+import 'package:test/test.dart' show expect, isNull, setUp, test;
 
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Thumbnails;
 
@@ -12,7 +12,18 @@ void main() {
         <ytd-rich-grid-video-renderer>
           <div>
             <ytd-thumbnail>
-              <a href="/watch?v=asdfqwerty"></a>
+              <a href="/watch?v=asdf"></a>
+            </ytd-thumbnail>
+          </div>
+        </ytd-rich-grid-video-renderer>
+      </div>
+    </ytd-rich-item-renderer>
+    <ytd-rich-item-renderer>
+      <div>
+        <ytd-rich-grid-video-renderer>
+          <div>
+            <ytd-thumbnail>
+              <a href="/watch?v=qwerty"></a>
             </ytd-thumbnail>
           </div>
         </ytd-rich-grid-video-renderer>
@@ -31,57 +42,28 @@ void main() {
   setUp(() =>
       thumbnails = Thumbnails(tags: 'ytd-rich-item-renderer', doc: document));
 
-  group('Thumbnail |', () {
-    test('Adds border to the thumbnail', () {
-      thumbnails.addBorder(index: 0);
+  test('Adds border to the thumbnail', () {
+    thumbnails.addBorder(index: 0);
 
-      final String newStyle =
-          document.querySelector(mainTag).attributes['style'];
+    final String newStyle = document.querySelector(mainTag).attributes['style'];
 
-      expect(newStyle, expectedThumbnailStyling);
-    });
+    expect(newStyle, expectedThumbnailStyling);
+  });
+
+  test(
+      'Adding a border to the current thumbnail deletes the styling on its '
+      'neighbors', () {
+    thumbnails.addBorder(index: 1);
+
+    final List<Element> thumbnailElements = document.querySelectorAll(mainTag);
+    final String thumbnail0Style = thumbnailElements[0].attributes['style'];
+    final String thumbnail1Style = thumbnailElements[1].attributes['style'];
+
+    expect(thumbnail0Style, isNull);
+    expect(thumbnail1Style, expectedThumbnailStyling);
   });
 
 //   group('Thumbnail |', () {
-//     final String exampleSite = 'https://example.com/';
-
-//     setUpAll(() {
-//       for (int i = 0; i < 2; i++) document.body.append(ParagraphElement());
-
-//       final ParagraphElement paragraphWithLink = ParagraphElement();
-//       paragraphWithLink.append(AnchorElement(href: exampleSite));
-
-//       document.body.append(paragraphWithLink);
-//     });
-
-//     final String expectedThumbnailStyling =
-//         'outline: red solid; outline-offset: -1px;';
-
-//     Ui ui;
-
-//     setUp(() => ui = Ui(tags: 'p'));
-
-//     test('Adds border to the thumbnail', () {
-//       ui.addBorder(currentIndex: 0);
-
-//       final String newStyle = document.querySelector('p').attributes['style'];
-
-//       expect(newStyle, expectedThumbnailStyling);
-//     });
-
-//     test(
-//         'Adding a border to the current thumbnail deletes the styling on its '
-//         'neighbors', () {
-//       ui.addBorder(currentIndex: 1);
-
-//       final List<Element> thumbnails = document.querySelectorAll('p');
-//       final String thumbnail0Style = thumbnails[0].attributes['style'];
-//       final String thumbnail1Style = thumbnails[1].attributes['style'];
-
-//       expect(thumbnail0Style, isNull);
-//       expect(thumbnail1Style, expectedThumbnailStyling);
-//     });
-
 //     test('Resetting the current thumbnail\'s style', () {
 //       ui.addBorder(currentIndex: 1);
 
