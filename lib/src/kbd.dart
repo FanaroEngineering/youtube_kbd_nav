@@ -1,4 +1,4 @@
-import 'dart:html' show document, Element, KeyboardEvent, window;
+import 'dart:html' show Document, document, Element, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
 import 'thumbnails.dart' show Thumbnails;
@@ -6,23 +6,24 @@ import 'url_handler.dart' show UrlHandler;
 import 'video_buttons.dart' show VideoButtons;
 
 class Kbd {
+  Document _document;
   Cycler _cycler;
   String _url = '';
   Thumbnails _thumbnails = Thumbnails(tags: UrlHandler.tags('watch'));
   VideoButtons _videoButtons = VideoButtons();
   KeyboardEvent _keyboardEvent;
 
-  /// The [Cycler] is a parameter just so we can inject it during testing and
-  /// check if everything happened as expected.
-  Kbd({Cycler cycler}) : _cycler = cycler ?? Cycler() {
-    window.addEventListener('yt-navigate-start', (_) => resetStylesAndCycler());
-    document.onKeyDown.listen((KeyboardEvent keyboardEvent) {
+  /// The [Cycler] and [Document] are parameters just so we can inject them 
+  /// during testing and check if everything happened as expected.
+  Kbd({Document doc}) : _document = doc ?? document {
+    window.addEventListener('yt-navigate-start', (_) => _resetStylesAndCycler());
+    _document.onKeyDown.listen((KeyboardEvent keyboardEvent) {
       _keyboardEvent = keyboardEvent;
-      _onKeyDown(newUrl: document.baseUri);
+      _onKeyDown(newUrl: _document.baseUri);
     });
   }
 
-  void resetStylesAndCycler() {
+  void _resetStylesAndCycler() {
     _thumbnails?.resetCurrentThumbnail();
     _cycler = Cycler();
   }
@@ -39,14 +40,15 @@ class Kbd {
     }
   }
 
-  Element get _searchBar => document.querySelector('input#search');
-  Element get _commentBox => document.querySelectorAll(_commentBoxQuery)[0];
-  Element get _editCommentBox => document.querySelectorAll(_commentBoxQuery)[1];
+  Element get _searchBar => _document.querySelector('input#search');
+  Element get _playlistName => _document.querySelector('iron-input > input');
+  Element get _commentBox => _document.querySelectorAll(_commentBoxQuery)[0];
+  Element get _editCommentBox => _document.querySelectorAll(_commentBoxQuery)[1];
   String get _commentBoxQuery => 'yt-formatted-string.ytd-commentbox > div';
 
-  bool get _noInputFocus => !(_searchBar == document.activeElement ||
-      _commentBox == document.activeElement ||
-      _editCommentBox == document.activeElement);
+  bool get _noInputFocus => !(_searchBar == _document.activeElement ||
+      _commentBox == _document.activeElement ||
+      _editCommentBox == _document.activeElement || _playlistName == _document.activeElement);
 
   Future<void> _keySwitch() async {
     if (_noInputFocus) {
