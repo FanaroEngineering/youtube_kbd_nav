@@ -1,8 +1,9 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
-import 'ui.dart' show Thumbnails, VideoButtons;
+import 'thumbnails.dart' show Thumbnails;
 import 'url_handler.dart' show UrlHandler;
+import 'video_buttons.dart' show VideoButtons;
 
 class Kbd {
   Cycler _cycler;
