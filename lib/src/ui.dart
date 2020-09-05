@@ -1,15 +1,17 @@
-import 'dart:html' show AnchorElement, document, Element;
+import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show required;
 
-class Ui {
+class Thumbnails {
   List<Element> _elements;
   int _currentIndex;
 
-  Ui({@required String tags}) : _elements = document.querySelectorAll(tags);
+  /// [doc] is a parameter for injecting a [Document] during tests.
+  Thumbnails({@required String tags, Document doc})
+      : _elements = (doc ?? document).querySelectorAll(tags);
 
-  void addBorder({@required int currentIndex}) {
-    _currentIndex = currentIndex;
+  void addBorder({@required int index}) {
+    _currentIndex = index;
     _deleteNeighborsStyles();
     _changeCurrentThumbnailStyle();
     _currentThumbnail?.scrollIntoView();
@@ -47,8 +49,10 @@ class Ui {
 
   bool _neighborIndexInValidRange(int neighborIndex) =>
       neighborIndex >= 0 && neighborIndex < _elements.length;
+}
 
-  static const String _subscribeButton =
+class VideoButtons {
+    static const String _subscribeButton =
       '#subscribe-button.style-scope > ytd-subscribe-button-renderer > '
       'paper-button';
 

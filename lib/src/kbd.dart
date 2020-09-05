@@ -1,13 +1,14 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
 import 'cycler.dart' show Cycler;
-import 'ui.dart' show Ui;
+import 'ui.dart' show Thumbnails, VideoButtons;
 import 'url_handler.dart' show UrlHandler;
 
 class Kbd {
   Cycler _cycler;
   String _url = '';
-  Ui _ui = Ui(tags: 'watch');
+  Thumbnails _thumbnails = Thumbnails(tags: 'watch');
+  VideoButtons _videoButtons = VideoButtons();
   KeyboardEvent _keyboardEvent;
 
   /// The [Cycler] is a parameter just so we can inject it during testing and
@@ -21,7 +22,7 @@ class Kbd {
   }
 
   void resetStylesAndCycler() {
-    _ui?.resetCurrentThumbnail();
+    _thumbnails?.resetCurrentThumbnail();
     _cycler = Cycler();
   }
 
@@ -62,20 +63,20 @@ class Kbd {
           break;
         case 'Enter':
           if (_cycler.total >= 0) {
-            _navigate(_ui?.thumbnailLink);
+            _navigate(_thumbnails?.thumbnailLink);
           }
           break;
         case 'h':
           _navigate(UrlHandler.history);
           break;
         case 'e':
-          if (_isVideo) _ui?.subscribe();
+          if (_isVideo) _videoButtons?.subscribe();
           break;
         case 'v':
-          if (_isVideo) _ui?.like();
+          if (_isVideo) _videoButtons?.like();
           break;
         case 'n':
-          if (_isVideo) _ui?.dislike();
+          if (_isVideo) _videoButtons?.dislike();
           break;
         case 'b':
           if (_isVideo)
@@ -83,7 +84,7 @@ class Kbd {
                 .writeText(UrlHandler.shortenLink(_url));
           break;
         case 'y':
-          _ui?.notiticationPopUp();
+          _videoButtons?.notiticationPopUp();
           break;
         default:
       }
@@ -95,8 +96,8 @@ class Kbd {
   void _addBorder() {
     if (_url != null) {
       final String tags = UrlHandler.tags(_url);
-      _ui = Ui(tags: tags);
-      _ui.addBorder(currentIndex: _cycler.total);
+      _thumbnails = Thumbnails(tags: tags);
+      _thumbnails.addBorder(index: _cycler.total);
     }
   }
 
