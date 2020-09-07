@@ -13,10 +13,11 @@ class Kbd {
   VideoButtons _videoButtons = VideoButtons();
   KeyboardEvent _keyboardEvent;
 
-  /// The [Cycler] and [Document] are parameters just so we can inject them 
+  /// The [Cycler] and [Document] are parameters just so we can inject them
   /// during testing and check if everything happened as expected.
   Kbd({Document doc}) : _document = doc ?? document {
-    window.addEventListener('yt-navigate-start', (_) => _resetStylesAndCycler());
+    window.addEventListener(
+        'yt-navigate-start', (_) => _resetStylesAndCycler());
     _document.onKeyDown.listen((KeyboardEvent keyboardEvent) {
       _keyboardEvent = keyboardEvent;
       _onKeyDown(newUrl: _document.baseUri);
@@ -43,12 +44,14 @@ class Kbd {
   Element get _searchBar => _document.querySelector('input#search');
   Element get _playlistName => _document.querySelector('iron-input > input');
   Element get _commentBox => _document.querySelectorAll(_commentBoxQuery)[0];
-  Element get _editCommentBox => _document.querySelectorAll(_commentBoxQuery)[1];
+  Element get _editCommentBox =>
+      _document.querySelectorAll(_commentBoxQuery)[1];
   String get _commentBoxQuery => 'yt-formatted-string.ytd-commentbox > div';
 
   bool get _noInputFocus => !(_searchBar == _document.activeElement ||
       _commentBox == _document.activeElement ||
-      _editCommentBox == _document.activeElement || _playlistName == _document.activeElement);
+      _editCommentBox == _document.activeElement ||
+      _playlistName == _document.activeElement);
 
   Future<void> _keySwitch() async {
     if (_noInputFocus) {

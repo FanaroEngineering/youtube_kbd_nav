@@ -1,4 +1,5 @@
-import 'dart:html' show Document, document, DomParser, Element, KeyboardEvent, KeyEvent;
+import 'dart:html'
+    show Document, document, DomParser, Element, KeyboardEvent, KeyEvent;
 
 import 'package:meta/meta.dart' show required;
 import 'package:mockito/mockito.dart' show Mock;
@@ -35,7 +36,7 @@ class MockKeyboardEvent extends Mock implements KeyboardEvent {
   // @override
   final String _key;
 
-  MockKeyboardEvent({String key}): _key = key;
+  MockKeyboardEvent({String key}) : _key = key;
 
   // @override
   String get key => _key;
