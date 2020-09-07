@@ -77,7 +77,7 @@ const String buttonsHtmlAsString = '''
       <paper-button>
     </ytd-subscribe-button-renderer>
   </div>
-  
+
   <ytd-menu-renderer>
     <div>
       <ytd-toggle-button-renderer>
