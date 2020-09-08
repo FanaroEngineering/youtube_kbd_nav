@@ -41,6 +41,7 @@ class Kbd {
 
   Future<void> _keySwitch() async {
     if (_noInputFocus) {
+      _deactivateFilterButton();
       switch (_keyboardEvent.key) {
         case 'z':
           _cycler.forwards();
@@ -80,8 +81,15 @@ class Kbd {
     }
   }
 
+  // Can't put it inside of `yt-navigate-start` because the active element seems
+  // to be activated only after that event occurs.
+  void _deactivateFilterButton() {
+    if (_url.contains('results'))
+      document.activeElement.setAttribute('disabled', 'true');
+  }
+
   // This is necessary because the thumbnails won't be fully loaded when
-  // `yt-navigate-start`.
+  // `yt-navigate-start` occurs.
   void _addBorder() {
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
     _thumbnails.addBorder(index: _cycler.total);
