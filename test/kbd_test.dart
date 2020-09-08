@@ -1,5 +1,12 @@
 import 'dart:html'
-    show Document, document, DomParser, Element, KeyboardEvent, KeyEvent;
+    show
+        CustomEvent,
+        Document,
+        document,
+        DomParser,
+        Element,
+        KeyboardEvent,
+        KeyEvent;
 
 import 'package:meta/meta.dart' show required;
 import 'package:mockito/mockito.dart' show Mock;
@@ -13,21 +20,22 @@ void main() {
     final Element button = doc.querySelector('button');
 
     test('', () {
-      // document.onKeyDown
-      //     .listen((KeyboardEvent keyboardEvent) => print(keyboardEvent.key));
+      button.onKeyDown
+          .listen((KeyboardEvent keyboardEvent) => print(keyboardEvent.key));
 
-      // document.dispatchEvent(MockKeyboardEvent(key: 'z'));
+      // 1. Create custom event listener with keypress handling logic
+      button.on['keypress'].listen((data) {
+        print('Heyyy! ${(data as CustomEvent).detail['keyCode']}');
+      });
 
-      // final KeyboardEvent keyboardEvent = KeyEvent.wrap(KeyboardEvent('keypress', location: 69));
+      // 2. Create custom keypress event
+      final customKeypress =
+          CustomEvent('keypress', detail: {'keyCode': 65, 'charCode': 97});
 
-      // final Stream<KeyEvent> stream = KeyEvent.keyPressEvent.forTarget(doc);
-
-      // stream.
-
-      // print(keyboardEvent.key);
-
-      // doc.dispatchEvent(KeyboardEvent('keypress', location: 69));
-      // doc.dispatchEvent(keyboardEvent);
+      // 3. Amend original onKeyPress handling logic
+      button.onKeyPress.listen((data) {
+        document.dispatchEvent(customKeypress);
+      });
     });
   });
 }
