@@ -88,9 +88,9 @@ class Kbd {
       document.activeElement.setAttribute('disabled', 'true');
   }
 
-  // This is necessary because the thumbnails won't be fully loaded when
-  // `yt-navigate-start` occurs.
   void _addBorder() {
+    // The thumnails need to be created here because their HTML won't be fully
+    // loaded when `yt-navigate-start` occurs.
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
     _thumbnails.addBorder(index: _cycler.total);
   }
