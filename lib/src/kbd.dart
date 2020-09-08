@@ -28,16 +28,19 @@ class Kbd {
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
   }
 
-  Element get _searchBar => document.querySelector('input#search');
-  Element get _playlistName => document.querySelector('iron-input > input');
-  Element get _commentBox => document.querySelectorAll(_commentBoxQuery)[0];
-  Element get _editCommentBox => document.querySelectorAll(_commentBoxQuery)[1];
-  String get _commentBoxQuery => 'yt-formatted-string.ytd-commentbox > div';
-
-  bool get _noInputFocus => !(_searchBar == document.activeElement ||
-      _commentBox == document.activeElement ||
-      _editCommentBox == document.activeElement ||
-      _playlistName == document.activeElement);
+  bool get _noInputFocus {
+    const String commentBoxQuery = 'yt-formatted-string.ytd-commentbox > div';
+    bool noInputFocus = true;
+    [
+      document.querySelector('input#search'),
+      document.querySelector('iron-input > input'),
+      document.querySelectorAll(commentBoxQuery)[0],
+      document.querySelectorAll(commentBoxQuery)[1],
+    ].forEach((Element element) {
+      if (element == document.activeElement) noInputFocus = false;
+    });
+    return noInputFocus;
+  }
 
   Future<void> _keySwitch() async {
     if (_noInputFocus) {
