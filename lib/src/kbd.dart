@@ -31,7 +31,7 @@ class Kbd {
   bool get _noInputFocus {
     const String commentBoxQuery = 'yt-formatted-string.ytd-commentbox > div';
     bool noInputFocus = true;
-    [
+    <Element>[
       document.querySelector('input#search'),
       document.querySelector('iron-input > input'),
       document.querySelectorAll(commentBoxQuery)[0],
