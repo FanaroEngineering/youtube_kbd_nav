@@ -42,5 +42,6 @@ class VideoButtons {
     final Element commentBox =
         _document.getElementById('simplebox-placeholder');
     commentBox?.focus();
+    commentBox.scrollIntoView();
   }
 }
