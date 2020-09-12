@@ -83,9 +83,11 @@ If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e.
 | <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                     |
 | <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup> |
 | <kbd>y</kbd>                       | Opens the notification pop-up                     |
+| <kbd>Ctrl</kbd> + <kbd>m</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>       |
 
-<sub>`1`: Only works when signed-in and on a video page.</sub> \
-<sub>`2`: Only works when on a video page.</sub>
+<sub>1: Only works when signed-in and on a video page.</sub> \
+<sub>2: Only works when on a video page.</sub> \
+<sub>3: The comment section needs to be loaded for this to work.</sub>
 
 ### 1.4. Natively Available Shortcuts on YouTube
 

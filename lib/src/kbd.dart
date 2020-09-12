@@ -80,6 +80,10 @@ class Kbd {
             await window.navigator.clipboard
                 .writeText(UrlHandler.shortenLink(_url));
           break;
+        case 'm':
+          if (_isVideo && _keyboardEvent.ctrlKey)
+            _videoButtons.commentBoxFocus();
+          break;
       }
     }
   }

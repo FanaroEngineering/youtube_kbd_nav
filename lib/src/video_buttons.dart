@@ -36,4 +36,11 @@ class VideoButtons {
         _document.querySelector(notificationPopUpButtonQuery);
     notificationPopUpButton?.click();
   }
+
+  /// This has not been incorporated via TDD.
+  void commentBoxFocus() {
+    final Element commentBox =
+        _document.getElementById('simplebox-placeholder');
+    commentBox?.focus();
+  }
 }
