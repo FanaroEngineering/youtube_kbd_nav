@@ -1,14 +1,16 @@
 # YouTube Keyboard Navigation Browser Extension
 
-[![Join the chat at https://gitter.im/youtube_kbd_nav/community](https://badges.gitter.im/youtube_kbd_nav/community.svg)](https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status][travis_badge]][travis_repo]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
+[![Join the chat at [gitter_community][gitter_community]][gitter_svg]][gitter_badge]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
 
 [codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
 [codefactor_repo]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master
+[gitter_svg]: https://badges.gitter.im/youtube_kbd_nav/community.svg
+[gitter_community]: https://gitter.im/youtube_kbd_nav/community
+[gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [travis_badge]: https://travis-ci.com/FanaroEngineering/youtube_kbd_nav.svg?branch=master
 [travis_repo]: https://travis-ci.com/github/FanaroEngineering/youtube_kbd_nav
 [buy_me_a_coffee_badge]: assets/buy_me_a_coffee_shield.svg
