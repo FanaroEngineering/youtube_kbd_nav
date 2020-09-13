@@ -86,6 +86,9 @@ class Kbd {
         case 'm':
           _commentBoxFocus();
           break;
+        case ';':
+          _navigateToChannel();
+          break;
       }
     }
   }
@@ -148,5 +151,9 @@ class Kbd {
 
   void _commentBoxFocus() {
     if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.commentBoxFocus();
+  }
+
+  void _navigateToChannel() {
+    if (!_isVideo && _cycler.total >= 0) _navigate(_thumbnails?.channelLink);
   }
 }

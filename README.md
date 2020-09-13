@@ -1,8 +1,8 @@
 # YouTube Keyboard Navigation Browser Extension
 
+[![Gitter][gitter_svg]][gitter_badge]
 [![Build Status][travis_badge]][travis_repo]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
-[![Gitter][gitter_svg]][gitter_badge]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
 
@@ -88,10 +88,13 @@ If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e.
 | <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup> |
 | <kbd>y</kbd>                       | Opens the notification pop-up                     |
 | <kbd>Ctrl</kbd> + <kbd>m</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>       |
+| <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>                          |
+| <kbd>Ctrl</kbd> + <kbd>;</kbd>                       | Go to the channel's page on a new tab<sup>4</sup>                          |
 
 <sub>1: Only works when signed-in and on a video page.</sub> \
 <sub>2: Only works when on a video page.</sub> \
-<sub>3: The comment section needs to be loaded for this to work.</sub>
+<sub>3: The comment section needs to be loaded for this to work.</sub> \
+<sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.
 
 ### 1.4. Natively Available Shortcuts on YouTube
 

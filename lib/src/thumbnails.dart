@@ -46,7 +46,19 @@ class Thumbnails {
   }
 
   String get thumbnailLink {
-    final AnchorElement anchorElement = _currentThumbnail?.querySelector('a');
-    return anchorElement?.href;
+    final AnchorElement thumbnailLinkElement =
+        _currentThumbnail?.querySelector('a');
+    return thumbnailLinkElement?.href;
+  }
+
+  String get channelLink {
+    final String thumbnailTagName = _currentThumbnail.tagName.toLowerCase();
+    final AnchorElement channelLinkElement =
+        thumbnailTagName.contains('video') || thumbnailTagName.contains('rich')
+            ? _currentThumbnail?.querySelectorAll('a')?.last
+            : thumbnailTagName.contains('playlist')
+                ? _currentThumbnail?.querySelectorAll('a')[2]
+                : null;
+    return channelLinkElement?.href;
   }
 }

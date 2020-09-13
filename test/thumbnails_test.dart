@@ -60,6 +60,12 @@ void main() {
 
     expect(thumbnails.thumbnailLink, contains('/watch?v=qwerty'));
   });
+
+  test('Extracting the channel\'s link from the thumbnail', () {
+    thumbnails.addBorder(index: 0);
+
+    expect(thumbnails.channelLink, contains('/c/dummyChannel1'));
+  });
 }
 
 const String thumbnailsHtmlAsString = '''
@@ -70,6 +76,7 @@ const String thumbnailsHtmlAsString = '''
           <ytd-thumbnail>
             <a href="/watch?v=asdf"></a>
           </ytd-thumbnail>
+          <a href="/c/dummyChannel1">dummyChannel1</a>
         </div>
       </ytd-rich-grid-video-renderer>
     </div>
@@ -81,6 +88,7 @@ const String thumbnailsHtmlAsString = '''
           <ytd-thumbnail>
             <a href="/watch?v=qwerty"></a>
           </ytd-thumbnail>
+          <a href="/c/dummyChannel2">dummyChannel2</a>
         </div>
       </ytd-rich-grid-video-renderer>
     </div>
