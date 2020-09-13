@@ -99,7 +99,7 @@ class Kbd {
   bool get _isVideo => _url.contains('watch');
 
   void _thumbnailForwards() {
-    _cycler.forwards();
+    if (_cycler.total < _thumbnails.length - 1) _cycler.forwards();
     _addBorder();
   }
 

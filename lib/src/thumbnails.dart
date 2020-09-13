@@ -21,16 +21,16 @@ class Thumbnails {
     final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
 
     neighborsIndices.forEach((int neighborIndex) {
-      if (_neighborIndexInValidRange(neighborIndex))
+      if (_neighborIndexValidRange(neighborIndex))
         _thumbnails[neighborIndex].attributes.remove('style');
     });
   }
 
-  bool _neighborIndexInValidRange(int neighborIndex) =>
+  bool _neighborIndexValidRange(int neighborIndex) =>
       neighborIndex >= 0 && neighborIndex < _thumbnails.length;
 
   void _changeCurrentThumbnailStyle() {
-    if (_currentIndex >= 0) {
+    if (_currentIndex >= 0 && _currentIndex < _thumbnails.length) {
       _currentThumbnail.style.outline = 'red solid';
       _currentThumbnail.style.outlineOffset = '-1px';
     }
@@ -61,4 +61,6 @@ class Thumbnails {
                 : null;
     return channelLinkElement?.href;
   }
+
+  int get length => _thumbnails.length;
 }

@@ -11,6 +11,11 @@ class UrlHandler {
       'ytd-playlist-renderer, '
       'ytd-channel-renderer';
   static const String _homeTags = 'ytd-rich-item-renderer';
+  static const String _channelTags = 'ytd-video-renderer, '
+      'ytd-grid-video-renderer, '
+      'ytd-channel-video-renderer, '
+      'ytd-playlist-renderer, '
+      'ytd-grid-channel-renderer';
 
   static String tags(String url) => url.contains('watch')
       ? _watchTags
@@ -18,7 +23,9 @@ class UrlHandler {
           ? _historyTags
           : url.contains('results')
               ? _resultsTags
-              : url.contains('youtube') ? _homeTags : 'p';
+              : url.contains(RegExp('c|channel|user'))
+                  ? _channelTags
+                  : url.contains('youtube') ? _homeTags : 'p';
 
   static String prefixedLink(String url) =>
       url.startsWith('https://') ? url : youtubeHome + url;
