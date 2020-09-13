@@ -2,7 +2,7 @@
 
 [![Build Status][travis_badge]][travis_repo]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
-[![Join the chat at [gitter_community][gitter_community]][gitter_svg]][gitter_badge]
+[![Gitter][gitter_svg]][gitter_badge]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
 
