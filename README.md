@@ -1,5 +1,7 @@
 # YouTube Keyboard Navigation Browser Extension
 
+[![Join the chat at https://gitter.im/youtube_kbd_nav/community](https://badges.gitter.im/youtube_kbd_nav/community.svg)](https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status][travis_badge]][travis_repo]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
