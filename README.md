@@ -72,6 +72,8 @@ You can directly download this extension's files from the [Releases][release_lin
 
 If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e. <kbd>command</kbd>.
 
+If, due to a mistake, the table below isn't working as expected, go to the [`lib/src/kbd.dart`][kbd_dart] file and examine the `switch` statement to truly get a hold of what's going on.
+
 | Shortcut                           | Action                                            |
 | ---------------------------------- | ------------------------------------------------- |
 | <kbd>z</kbd>                       | Cycle forwards on the thumbnails                  |
@@ -98,6 +100,9 @@ If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e.
 <sub>2: Only works when on a video page.</sub> \
 <sub>3: The comment section needs to be loaded for this to work.</sub> \
 <sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.
+
+
+[kbd_dart]: lib/src/kbd.dart
 
 ### 1.4. Natively Available Shortcuts on YouTube
 
