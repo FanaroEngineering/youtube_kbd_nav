@@ -42,57 +42,59 @@ class Kbd {
     return noInputFocus;
   }
 
-  Future<void> _keySwitch() async {
-    if (_noInputFocus) {
-      _deactivateFilterButton();
-      switch (_keyboardEvent.key) {
-        case 'z':
-          _cycler.forwards();
-          _addBorder();
-          break;
-        case 'x':
-          _cycler.backwards();
-          _addBorder();
-          break;
-        case 'q':
-          _navigate(UrlHandler.youtubeHome);
-          break;
-        case 'Enter':
-          if (_cycler.total >= 0) _navigate(_thumbnails?.thumbnailLink);
-          break;
-        case 'h':
-          _navigate(UrlHandler.history);
-          break;
-        case 'e':
-          if (_isVideo) _videoButtons?.subscribe();
-          break;
-        case 'v':
-          if (_isVideo) _videoButtons?.like();
-          break;
-        case 'n':
-          if (_isVideo) _videoButtons?.dislike();
-          break;
-        case 'y':
-          _videoButtons?.notiticationPopUp();
-          break;
-        case 'b':
-          if (_isVideo)
-            await window.navigator.clipboard
-                .writeText(UrlHandler.shortenLink(_url));
-          break;
-        case 'm':
-          if (_isVideo && _keyboardEvent.ctrlKey)
-            _videoButtons.commentBoxFocus();
-          break;
-      }
-    }
-  }
-
   // Can't put it inside of `yt-navigate-start` because the active element seems
   // to be activated only after that event occurs.
   void _deactivateFilterButton() {
     if (_url.contains('results'))
       document.activeElement.setAttribute('disabled', 'true');
+  }
+
+  Future<void> _keySwitch() async {
+    if (_noInputFocus) {
+      _deactivateFilterButton();
+      switch (_keyboardEvent.key) {
+        case 'z':
+          _thumbnailForwards();
+          break;
+        case 'x':
+          _thumbnailBackwards();
+          break;
+        case 'q':
+          _navigateHome();
+          break;
+        case 'Enter':
+          _navigateThumbnailLink();
+          break;
+        case 'h':
+          _navigateHistory();
+          break;
+        case 'e':
+          _subscribe();
+          break;
+        case 'v':
+          _like();
+          break;
+        case 'n':
+          _dislike();
+          break;
+        case 'y':
+          _notificationPopUp();
+          break;
+        case 'b':
+          await _copyVideoUrl();
+          break;
+        case 'm':
+          _commentBoxFocus();
+          break;
+      }
+    }
+  }
+
+  bool get _isVideo => _url.contains('watch');
+
+  void _thumbnailForwards() {
+    _cycler.forwards();
+    _addBorder();
   }
 
   void _addBorder() {
@@ -102,7 +104,16 @@ class Kbd {
     _thumbnails.addBorder(index: _cycler.total);
   }
 
-  bool get _isVideo => _url.contains('watch');
+  void _thumbnailBackwards() {
+    _cycler.backwards();
+    _addBorder();
+  }
+
+  void _navigateHome() => _navigate(UrlHandler.youtubeHome);
+
+  void _navigateThumbnailLink() {
+    if (_cycler.total >= 0) _navigate(_thumbnails?.thumbnailLink);
+  }
 
   void _navigate(String url) {
     final bool modifierKey = window.navigator.appVersion.contains('Mac')
@@ -112,5 +123,30 @@ class Kbd {
     modifierKey
         ? window.open(url, '_blank', 'noreferrer')
         : window.location.href = url;
+  }
+
+  void _navigateHistory() => _navigate(UrlHandler.history);
+
+  void _subscribe() {
+    if (_isVideo) _videoButtons?.subscribe();
+  }
+
+  void _like() {
+    if (_isVideo) _videoButtons?.like();
+  }
+
+  void _dislike() {
+    if (_isVideo) _videoButtons?.dislike();
+  }
+
+  void _notificationPopUp() => _videoButtons?.notiticationPopUp();
+
+  Future<void> _copyVideoUrl() async {
+    if (_isVideo)
+      await window.navigator.clipboard.writeText(UrlHandler.shortenLink(_url));
+  }
+
+  void _commentBoxFocus() {
+    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.commentBoxFocus();
   }
 }
