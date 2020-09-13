@@ -89,6 +89,9 @@ class Kbd {
         case ';':
           _navigateToChannel();
           break;
+        case '\\':
+          _navigateToVideoChannel();
+          break;
       }
     }
   }
@@ -155,5 +158,9 @@ class Kbd {
 
   void _navigateToChannel() {
     if (!_isVideo && _cycler.total >= 0) _navigate(_thumbnails?.channelLink);
+  }
+
+  void _navigateToVideoChannel() {
+    if (_isVideo) _navigate(_videoButtons?.channelLink);
   }
 }

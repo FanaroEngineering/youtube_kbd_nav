@@ -1,6 +1,6 @@
 import 'dart:html' show Document, DomParser, Element;
 
-import 'package:test/test.dart' show expect, setUp, test;
+import 'package:test/test.dart' show contains, expect, setUp, test;
 
 import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
 
@@ -62,6 +62,9 @@ void main() {
 
     expect(changesOnNotificationPopUp, ChangesOnClick.notificationPopUp);
   });
+
+  test('Channel Button',
+      () => expect(videoButtons.channelLink, contains('/c/dummyChannel')));
 }
 
 enum ChangesOnClick {
@@ -69,6 +72,7 @@ enum ChangesOnClick {
   like,
   dislike,
   notificationPopUp,
+  channel,
 }
 
 const String buttonsHtmlAsString = '''
@@ -106,4 +110,8 @@ const String buttonsHtmlAsString = '''
       </a>
     </div>
   </ytd-notification-topbar-button-renderer>
+
+  <yt-formatted-string class="ytd-channel-name">
+    <a href="/c/dummyChannel">dummyChannel</a>
+  </yt-formatted-string>
 ''';

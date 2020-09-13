@@ -1,4 +1,4 @@
-import 'dart:html' show Document, document, Element;
+import 'dart:html' show AnchorElement, Document, document, Element;
 
 class VideoButtons {
   final Document _document;
@@ -37,11 +37,18 @@ class VideoButtons {
     notificationPopUpButton?.click();
   }
 
-  /// This has not been incorporated via TDD.
+  /// This has not been incorporated via TDD. (Couldn't make it work with
+  /// `focus()` this time.)
   void commentBoxFocus() {
     final Element commentBox =
         _document.getElementById('simplebox-placeholder');
     commentBox?.focus();
     commentBox.scrollIntoView();
+  }
+
+  String get channelLink {
+    final AnchorElement channelAnchorElement =
+        _document.querySelector('.ytd-channel-name > a') as AnchorElement;
+    return channelAnchorElement?.href;
   }
 }
