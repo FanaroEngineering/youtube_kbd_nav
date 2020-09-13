@@ -54,7 +54,7 @@ class Thumbnails {
   String get channelLink {
     final String thumbnailTagName = _currentThumbnail.tagName.toLowerCase();
     final AnchorElement channelLinkElement =
-        thumbnailTagName.contains('video') || thumbnailTagName.contains('rich')
+        thumbnailTagName.contains(RegExp('video|rich'))
             ? _currentThumbnail?.querySelectorAll('a')?.last
             : thumbnailTagName.contains('playlist')
                 ? _currentThumbnail?.querySelectorAll('a')[2]
