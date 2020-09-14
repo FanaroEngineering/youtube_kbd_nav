@@ -17,7 +17,7 @@ void main() {
       thumbnails = Thumbnails(tags: 'ytd-rich-item-renderer', doc: document));
 
   test('Adds border to the thumbnail', () {
-    thumbnails + Cycle();
+    thumbnails + const Cycle();
 
     final String newStyle = document.querySelector(mainTag).attributes['style'];
 
@@ -27,8 +27,8 @@ void main() {
   test(
       'Adding a border to the current thumbnail deletes the styling on its '
       'neighbors', () {
-    thumbnails + Cycle();
-    thumbnails + Cycle();
+    thumbnails + const Cycle();
+    thumbnails + const Cycle();
 
     final List<Element> thumbnailElements = document.querySelectorAll(mainTag);
     final String thumbnail0Style = thumbnailElements[0].attributes['style'],
@@ -39,8 +39,8 @@ void main() {
   });
 
   test('Resetting the current thumbnail\'s style', () {
-    thumbnails + Cycle();
-    thumbnails + Cycle();
+    thumbnails + const Cycle();
+    thumbnails + const Cycle();
 
     final String thumbnailStyleBefore =
         document.querySelectorAll(mainTag)[1].attributes['style'];
@@ -56,14 +56,14 @@ void main() {
   });
 
   test('Extracting the link from the thumbnail', () {
-    thumbnails + Cycle();
-    thumbnails + Cycle();
+    thumbnails + const Cycle();
+    thumbnails + const Cycle();
 
     expect(thumbnails.thumbnailLink, contains('/watch?v=qwerty'));
   });
 
   test('Extracting the channel\'s link from the thumbnail', () {
-    thumbnails + Cycle();
+    thumbnails + const Cycle();
 
     expect(thumbnails.channelLink, contains('/c/dummyChannel1'));
   });

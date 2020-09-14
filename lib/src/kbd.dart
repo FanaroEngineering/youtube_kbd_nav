@@ -98,7 +98,7 @@ class Kbd {
 
   void _thumbnailForwards() {
     _resetThumbnailsWithPreviousCycles();
-    _thumbnails + Cycle();
+    _thumbnails + const Cycle();
   }
 
   // The thumnails need to be created because their HTML won't be fully loaded
@@ -108,7 +108,7 @@ class Kbd {
 
   void _thumbnailBackwards() {
     _resetThumbnailsWithPreviousCycles();
-    _thumbnails - Cycle();
+    _thumbnails - const Cycle();
   }
 
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);

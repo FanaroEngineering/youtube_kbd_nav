@@ -21,12 +21,12 @@ class Thumbnails {
   Cycle get cycles => _cycles;
 
   void operator +(Cycle cycle) {
-    _cycles += Cycle();
+    _cycles += const Cycle();
     _addBorder();
   }
 
   void operator -(Cycle cycle) {
-    _cycles -= Cycle();
+    _cycles -= const Cycle();
     _addBorder();
   }
 
