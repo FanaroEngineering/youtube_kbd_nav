@@ -5,7 +5,7 @@ import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show UrlHandler;
 void main() {
   group('URL to Tag Conversion |', () {
     test('Main Page', () {
-      final String url = 'https://www.youtube.com/';
+      const String url = 'https://www.youtube.com/';
 
       final String tags = UrlHandler.tags(url);
 
@@ -13,7 +13,7 @@ void main() {
     });
 
     test('Watch Page', () {
-      final String url = 'https://www.youtube.com/watch';
+      const String url = 'https://www.youtube.com/watch';
 
       final String tags = UrlHandler.tags(url);
 
@@ -25,7 +25,7 @@ void main() {
     });
 
     test('Search Results Page', () {
-      final String url = 'https://www.youtube.com/results?search';
+      const String url = 'https://www.youtube.com/results?search';
 
       final String tags = UrlHandler.tags(url);
 
@@ -38,7 +38,7 @@ void main() {
     });
 
     test('Default Page', () {
-      final String url = '';
+      const String url = '';
 
       final String tags = UrlHandler.tags(url);
 
@@ -48,7 +48,7 @@ void main() {
 
   group('Link Handling |', () {
     test('Prefix a link if it has only the ending', () {
-      final String link = '/watch?v=lajd;slf';
+      const String link = '/watch?v=lajd;slf';
 
       final String completeLink = UrlHandler.prefixedLink(link);
 
@@ -59,7 +59,7 @@ void main() {
   group('Link Shortening |', () {
     test('Same link shortening youtube does when you right-click on a video',
         () {
-      final String completeLink = 'https://www.youtube.com/watch?v=code';
+      const String completeLink = 'https://www.youtube.com/watch?v=code';
 
       final String shortenedLink = UrlHandler.shortenLink(completeLink);
 
