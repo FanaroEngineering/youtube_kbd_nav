@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart' show immutable;
 
+/// When an operation of `+` or `-` is made, the new [Cycle] will carry on the
+/// previous [max] value.
 @immutable
 class Cycle {
   final int total, max;

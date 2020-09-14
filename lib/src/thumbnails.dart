@@ -2,8 +2,11 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show required;
 
+import 'cycle.dart';
+
 class Thumbnails {
   List<Element> _thumbnails;
+  Cycle _cycles;
   int _currentIndex;
 
   /// [doc] is a parameter mainly for injecting a [Document] during tests.

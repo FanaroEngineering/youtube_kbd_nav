@@ -1,6 +1,6 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
-import 'cycler.dart' show Cycler;
+import 'cycle.dart' show Cycler;
 import 'thumbnails.dart' show Thumbnails;
 import 'url_handler.dart' show UrlHandler;
 import 'video_buttons.dart' show VideoButtons;
