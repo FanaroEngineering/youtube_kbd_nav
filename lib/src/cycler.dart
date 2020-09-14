@@ -1,12 +1,14 @@
 class Cycler {
-  int _total = -1;
+  static const int _start = -1;
+
+  int _total = _start;
 
   int get total => _total;
 
   void forwards() => _total++;
 
   void backwards() {
-    if (_total > 0) _total--;
+    if (_total > _start) _total--;
   }
 
   @override

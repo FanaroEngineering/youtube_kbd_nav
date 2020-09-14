@@ -20,17 +20,11 @@ void main() {
       expect(cycler.total, 1);
     });
 
-    test('Cannot go back -1', () {
+    test('Cannot go back before -1', () {
+      cycler.backwards();
       cycler.backwards();
 
       expect(cycler.total, -1);
-    });
-
-    test('Cannot go back 0 after having added', () {
-      cycler.forwards();
-      cycler.backwards();
-
-      expect(cycler.total, 0);
     });
 
     test('Going forward 3 times and then backward returns 1', () {
