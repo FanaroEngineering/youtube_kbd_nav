@@ -51,6 +51,16 @@ void main() {
 
       expect(cycles, Cycle(total: 1));
     });
+
+    test('Getter for being in valid range', () {
+      Cycle cycles = Cycle();
+
+      expect(cycles.isValid, false);
+
+      cycles += Cycle();
+
+      expect(cycles.isValid, true);
+    });
   });
 
   group('Printing |', () {

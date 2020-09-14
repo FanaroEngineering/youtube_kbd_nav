@@ -14,6 +14,8 @@ class Cycle {
   Cycle operator -(Cycle cycle) =>
       Cycle(total: total > -1 ? total - 1 : total, max: max);
 
+  bool get isValid => total > -1 && total <= max;
+
   @override
   bool operator ==(Object cycle) => cycle is Cycle && total == cycle.total;
 
