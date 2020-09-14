@@ -5,23 +5,33 @@ import 'package:meta/meta.dart' show required;
 import 'cycle.dart';
 
 class Thumbnails {
-  List<Element> _thumbnails;
+  final List<Element> _thumbnails;
   Cycle _cycles;
-  int _currentIndex;
 
-  /// [doc] is a parameter mainly for injecting a [Document] during tests.
+  /// [doc] is a parameter mainly for injecting a `Document` during tests.
   Thumbnails({@required String tags, Document doc})
-      : _thumbnails = (doc ?? document).querySelectorAll(tags);
+      : _thumbnails = (doc ?? document).querySelectorAll(tags) {
+    _cycles = Cycle(max: _thumbnails.length);
+  }
 
-  void addBorder({@required int index}) {
-    _currentIndex = index;
+  void operator +(Cycle cycle) {
+    _cycles += Cycle();
+    _addBorder();
+  }
+
+  void operator -(Cycle cycle) {
+    _cycles -= Cycle();
+    _addBorder();
+  }
+
+  void _addBorder() {
     _deleteNeighborsStyles();
     _changeCurrentThumbnailStyle();
     _currentThumbnail?.scrollIntoView();
   }
 
   void _deleteNeighborsStyles() {
-    final List<int> neighborsIndices = [_currentIndex - 1, _currentIndex + 1];
+    final List<int> neighborsIndices = [_cycles.total - 1, _cycles.total + 1];
 
     neighborsIndices.forEach((int neighborIndex) {
       if (_neighborIndexValidRange(neighborIndex))
@@ -30,23 +40,17 @@ class Thumbnails {
   }
 
   bool _neighborIndexValidRange(int neighborIndex) =>
-      neighborIndex >= 0 && neighborIndex < _thumbnails.length;
+      neighborIndex >= 0 && neighborIndex < _cycles.max;
 
   void _changeCurrentThumbnailStyle() {
-    if (_currentIndex >= 0 && _currentIndex < _thumbnails.length) {
-      _currentThumbnail.style.outline = 'red solid';
-      _currentThumbnail.style.outlineOffset = '-1px';
-    }
+    _currentThumbnail.style.outline = 'red solid';
+    _currentThumbnail.style.outlineOffset = '-1px';
   }
 
-  Element get _currentThumbnail => (_currentIndex != null && _currentIndex >= 0)
-      ? _thumbnails[_currentIndex]
-      : null;
+  Element get _currentThumbnail => _thumbnails[_cycles.total];
 
-  void resetCurrentThumbnail() {
-    _currentThumbnail?.attributes?.remove('style');
-    _currentIndex = null;
-  }
+  void resetCurrentThumbnail() =>
+      _currentThumbnail?.attributes?.remove('style');
 
   String get thumbnailLink {
     final AnchorElement thumbnailLinkElement =
@@ -64,6 +68,4 @@ class Thumbnails {
                 : null;
     return channelLinkElement?.href;
   }
-
-  int get length => _thumbnails.length;
 }
