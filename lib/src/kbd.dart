@@ -101,7 +101,7 @@ class Kbd {
     _thumbnails + Cycle();
   }
 
-  // The thumnails need to be created because their HTML won't be fully loaded 
+  // The thumnails need to be created because their HTML won't be fully loaded
   // when `yt-navigate-start` occurs, and more might be loaded later on.
   void _resetThumbnailsWithPreviousCycles() => _thumbnails =
       Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
