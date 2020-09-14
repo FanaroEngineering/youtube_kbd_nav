@@ -23,5 +23,5 @@ class Cycle {
   int get hashCode => total.hashCode;
 
   @override
-  String toString() => 'Cycle: total: $total, max: $max';
+  String toString() => 'Cycle | total: $total | max: $max';
 }
