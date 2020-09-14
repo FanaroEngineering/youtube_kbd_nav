@@ -72,7 +72,6 @@ enum ChangesOnClick {
   like,
   dislike,
   notificationPopUp,
-  channel,
 }
 
 const String buttonsHtmlAsString = '''
