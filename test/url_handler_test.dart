@@ -42,7 +42,7 @@ void main() {
 
       final String tags = UrlHandler.tags(url);
 
-      expect(tags, 'p');
+      expect(tags, 'ytd-rich-item-renderer');
     });
   });
 
