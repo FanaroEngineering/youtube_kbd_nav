@@ -38,33 +38,35 @@ void main() {
     expect(thumbnail1Style, expectedThumbnailStyling);
   });
 
-  // test('Resetting the current thumbnail\'s style', () {
-  //   thumbnails.addBorder(index: 1);
+  test('Resetting the current thumbnail\'s style', () {
+    thumbnails + Cycle();
+    thumbnails + Cycle();
 
-  //   final String thumbnailStyleBefore =
-  //       document.querySelectorAll(mainTag)[1].attributes['style'];
+    final String thumbnailStyleBefore =
+        document.querySelectorAll(mainTag)[1].attributes['style'];
 
-  //   expect(thumbnailStyleBefore, expectedThumbnailStyling);
+    expect(thumbnailStyleBefore, expectedThumbnailStyling);
 
-  //   thumbnails.resetCurrentThumbnail();
+    thumbnails.resetCurrentThumbnail();
 
-  //   final String thumbnailStyleAfter =
-  //       document.querySelectorAll(mainTag)[1].attributes['style'];
+    final String thumbnailStyleAfter =
+        document.querySelectorAll(mainTag)[1].attributes['style'];
 
-  //   expect(thumbnailStyleAfter, isNull);
-  // });
+    expect(thumbnailStyleAfter, isNull);
+  });
 
-  // test('Extracting the link from the thumbnail', () {
-  //   thumbnails.addBorder(index: 1);
+  test('Extracting the link from the thumbnail', () {
+    thumbnails + Cycle();
+    thumbnails + Cycle();
 
-  //   expect(thumbnails.thumbnailLink, contains('/watch?v=qwerty'));
-  // });
+    expect(thumbnails.thumbnailLink, contains('/watch?v=qwerty'));
+  });
 
-  // test('Extracting the channel\'s link from the thumbnail', () {
-  //   thumbnails.addBorder(index: 0);
+  test('Extracting the channel\'s link from the thumbnail', () {
+    thumbnails + Cycle();
 
-  //   expect(thumbnails.channelLink, contains('/c/dummyChannel1'));
-  // });
+    expect(thumbnails.channelLink, contains('/c/dummyChannel1'));
+  });
 }
 
 const String thumbnailsHtmlAsString = '''
