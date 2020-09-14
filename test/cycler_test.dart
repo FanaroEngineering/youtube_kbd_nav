@@ -1,47 +1,60 @@
-import 'package:test/test.dart' show expect, group, setUp, test;
+import 'package:test/test.dart' show expect, group, test;
 
-import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycler;
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Cycle;
 
 void main() {
   group('Logic |', () {
-    Cycler cycler;
+    test('Index starts at -1', () => expect(Cycle().total, -1));
 
-    setUp(() => cycler = Cycler());
+    test('Going forwards', () {
+      Cycle cycles = Cycle() + Cycle();
 
-    test('Index starts at -1', () => expect(cycler.total, -1));
-
-    test('Going forward adds to the index', () {
-      cycler.forwards();
-
-      expect(cycler.total, 0);
-
-      cycler.forwards();
-
-      expect(cycler.total, 1);
+      expect(cycles, Cycle(total: 0));
     });
 
-    test('Cannot go back before -1', () {
-      cycler.backwards();
-      cycler.backwards();
+    test('Going forwards beyond max keeps it in the max', () {
+      Cycle cycles = Cycle(max: 1);
 
-      expect(cycler.total, -1);
+      cycles += Cycle();
+      cycles += Cycle();
+      cycles += Cycle();
+
+      expect(cycles, Cycle(total: 1));
     });
 
-    test('Going forward 3 times and then backward returns 1', () {
-      cycler.forwards();
-      cycler.forwards();
-      cycler.forwards();
-      cycler.backwards();
+    test('Cannot go before -1', () {
+      Cycle cycles = Cycle();
 
-      expect(cycler.total, 1);
+      cycles -= Cycle();
+
+      expect(cycles, Cycle());
+    });
+
+    test('Cannot go before -1 even after having added cycles', () {
+      Cycle cycles = Cycle();
+
+      cycles += Cycle();
+      cycles -= Cycle();
+      cycles -= Cycle();
+      cycles -= Cycle();
+
+      expect(cycles, Cycle());
+    });
+
+    test('Going forwards 3 times and then backwards once returns 1', () {
+      Cycle cycles = Cycle();
+
+      cycles += Cycle();
+      cycles += Cycle();
+      cycles += Cycle();
+      cycles -= Cycle();
+
+      expect(cycles, Cycle(total: 1));
     });
   });
 
   group('Printing |', () {
-    test('`toString`', () {
-      final Cycler cycler = Cycler();
-
-      expect(cycler.toString(), 'Cycler: ${cycler.total}');
-    });
+    test('`toString`',
+        () => expect(Cycle().toString(), 'Cycle: total: -1, max: 10000'));
   });
 }

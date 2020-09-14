@@ -1,16 +1,23 @@
-class Cycler {
-  static const int _start = -1;
+import 'package:meta/meta.dart' show immutable;
 
-  int _total = _start;
+@immutable
+class Cycle {
+  final int total, max;
 
-  int get total => _total;
+  const Cycle({this.total = -1, this.max = 10000});
 
-  void forwards() => _total++;
+  Cycle operator +(Cycle cycle) =>
+      Cycle(total: total < max ? total + 1 : total, max: max);
 
-  void backwards() {
-    if (_total > _start) _total--;
-  }
+  Cycle operator -(Cycle cycle) =>
+      Cycle(total: total > -1 ? total - 1 : total, max: max);
 
   @override
-  String toString() => 'Cycler: $_total';
+  bool operator ==(Object cycle) => cycle is Cycle && total == cycle.total;
+
+  @override
+  int get hashCode => total.hashCode;
+
+  @override
+  String toString() => 'Cycle: total: $total, max: $max';
 }
