@@ -9,13 +9,16 @@ class Thumbnails {
   Cycle _cycles;
 
   /// [doc] is a parameter mainly for injecting a `Document` during tests.
-  Thumbnails({@required String tags, Document doc})
+  Thumbnails({@required String tags, Cycle cycles, Document doc})
       : _thumbnails = (doc ?? document).querySelectorAll(tags) {
-    _cycles = Cycle(max: _thumbnails.length);
+    _cycles = cycles ?? Cycle(max: _thumbnails.length);
   }
+
+  Cycle get cycles => _cycles;
 
   void operator +(Cycle cycle) {
     _cycles += Cycle();
+    print(_cycles.total);
     _addBorder();
   }
 
