@@ -97,16 +97,17 @@ class Kbd {
   bool get _isVideo => _url.contains('watch');
 
   void _thumbnailForwards() {
-    // The thumnails need to be created here because their HTML won't be fully
-    // loaded when `yt-navigate-start` occurs.
-    _thumbnails =
-        Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
+    _resetThumbnailsWithPreviousCycles();
     _thumbnails + Cycle();
   }
 
+  // The thumnails need to be created because their HTML won't be fully loaded 
+  // when `yt-navigate-start` occurs, and more might be loaded later on.
+  void _resetThumbnailsWithPreviousCycles() => _thumbnails =
+      Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
+
   void _thumbnailBackwards() {
-    _thumbnails =
-        Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
+    _resetThumbnailsWithPreviousCycles();
     _thumbnails - Cycle();
   }
 
