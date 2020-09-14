@@ -23,9 +23,9 @@ class UrlHandler {
           ? _historyTags
           : url.contains('results')
               ? _resultsTags
-              : url.contains(RegExp('c|channel|user'))
+              : url.contains(RegExp('/c|/channel|/user'))
                   ? _channelTags
-                  : url.contains('youtube') ? _homeTags : 'p';
+                  : _homeTags;
 
   static String prefixedLink(String url) =>
       url.startsWith('https://') ? url : youtubeHome + url;
