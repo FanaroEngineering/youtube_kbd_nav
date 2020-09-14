@@ -99,19 +99,21 @@ class Kbd {
   void _thumbnailForwards() {
     // The thumnails need to be created here because their HTML won't be fully
     // loaded when `yt-navigate-start` occurs.
-    _thumbnails = Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
+    _thumbnails =
+        Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
     _thumbnails + Cycle();
   }
 
   void _thumbnailBackwards() {
-    _thumbnails = Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
+    _thumbnails =
+        Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
     _thumbnails - Cycle();
   }
 
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);
 
   void _navigateThumbnailLink() {
-    if (_thumbnails.cycles.total >= 0) _navigate(_thumbnails?.thumbnailLink);
+    if (_thumbnails.validCycle) _navigate(_thumbnails?.thumbnailLink);
   }
 
   void _navigate(String url) {
@@ -150,7 +152,8 @@ class Kbd {
   }
 
   void _navigateToChannel() {
-    if (!_isVideo && _thumbnails.cycles.total >= 0) _navigate(_thumbnails?.channelLink);
+    if (!_isVideo && _thumbnails.validCycle)
+      _navigate(_thumbnails?.channelLink);
   }
 
   void _navigateToVideoChannel() {

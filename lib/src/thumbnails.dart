@@ -2,7 +2,7 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show required;
 
-import 'cycle.dart';
+import 'cycle.dart' show Cycle;
 
 class Thumbnails {
   final List<Element> _thumbnails;
@@ -11,14 +11,17 @@ class Thumbnails {
   /// [doc] is a parameter mainly for injecting a `Document` during tests.
   Thumbnails({@required String tags, Cycle cycles, Document doc})
       : _thumbnails = (doc ?? document).querySelectorAll(tags) {
-    _cycles = cycles ?? Cycle(max: _thumbnails.length);
+    _cycles = cycles != null
+        ? Cycle(total: cycles.total, max: _thumbnails.length)
+        : Cycle(max: _thumbnails.length);
   }
+
+  bool get validCycle => _cycles.isValid;
 
   Cycle get cycles => _cycles;
 
   void operator +(Cycle cycle) {
     _cycles += Cycle();
-    print(_cycles.total);
     _addBorder();
   }
 
@@ -29,8 +32,10 @@ class Thumbnails {
 
   void _addBorder() {
     _deleteNeighborsStyles();
-    _changeCurrentThumbnailStyle();
-    _currentThumbnail?.scrollIntoView();
+    if (_cycles.isValid) {
+      _changeCurrentThumbnailStyle();
+      _currentThumbnail?.scrollIntoView();
+    }
   }
 
   void _deleteNeighborsStyles() {
