@@ -1,21 +1,20 @@
 class UrlHandler {
-  static const String youtubeHome = 'https://www.youtube.com';
-  static const String history = 'https://www.youtube.com/feed/history';
-
-  static const String _watchTags = 'ytd-compact-video-renderer, '
-      'ytd-compact-radio-renderer, '
-      'ytd-compact-playlist-renderer';
-  static const String _historyTags = 'ytd-video-renderer';
-  static const String _resultsTags = 'ytd-video-renderer, '
-      'ytd-radio-renderer, '
-      'ytd-playlist-renderer, '
-      'ytd-channel-renderer';
-  static const String _homeTags = 'ytd-rich-item-renderer';
-  static const String _channelTags = 'ytd-video-renderer, '
-      'ytd-grid-video-renderer, '
-      'ytd-channel-video-renderer, '
-      'ytd-playlist-renderer, '
-      'ytd-grid-channel-renderer';
+  static const String youtubeHome = 'https://www.youtube.com',
+      history = 'https://www.youtube.com/feed/history',
+      _watchTags = 'ytd-compact-video-renderer, '
+          'ytd-compact-radio-renderer, '
+          'ytd-compact-playlist-renderer',
+      _historyTags = 'ytd-video-renderer',
+      _resultsTags = 'ytd-video-renderer, '
+          'ytd-radio-renderer, '
+          'ytd-playlist-renderer, '
+          'ytd-channel-renderer',
+      _homeTags = 'ytd-rich-item-renderer',
+      _channelTags = 'ytd-video-renderer, '
+          'ytd-grid-video-renderer, '
+          'ytd-channel-video-renderer, '
+          'ytd-playlist-renderer, '
+          'ytd-grid-channel-renderer';
 
   static String tags(String url) => url.contains('watch')
       ? _watchTags

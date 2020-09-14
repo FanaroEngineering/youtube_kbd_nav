@@ -5,13 +5,11 @@ import 'package:test/test.dart' show contains, expect, isNull, setUp, test;
 import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show Thumbnails;
 
 void main() {
-  const String mainTag = 'ytd-rich-item-renderer';
+  const String mainTag = 'ytd-rich-item-renderer',
+      expectedThumbnailStyling = 'outline: red solid; outline-offset: -1px;';
 
   final Document document =
       DomParser().parseFromString(thumbnailsHtmlAsString, 'text/html');
-
-  const String expectedThumbnailStyling =
-      'outline: red solid; outline-offset: -1px;';
 
   Thumbnails thumbnails;
 
@@ -32,8 +30,8 @@ void main() {
     thumbnails.addBorder(index: 1);
 
     final List<Element> thumbnailElements = document.querySelectorAll(mainTag);
-    final String thumbnail0Style = thumbnailElements[0].attributes['style'];
-    final String thumbnail1Style = thumbnailElements[1].attributes['style'];
+    final String thumbnail0Style = thumbnailElements[0].attributes['style'],
+        thumbnail1Style = thumbnailElements[1].attributes['style'];
 
     expect(thumbnail0Style, isNull);
     expect(thumbnail1Style, expectedThumbnailStyling);
