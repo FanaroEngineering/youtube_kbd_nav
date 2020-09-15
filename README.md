@@ -5,9 +5,11 @@
 [![CodeFactor][codefactor_badge]][codefactor_repo]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
+[![GIF][gif]][gif]
 
 [codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
 [codefactor_repo]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master
+[gif]: assets/demo.gif
 [gitter_svg]: https://badges.gitter.im/youtube_kbd_nav/community.svg
 [gitter_community]: https://gitter.im/youtube_kbd_nav/community
 [gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
