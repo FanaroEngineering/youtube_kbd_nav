@@ -12,7 +12,7 @@
 | Previous Frame (while paused)                                    | <kbd>,</kbd>                                   |
 | Next frame (while paused)                                        | <kbd>.</kbd>                                   |
 | Decrease playback rate                                           | <kbd><</kbd> (<kbd>Shift</kbd> + <kbd>,</kbd>) |
-| Increase playback rate                                           | <kbd>.</kbd> (<kbd>Shift</kbd> + <kbd>.</kbd>) |
+| Increase playback rate                                           | <kbd>></kbd> (<kbd>Shift</kbd> + <kbd>.</kbd>) |
 | Seek to specific point in the video (7 advances to 70% duration) | <kbd>0</kbd>...<kbd>9</kbd>                    |
 
 ## 2. General
