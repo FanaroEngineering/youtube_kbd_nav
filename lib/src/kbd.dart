@@ -114,7 +114,8 @@ class Kbd {
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);
 
   void _navigateThumbnailLink() {
-    if (_thumbnails.validCycle) _navigate(_thumbnails?.thumbnailLink);
+    if (_thumbnails.thumbnailLink != null)
+      _navigate(_thumbnails?.thumbnailLink);
   }
 
   void _navigate(String url) {
@@ -153,7 +154,7 @@ class Kbd {
   }
 
   void _navigateToChannel() {
-    if (!_isVideo && _thumbnails.validCycle)
+    if (!_isVideo && _thumbnails.channelLink != null)
       _navigate(_thumbnails?.channelLink);
   }
 

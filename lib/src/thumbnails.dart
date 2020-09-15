@@ -16,8 +16,6 @@ class Thumbnails {
         : Cycle(max: _thumbnails.length);
   }
 
-  bool get validCycle => _cycles.isValid;
-
   Cycle get cycles => _cycles;
 
   void operator +(Cycle cycle) {
@@ -60,20 +58,22 @@ class Thumbnails {
   void resetCurrentThumbnail() =>
       _currentThumbnail?.attributes?.remove('style');
 
-  String get thumbnailLink {
-    final AnchorElement thumbnailLinkElement =
-        _currentThumbnail?.querySelector('a');
-    return thumbnailLinkElement?.href;
-  }
+  String get thumbnailLink => _cycles.isValid
+      ? (_currentThumbnail?.querySelector('a') as AnchorElement)?.href
+      : null;
 
   String get channelLink {
-    final String thumbnailTagName = _currentThumbnail.tagName.toLowerCase();
-    final AnchorElement channelLinkElement =
-        thumbnailTagName.contains(RegExp('video|rich'))
-            ? _currentThumbnail?.querySelectorAll('a')?.last
-            : thumbnailTagName.contains('playlist')
-                ? _currentThumbnail?.querySelectorAll('a')[2]
-                : null;
-    return channelLinkElement?.href;
+    if (_cycles.isValid) {
+      final String thumbnailTagName = _currentThumbnail.tagName.toLowerCase();
+      final AnchorElement channelLinkElement =
+          thumbnailTagName.contains(RegExp('video|rich'))
+              ? _currentThumbnail?.querySelectorAll('a')?.last
+              : thumbnailTagName.contains('playlist')
+                  ? _currentThumbnail?.querySelectorAll('a')[2]
+                  : null;
+      return channelLinkElement?.href;
+    } else {
+      return null;
+    }
   }
 }
