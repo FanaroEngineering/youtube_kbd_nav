@@ -1,82 +1,92 @@
 @startuml youtube_kbd_nav
 set namespaceSeparator ::
 
-class "youtube_kbd_nav::src::cycler.dart::Cycler" {
-  -int _total
+class "youtube_kbd_nav::src::cycle.dart::Cycle" {
   +int total
-  +void forwards()
-  +void backwards()
+  +int max
+  +bool isValid
+  +int hashCode
+  +Cycle +()
+  +Cycle -()
+  +bool ==()
   +String toString()
 }
 
 class "youtube_kbd_nav::src::kbd.dart::Kbd" {
-  -Cycler _cycler
   -String _url
-  -Ui _ui
+  -Thumbnails _thumbnails
+  -VideoButtons _videoButtons
   -KeyboardEvent _keyboardEvent
-  -Element _searchBar
-  -Element _commentBox
-  -Element _editCommentBox
-  -String _commentBoxQuery
   -bool _noInputFocus
   -bool _isVideo
-  +void resetStylesAndCycler()
-  -Future _onKeyDown()
-  -void _resetCyclerIfUrlChange()
+  -void _resetStylesAndCyclerAndUrl()
+  -void _deactivateFilterButton()
   -Future _keySwitch()
-  -void _addBorder()
+  -void _thumbnailForwards()
+  -void _resetThumbnailsWithPreviousCycles()
+  -void _thumbnailBackwards()
+  -void _navigateHome()
+  -void _navigateThumbnailLink()
   -void _navigate()
+  -void _navigateHistory()
+  -void _subscribe()
+  -void _like()
+  -void _dislike()
+  -void _notificationPopUp()
+  -Future _copyVideoUrl()
+  -void _commentBoxFocus()
+  -void _navigateToChannel()
+  -void _navigateToVideoChannel()
 }
 
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::ui.dart::Ui"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::thumbnails.dart::Thumbnails"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::video_buttons.dart::VideoButtons"
 "youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::KeyboardEvent"
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::Element"
 
-class "youtube_kbd_nav::src::kbd_handler.dart::Kbd" {
-  -Cycler _cycler
-  -String _url
-  -Ui _ui
-  -bool _inputFocus
-  -bool _isVideo
-  +Future onKeyPress()
-  +void resetStylesAndCycler()
-  -Future _keySwitch()
-  -void _resetCyclerIfUrlChange()
-  -void _addBorder()
-}
-
-"youtube_kbd_nav::src::kbd_handler.dart::Kbd" o-- "youtube_kbd_nav::src::cycler.dart::Cycler"
-"youtube_kbd_nav::src::kbd_handler.dart::Kbd" o-- "youtube_kbd_nav::src::ui.dart::Ui"
-
-class "youtube_kbd_nav::src::ui.dart::Ui" {
-  -List<Element> _elements
-  -int _currentIndex
-  {static} -String _subscribeButton
-  {static} -String _likeDislikeButtons
-  {static} -String _notificationPopUpButton
+class "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" {
+  -List<Element> _thumbnails
+  -Cycle _cycles
+  +Cycle cycles
   -Element _currentThumbnail
   +String thumbnailLink
-  +void addBorder()
-  +void resetCurrentThumbnail()
-  -void _changeCurrentThumbnailStyle()
+  +String channelLink
+  +void +()
+  +void -()
+  -void _addBorder()
   -void _deleteNeighborsStyles()
-  -bool _neighborIndexInValidRange()
-  +void subscribe()
-  +void like()
-  +void dislike()
-  +void notiticationPopUp()
+  -bool _neighborIndexValidRange()
+  -void _changeCurrentThumbnailStyle()
+  +void resetCurrentThumbnail()
 }
 
-"youtube_kbd_nav::src::ui.dart::Ui" o-- "dart::html::Element"
+"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "youtube_kbd_nav::src::cycle.dart::Cycle"
+"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "dart::html::Element"
 
 class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
   {static} +String youtubeHome
   {static} +String history
+  {static} -String _watchTags
+  {static} -String _historyTags
+  {static} -String _resultsTags
+  {static} -String _homeTags
+  {static} -String _channelTags
   {static} +String tags()
   {static} +String prefixedLink()
   {static} +String shortenLink()
 }
+
+class "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" {
+  -Document _document
+  {static} -String _likeDislikeButtonsQuery
+  +String channelLink
+  +void subscribe()
+  +void like()
+  +void dislike()
+  +void notiticationPopUp()
+  +void commentBoxFocus()
+}
+
+"youtube_kbd_nav::src::video_buttons.dart::VideoButtons" o-- "dart::html::Document"
 
 
 @enduml
