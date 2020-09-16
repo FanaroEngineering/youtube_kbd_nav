@@ -1,4 +1,4 @@
-name: Dart CI
+name: Dart || Tests | Formatting | Analyzer
 
 on:
   push:
@@ -29,11 +29,11 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install dependencies
         run: PATH="$PATH:/usr/lib/dart/bin" pub get
+      - name: Run Tests
+        run: PATH="$PATH:/usr/lib/dart/bin" pub run test
       - name: Dart Formatter
         run: PATH="$PATH:/usr/lib/dart/bin" dartfmt -n --set-exit-if-changed .
         if: always()
       - name: Dart Analyzer
         run: PATH="$PATH:/usr/lib/dart/bin" dartanalyzer --fatal-infos --fatal-warnings .
         if: always()
-      - name: Run Tests
-        run: PATH="$PATH:/usr/lib/dart/bin" pub run test
