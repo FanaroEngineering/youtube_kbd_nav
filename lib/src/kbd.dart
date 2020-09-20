@@ -87,8 +87,11 @@ class Kbd {
         case ';':
           _navigateToChannel();
           break;
-        case '\\':
+        case '=':
           _navigateToVideoChannel();
+          break;
+        case '\\':
+          _togglePlayerFocus();
           break;
       }
     }
@@ -160,5 +163,12 @@ class Kbd {
 
   void _navigateToVideoChannel() {
     if (_isVideo) _navigate(_videoButtons?.channelLink);
+  }
+
+  void _togglePlayerFocus() {
+    final Element player = document.querySelector('#movie_player');
+    document.activeElement.id == 'movie_player'
+        ? player.blur()
+        : player.focus();
   }
 }

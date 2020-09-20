@@ -1,6 +1,7 @@
 import 'dart:html' show Document, DomParser, Element;
 
-import 'package:test/test.dart' show contains, expect, setUp, test;
+import 'package:test/test.dart'
+    show contains, expect, isFalse, isTrue, setUp, test;
 
 import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
 

@@ -94,8 +94,9 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>Ctrl</kbd> + <kbd>m</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>        |
 | <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>               |
 | <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>  |
-| <kbd>\\</kbd>                      | Go to the video's channel<sup>2</sup>              |
-| <kbd>Ctrl</kbd> + <kbd>\\</kbd>    | Go to the video's channel on a new tab<sup>2</sup> |
+| <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>              |
+| <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup> |
+| <kbd>\\</kbd>                      | Toggle the video player's focus                    |
 
 
 <sub>1: Only works when signed-in and on a video page.</sub> \
