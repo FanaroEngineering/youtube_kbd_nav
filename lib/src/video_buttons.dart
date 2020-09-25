@@ -40,10 +40,14 @@ class VideoButtons {
   /// This has not been incorporated via TDD. (Couldn't make it work with
   /// `focus()` this time.)
   void commentBoxFocus() {
+    final List<Element> commentBoxes = _document
+        .querySelectorAll('#simplebox-placeholder, div.yt-formatted-string');
     final Element commentBox =
-        _document.getElementById('simplebox-placeholder');
-    commentBox?.focus();
-    commentBox.scrollIntoView();
+        commentBoxes.length == 1 ? commentBoxes.first : commentBoxes.last;
+    commentBox == document.activeElement
+        ? commentBox?.blur() // currently not working...
+        : commentBox?.focus();
+    commentBox?.scrollIntoView();
   }
 
   String get channelLink {

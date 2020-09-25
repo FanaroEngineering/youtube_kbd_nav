@@ -81,7 +81,7 @@ class Kbd {
         case 'b':
           await _copyVideoUrl();
           break;
-        case 'm':
+        case '[':
           _commentBoxFocus();
           break;
         case ';':

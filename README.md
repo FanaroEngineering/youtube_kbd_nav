@@ -91,7 +91,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                      |
 | <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>  |
 | <kbd>y</kbd>                       | Opens the notification pop-up                      |
-| <kbd>Ctrl</kbd> + <kbd>m</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>        |
+| <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>        |
 | <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>               |
 | <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>  |
 | <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>              |
