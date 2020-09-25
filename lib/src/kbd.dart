@@ -167,8 +167,16 @@ class Kbd {
 
   void _togglePlayerFocus() {
     final Element player = document.querySelector('#movie_player');
-    document.activeElement.id == 'movie_player'
-        ? player.blur()
-        : player.focus();
+    if (player != null) {
+      if (document.activeElement == player) {
+        player.blur();
+        player.removeAttribute('style');
+      } else {
+        player.focus();
+        player.scrollIntoView();
+        player.style.borderBottom = 'red solid';
+        player.style.borderWidth = '0.5px';
+      }
+    }
   }
 }
