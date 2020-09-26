@@ -2,7 +2,6 @@
 
 <!-- [![Release Version][github_latest_release]][github_latest_release] -->
 [![Downloads][github_downloads]][github_releases]
-
 [![Gitter][gitter_svg]][gitter_badge]
 [![Dart || Tests | Formatting | Analyzer][github_ci_badge]][github_workflow]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
