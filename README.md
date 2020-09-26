@@ -4,7 +4,7 @@
 [![Downloads][github_downloads]][github_releases]
 
 [![Gitter][gitter_svg]][gitter_badge]
-![Dart || Tests | Formatting | Analyzer][github_ci_badge]
+[![Dart || Tests | Formatting | Analyzer][github_ci_badge]][github_workflow]
 [![CodeFactor][codefactor_badge]][codefactor_repo]
 [![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
 
@@ -18,6 +18,7 @@
 [github_downloads]: https://img.shields.io/github/downloads/FanaroEngineering/youtube_kbd_nav/total.svg
 [github_latest_release]: https://img.shields.io/release/FanaroEngineering/youtube_kbd_nav.svg
 [github_releases]: https://github.com/FanaroEngineering/youtube_kbd_nav/releases
+[github_workflow]: https://github.com/FanaroEngineering/youtube_kbd_nav/actions
 [gitter_svg]: https://badges.gitter.im/youtube_kbd_nav/community.svg
 [gitter_community]: https://gitter.im/youtube_kbd_nav/community
 [gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
