@@ -67,6 +67,6 @@ void main() {
     test(
         '`toString`',
         () =>
-            expect(const Cycle().toString(), 'Cycle | total: -1 | max: 10000'));
+            expect(const Cycle().toString(), 'Cycle | total: -1 | max: 100'));
   });
 }

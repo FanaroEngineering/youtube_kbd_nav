@@ -5,27 +5,38 @@ import 'package:meta/meta.dart' show required;
 import 'cycle.dart' show Cycle;
 
 class Thumbnails {
+  final String _tags;
   final List<Element> _thumbnails;
-  Cycle _cycles;
+  final Document _document;
+  final Cycle _cycles;
 
   /// [doc] is a parameter mainly for injecting a `Document` during tests.
-  Thumbnails({@required String tags, Cycle cycles, Document doc})
-      : _thumbnails = (doc ?? document).querySelectorAll(tags) {
-    _cycles = cycles != null
-        ? Cycle(total: cycles.total, max: _thumbnails.length)
-        : Cycle(max: _thumbnails.length);
-  }
+  Thumbnails({@required tags, Cycle cycles, Document doc})
+      : _tags = tags,
+        _document = doc ?? document,
+        _thumbnails = (doc ?? document).querySelectorAll(tags),
+        _cycles = cycles ?? Cycle();
 
   Cycle get cycles => _cycles;
 
-  void operator +(Cycle cycle) {
-    _cycles += const Cycle();
-    _addBorder();
+  Thumbnails operator +(Cycle cycle) {
+    final Cycle newCycles = _cycles + const Cycle();
+    return _resetThumbnails(newCycles);
   }
 
-  void operator -(Cycle cycle) {
-    _cycles -= const Cycle();
-    _addBorder();
+  Thumbnails _resetThumbnails(Cycle newCycles) {
+    final Thumbnails newThumbnails = Thumbnails(
+      tags: _tags,
+      cycles: Cycle(total: newCycles.total, max: _thumbnails.length),
+      doc: _document,
+    );
+    newThumbnails._addBorder();
+    return newThumbnails;
+  }
+
+  Thumbnails operator -(Cycle cycle) {
+    final Cycle newCycles = _cycles - const Cycle();
+    return _resetThumbnails(newCycles);
   }
 
   void _addBorder() {

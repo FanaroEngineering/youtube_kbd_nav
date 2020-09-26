@@ -6,7 +6,7 @@ import 'package:meta/meta.dart' show immutable;
 class Cycle {
   final int total, max;
 
-  const Cycle({this.total = -1, this.max = 10000});
+  const Cycle({this.total = -1, this.max = 100});
 
   Cycle operator +(Cycle cycle) =>
       Cycle(total: total < max ? total + 1 : total, max: max);
