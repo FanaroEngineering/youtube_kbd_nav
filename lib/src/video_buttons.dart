@@ -2,19 +2,20 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show immutable;
 
+import 'annotations.dart' show VisibleForTesting;
+
 enum DescriptionState { showMore, showLess }
 
 @immutable
 class VideoButtons {
-  final Document _document;
   final DescriptionState _descriptionState;
+  final Document _document;
 
-  /// [doc] is a parameter mainly for injecting a [Document] during tests.
   VideoButtons({
-    Document doc,
     DescriptionState descriptionState = DescriptionState.showLess,
-  })  : _document = doc ?? document,
-        _descriptionState = descriptionState;
+    @VisibleForTesting.document() Document doc,
+  })  : _descriptionState = descriptionState,
+        _document = doc ?? document;
 
   void subscribe() {
     const String subscribeQuery = '#subscribe-button.style-scope > '

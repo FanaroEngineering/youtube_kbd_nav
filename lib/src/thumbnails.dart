@@ -2,6 +2,7 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show immutable, required;
 
+import 'annotations.dart' show VisibleForTesting;
 import 'cycle.dart' show Cycle;
 
 @immutable
@@ -11,9 +12,11 @@ class Thumbnails {
   final Document _document;
   final Cycle _cycles;
 
-  /// [doc] is a parameter mainly for injecting a `Document` during tests.
-  Thumbnails({@required tags, Cycle cycles, Document doc})
-      : _tags = tags,
+  Thumbnails({
+    @required tags,
+    Cycle cycles,
+    @VisibleForTesting.document() Document doc,
+  })  : _tags = tags,
         _document = doc ?? document,
         _thumbnails = (doc ?? document).querySelectorAll(tags),
         _cycles = cycles ?? Cycle();
