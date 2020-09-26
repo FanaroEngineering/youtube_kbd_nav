@@ -19,13 +19,13 @@ class Kbd {
     window.addEventListener('yt-navigate-start', (_) => _completeReset());
     document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
       _keyboardEvent = keyboardEvent;
-      _keySwitch();
+      _deactivateFilterButtonIfSearchPage();
+      if (_noInputFocus) _keySwitch();
     });
   }
 
   void _completeReset() {
     _resetStylesAndCyclerAndUrl();
-    _deactivateFilterButton();
     if (_isVideo) {
       _decorateFocusedPlayer();
       _listenForOtherPlayerFocusEvents();
@@ -58,7 +58,7 @@ class Kbd {
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
   }
 
-  void _deactivateFilterButton() {
+  void _deactivateFilterButtonIfSearchPage() {
     if (_url.contains('results')) document.activeElement.blur();
   }
 
@@ -77,54 +77,52 @@ class Kbd {
   }
 
   Future<void> _keySwitch() async {
-    if (_noInputFocus) {
-      switch (_keyboardEvent.key) {
-        case 'z':
-          _thumbnailForwards();
-          break;
-        case 'x':
-          _thumbnailBackwards();
-          break;
-        case 'q':
-          _navigateHome();
-          break;
-        case 'Enter':
-          _navigateThumbnailLink();
-          break;
-        case 'h':
-          _navigateHistory();
-          break;
-        case 'e':
-          _subscribe();
-          break;
-        case 'v':
-          _like();
-          break;
-        case 'n':
-          _dislike();
-          break;
-        case 'y':
-          _notificationPopUp();
-          break;
-        case 'b':
-          await _copyVideoUrl();
-          break;
-        case '[':
-          _commentBoxFocus();
-          break;
-        case ']':
-          _toggleDescription();
-          break;
-        case ';':
-          _navigateToChannel();
-          break;
-        case '=':
-          _navigateToVideoChannel();
-          break;
-        case '\\':
-          _togglePlayerFocus();
-          break;
-      }
+    switch (_keyboardEvent.key) {
+      case 'z':
+        _thumbnailForwards();
+        break;
+      case 'x':
+        _thumbnailBackwards();
+        break;
+      case 'q':
+        _navigateHome();
+        break;
+      case 'Enter':
+        _navigateThumbnailLink();
+        break;
+      case 'h':
+        _navigateHistory();
+        break;
+      case 'e':
+        _subscribe();
+        break;
+      case 'v':
+        _like();
+        break;
+      case 'n':
+        _dislike();
+        break;
+      case 'y':
+        _notificationPopUp();
+        break;
+      case 'b':
+        await _copyVideoUrl();
+        break;
+      case '[':
+        _commentBoxFocus();
+        break;
+      case ']':
+        _toggleDescription();
+        break;
+      case ';':
+        _navigateToChannel();
+        break;
+      case '=':
+        _navigateToVideoChannel();
+        break;
+      case '\\':
+        _togglePlayerFocus();
+        break;
     }
   }
 
