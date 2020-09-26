@@ -1,7 +1,7 @@
 import 'dart:html' show Document, DomParser, Element;
 
 import 'package:test/test.dart'
-    show contains, expect, isFalse, isTrue, setUp, test;
+    show contains, expect, group, setUp, test;
 
 import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
 
@@ -66,6 +66,25 @@ void main() {
 
   test('Channel Button',
       () => expect(videoButtons.channelLink, contains('/c/dummyChannel')));
+
+  group('Show More |', () {
+    test('Show More of the Description', () {
+      ChangesOnClick changesOnShowMore;
+
+      final Element showMoreButton = document.querySelector('#more');
+
+      showMoreButton.onClick
+          .listen((_) => changesOnShowMore = ChangesOnClick.showMore);
+
+      videoButtons.showMore();
+
+      expect(changesOnShowMore, ChangesOnClick.showMore);
+    });
+
+    test('Show less of the description', () {
+      
+    });
+  });
 }
 
 enum ChangesOnClick {
@@ -73,6 +92,8 @@ enum ChangesOnClick {
   like,
   dislike,
   notificationPopUp,
+  showMore,
+  showLess,
 }
 
 const String buttonsHtmlAsString = '''
@@ -114,4 +135,7 @@ const String buttonsHtmlAsString = '''
   <yt-formatted-string class="ytd-channel-name">
     <a href="/c/dummyChannel">dummyChannel</a>
   </yt-formatted-string>
+
+  <paper-button id="more"></paper-button>
+  <paper-button id="less"></paper-button>
 ''';

@@ -1,5 +1,8 @@
 import 'dart:html' show AnchorElement, Document, document, Element;
 
+import 'package:meta/meta.dart' show immutable;
+
+@immutable
 class VideoButtons {
   final Document _document;
 
@@ -55,4 +58,6 @@ class VideoButtons {
         _document.querySelector('.ytd-channel-name > a') as AnchorElement;
     return channelAnchorElement?.href;
   }
+
+  void showMore() => _document.querySelector('paper-button#more')?.click();
 }

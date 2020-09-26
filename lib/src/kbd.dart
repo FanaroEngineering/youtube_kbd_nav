@@ -87,6 +87,9 @@ class Kbd {
         case '[':
           _commentBoxFocus();
           break;
+        case ']':
+          _showMore();
+          break;
         case ';':
           _navigateToChannel();
           break;
@@ -190,5 +193,9 @@ class Kbd {
   void _decorateFocusedPlayer() {
     _player.style.borderBottom = '#FF8C00 solid';
     _player.style.borderWidth = '0.5px';
+  }
+
+  void _showMore() {
+    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.showMore();
   }
 }
