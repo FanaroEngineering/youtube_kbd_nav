@@ -110,7 +110,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 
 ### 1.4. Natively Available Shortcuts on YouTube
 
-#### 1.4.1 Playback
+#### 1.4.1. Playback
 
 | Shortcut                                                         | Action                                         |
 | ---------------------------------------------------------------- | ---------------------------------------------- |
@@ -125,7 +125,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | Increase playback rate                                           | <kbd>></kbd> (<kbd>Shift</kbd> + <kbd>.</kbd>) |
 | Seek to specific point in the video (7 advances to 70% duration) | <kbd>0</kbd>...<kbd>9</kbd>                    |
 
-#### 1.4.2 General
+#### 1.4.2. General
 
 | Shortcut                           | Action         |
 | ---------------------------------- | -------------- |
@@ -135,7 +135,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | Close miniplayer or current dialog | <kbd>Esc</kbd> |
 | Toggle mute                        | <kbd>m</kbd>   |
 
-#### 1.4.3 Subtitle and Closed Captions
+#### 1.4.3. Subtitle and Closed Captions
 
 | Shortcut                                               | Action       |
 | ------------------------------------------------------ | ------------ |
@@ -145,7 +145,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | Rotate through font sizes (increasing)                 | <kbd>+</kbd> |
 | Rotate thorugh font sizes (decreasing)                 | <kbd>-</kbd> |
 
-#### 1.4.4 Spherical Videos
+#### 1.4.4. Spherical Videos
 
 | Shortcut  | Action                                 |
 | --------- | -------------------------------------- |
