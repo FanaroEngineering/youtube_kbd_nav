@@ -75,7 +75,7 @@ void main() {
       showMoreButton.onClick
           .listen((_) => changesOnShowMore = ChangesOnClick.showMore);
 
-      videoButtons.toggleDescription();
+      videoButtons = videoButtons.toggleDescription();
 
       expect(changesOnShowMore, ChangesOnClick.showMore);
     });
@@ -88,8 +88,8 @@ void main() {
       showLessButton.onClick
           .listen((_) => changesOnShow = ChangesOnClick.showLess);
 
-      videoButtons.toggleDescription();
-      videoButtons.toggleDescription();
+      videoButtons = videoButtons.toggleDescription();
+      videoButtons = videoButtons.toggleDescription();
 
       expect(changesOnShow, ChangesOnClick.showLess);
     });

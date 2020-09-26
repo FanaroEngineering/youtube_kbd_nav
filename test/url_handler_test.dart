@@ -21,7 +21,8 @@ void main() {
           tags,
           'ytd-compact-video-renderer, '
           'ytd-compact-radio-renderer, '
-          'ytd-compact-playlist-renderer');
+          'ytd-compact-playlist-renderer, '
+          'ytd-compact-movie-renderer');
     });
 
     test('Search Results Page', () {

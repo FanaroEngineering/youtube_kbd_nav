@@ -196,6 +196,7 @@ class Kbd {
   }
 
   void _toggleDescription() {
-    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.toggleDescription();
+    if (_isVideo && _keyboardEvent.ctrlKey)
+      _videoButtons = _videoButtons.toggleDescription();
   }
 }
