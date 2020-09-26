@@ -12,6 +12,9 @@ class Kbd {
   KeyboardEvent _keyboardEvent;
 
   Kbd() {
+    window.onLoad.listen((_) {
+      if (_isVideo) _decorateFocusedPlayer();
+    });
     window.addEventListener(
         'yt-navigate-start', (_) => _resetStylesAndCyclerAndUrl());
     document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
@@ -166,17 +169,26 @@ class Kbd {
   }
 
   void _togglePlayerFocus() {
-    final Element player = document.querySelector('#movie_player');
-    if (player != null) {
-      if (document.activeElement == player) {
-        player.blur();
-        player.removeAttribute('style');
+    if (_player != null) {
+      if (document.activeElement == _player) {
+        _player.blur();
+        _decorateUnfocusedPlayer();
       } else {
-        player.focus();
-        player.scrollIntoView();
-        player.style.borderBottom = 'red solid';
-        player.style.borderWidth = '0.5px';
+        _player.focus();
+        _decorateFocusedPlayer();
       }
     }
+  }
+
+  Element get _player => document.querySelector('#movie_player');
+
+  void _decorateUnfocusedPlayer() {
+    _player.style.borderBottom = '#483D8B solid';
+    _player.style.borderWidth = '0.5px';
+  }
+
+  void _decorateFocusedPlayer() {
+    _player.style.borderBottom = '#FF8C00 solid';
+    _player.style.borderWidth = '0.5px';
   }
 }

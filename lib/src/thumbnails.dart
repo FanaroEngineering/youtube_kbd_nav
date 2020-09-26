@@ -41,7 +41,7 @@ class Thumbnails {
 
     neighborsIndices.forEach((int neighborIndex) {
       if (_neighborIndexValidRange(neighborIndex))
-        _thumbnails[neighborIndex].attributes.remove('style');
+        _thumbnails[neighborIndex].removeAttribute('style');
     });
   }
 
@@ -53,10 +53,10 @@ class Thumbnails {
     _currentThumbnail.style.outlineOffset = '-1px';
   }
 
-  Element get _currentThumbnail => _thumbnails[_cycles.total];
+  Element get _currentThumbnail =>
+      _cycles.total >= 0 ? _thumbnails[_cycles.total] : null;
 
-  void resetCurrentThumbnail() =>
-      _currentThumbnail?.attributes?.remove('style');
+  void resetCurrentThumbnail() => _currentThumbnail?.removeAttribute('style');
 
   String get thumbnailLink => _cycles.isValid
       ? (_currentThumbnail?.querySelector('a') as AnchorElement)?.href
