@@ -12,23 +12,29 @@ class Kbd {
   KeyboardEvent _keyboardEvent;
 
   Kbd() {
-    window.onLoad.listen((_) {
-      _resetStylesAndCyclerAndUrl();
-      _deactivateFilterButton();
-      if (_isVideo) {
-        _decorateFocusedPlayer();
-        _player?.onBlur?.listen((_) => _decorateUnfocusedPlayer());
-        _player?.onFocus?.listen((_) => _decorateFocusedPlayer());
-      }
-    });
-    // If we take this event out, the thumbnails might not be completely loaded
-    // at first, but only when everything has been completely loaded (`onLoad`).
-    window.addEventListener(
-        'yt-navigate-start', (_) => _resetStylesAndCyclerAndUrl());
+    window.onLoad.listen((_) => _completeReset());
+    // If we take the `yt-navigate-start` event out, the thumbnails might not be
+    // completely loaded at first, but only when everything has been completely
+    // loaded (`onLoad`).
+    window.addEventListener('yt-navigate-start', (_) => _completeReset());
     document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
       _keyboardEvent = keyboardEvent;
       _keySwitch();
     });
+  }
+
+  void _completeReset() {
+    _resetStylesAndCyclerAndUrl();
+    _deactivateFilterButton();
+    if (_isVideo) {
+      _decorateFocusedPlayer();
+      _listenForOtherPlayerFocusEvents();
+    }
+  }
+
+  void _listenForOtherPlayerFocusEvents() {
+    _player?.onBlur?.listen((_) => _decorateUnfocusedPlayer());
+    _player?.onFocus?.listen((_) => _decorateFocusedPlayer());
   }
 
   void _togglePlayerFocus() =>

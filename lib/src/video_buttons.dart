@@ -44,7 +44,7 @@ class VideoButtons {
         'ytd-notification-topbar-button-renderer > '
         'div > a > yt-icon-button > button';
     final Element notificationPopUpButton =
-        _document.querySelector(notificationPopUpButtonQuery);
+        _document.querySelectorAll(notificationPopUpButtonQuery)[0];
     notificationPopUpButton?.click();
   }
 
