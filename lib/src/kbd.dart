@@ -14,6 +14,7 @@ class Kbd {
   Kbd() {
     window.onLoad.listen((_) {
       _resetStylesAndCyclerAndUrl();
+      _deactivateFilterButton();
       if (_isVideo) {
         _decorateFocusedPlayer();
         _player?.onBlur?.listen((_) => _decorateUnfocusedPlayer());
@@ -21,7 +22,7 @@ class Kbd {
       }
     });
     // If we take this event out, the thumbnails might not be completely loaded
-    // at first and only when everything has been completely loaded (`onLoad`).
+    // at first, but only when everything has been completely loaded (`onLoad`).
     window.addEventListener(
         'yt-navigate-start', (_) => _resetStylesAndCyclerAndUrl());
     document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
@@ -51,6 +52,10 @@ class Kbd {
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
   }
 
+  void _deactivateFilterButton() {
+    if (_url.contains('results')) document.activeElement.blur();
+  }
+
   bool get _noInputFocus {
     const String commentBoxQuery = 'yt-formatted-string.ytd-commentbox > div';
     bool noInputFocus = true;
@@ -65,16 +70,8 @@ class Kbd {
     return noInputFocus;
   }
 
-  // Can't put it inside of `yt-navigate-start` because the active element seems
-  // to be activated only after that event occurs.
-  void _deactivateFilterButton() {
-    if (_url.contains('results'))
-      document.activeElement.setAttribute('disabled', 'true');
-  }
-
   Future<void> _keySwitch() async {
     if (_noInputFocus) {
-      _deactivateFilterButton();
       switch (_keyboardEvent.key) {
         case 'z':
           _thumbnailForwards();
