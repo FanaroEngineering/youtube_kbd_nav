@@ -76,27 +76,28 @@ If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e.
 
 If, due to a mistake, the table below isn't working as expected, go to the [`lib/src/kbd.dart`][kbd_dart] file and examine the `switch` statement to truly get a hold of what's going on.
 
-| Shortcut                           | Action                                             |
-| ---------------------------------- | -------------------------------------------------- |
-| <kbd>z</kbd>                       | Cycle forwards on the thumbnails                   |
-| <kbd>x</kbd>                       | Cycle backwards on the thumbnails                  |
-| <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                 |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail          |
-| <kbd>q</kbd>                       | YouTube Home                                       |
-| <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                            |
-| <kbd>h</kbd>                       | YouTube History                                    |
-| <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                         |
-| <kbd>e</kbd>                       | Subscribe to the channel<sup>1</sup>               |
-| <kbd>v</kbd>                       | Like the video<sup>1</sup>                         |
-| <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                      |
-| <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>  |
-| <kbd>y</kbd>                       | Opens the notification pop-up                      |
-| <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>        |
-| <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>               |
-| <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>  |
-| <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>              |
-| <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup> |
-| <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>        |
+| Shortcut                           | Action                                               |
+| ---------------------------------- | ---------------------------------------------------- |
+| <kbd>z</kbd>                       | Cycle forwards on the thumbnails                     |
+| <kbd>x</kbd>                       | Cycle backwards on the thumbnails                    |
+| <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                   |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail            |
+| <kbd>q</kbd>                       | YouTube Home                                         |
+| <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                              |
+| <kbd>h</kbd>                       | YouTube History                                      |
+| <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                           |
+| <kbd>e</kbd>                       | Subscribe to the channel<sup>1</sup>                 |
+| <kbd>v</kbd>                       | Like the video<sup>1</sup>                           |
+| <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                        |
+| <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>    |
+| <kbd>y</kbd>                       | Opens the notification pop-up                        |
+| <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>          |
+| <kbd>Ctrl</kbd> + <kbd>]</kbd>     | Toggles the expansion of the description<sup>2</sup> |
+| <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>                 |
+| <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>    |
+| <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>                |
+| <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup>   |
+| <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>          |
 
 
 <sub>1: Only works when signed-in and on a video page.</sub> \
