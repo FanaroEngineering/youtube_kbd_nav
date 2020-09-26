@@ -64,9 +64,7 @@ void main() {
   });
 
   group('Printing |', () {
-    test(
-        '`toString`',
-        () =>
-            expect(const Cycle().toString(), 'Cycle | total: -1 | max: 100'));
+    test('`toString`',
+        () => expect(const Cycle().toString(), 'Cycle | total: -1 | max: 100'));
   });
 }

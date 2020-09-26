@@ -1,3 +1,6 @@
+import 'package:meta/meta.dart' show immutable;
+
+@immutable
 class VisibleForTesting {
   final String description;
 
