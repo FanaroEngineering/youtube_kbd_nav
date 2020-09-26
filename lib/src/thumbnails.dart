@@ -1,9 +1,10 @@
 import 'dart:html' show AnchorElement, Document, document, Element;
 
-import 'package:meta/meta.dart' show required;
+import 'package:meta/meta.dart' show immutable, required;
 
 import 'cycle.dart' show Cycle;
 
+@immutable
 class Thumbnails {
   final String _tags;
   final List<Element> _thumbnails;

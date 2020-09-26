@@ -3,7 +3,8 @@ class UrlHandler {
       history = 'https://www.youtube.com/feed/history',
       _watchTags = 'ytd-compact-video-renderer, '
           'ytd-compact-radio-renderer, '
-          'ytd-compact-playlist-renderer',
+          'ytd-compact-playlist-renderer, '
+          'ytd-compact-movie-renderer',
       _historyTags = 'ytd-video-renderer',
       _resultsTags = 'ytd-video-renderer, '
           'ytd-radio-renderer, '
