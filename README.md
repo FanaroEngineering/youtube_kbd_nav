@@ -96,13 +96,14 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>  |
 | <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>              |
 | <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup> |
-| <kbd>\\</kbd>                      | Toggle the video player's focus                    |
+| <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>        |
 
 
 <sub>1: Only works when signed-in and on a video page.</sub> \
 <sub>2: Only works when on a video page.</sub> \
 <sub>3: The comment section needs to be loaded for this to work.</sub> \
-<sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.
+<sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.</sub> \
+<sub>5: Changes the decoration of the video player.</sub>
 
 
 [kbd_dart]: lib/src/kbd.dart
