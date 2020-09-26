@@ -17,11 +17,13 @@ class Kbd {
     // completely loaded at first, but only when everything has been completely
     // loaded (`onLoad`).
     window.addEventListener('yt-navigate-start', (_) => _completeReset());
-    document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
-      _keyboardEvent = keyboardEvent;
-      _deactivateFilterButtonIfSearchPage();
-      if (_noInputFocus) _keySwitch();
-    });
+    document.body.onKeyDown.listen(_handleKeyboardEvent);
+  }
+
+  void _handleKeyboardEvent(KeyboardEvent keyboardEvent) {
+    _keyboardEvent = keyboardEvent;
+    _deactivateFilterButtonIfSearchPage();
+    if (_noInputFocus) _keySwitch();
   }
 
   void _completeReset() {
