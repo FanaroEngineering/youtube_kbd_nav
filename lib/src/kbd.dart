@@ -13,14 +13,36 @@ class Kbd {
 
   Kbd() {
     window.onLoad.listen((_) {
-      if (_isVideo) _decorateFocusedPlayer();
+      _resetStylesAndCyclerAndUrl();
+      if (_isVideo) {
+        _decorateFocusedPlayer();
+        _player?.onBlur?.listen((_) => _decorateUnfocusedPlayer());
+        _player?.onFocus?.listen((_) => _decorateFocusedPlayer());
+      }
     });
+    // If we take this event out, the thumbnails might not be completely loaded
+    // at first and only when everything has been completely loaded (`onLoad`).
     window.addEventListener(
         'yt-navigate-start', (_) => _resetStylesAndCyclerAndUrl());
     document.body.onKeyDown.listen((KeyboardEvent keyboardEvent) {
       _keyboardEvent = keyboardEvent;
       _keySwitch();
     });
+  }
+
+  void _togglePlayerFocus() =>
+      document.activeElement == _player ? _player?.blur() : _player?.focus();
+
+  Element get _player => document.querySelector('#movie_player');
+
+  void _decorateUnfocusedPlayer() {
+    _player?.style?.borderBottom = '#483D8B solid';
+    _player?.style?.borderWidth = '0.5px';
+  }
+
+  void _decorateFocusedPlayer() {
+    _player?.style?.borderBottom = '#FF8C00 solid';
+    _player?.style?.borderWidth = '0.5px';
   }
 
   void _resetStylesAndCyclerAndUrl() {
@@ -105,20 +127,9 @@ class Kbd {
 
   bool get _isVideo => _url.contains('watch');
 
-  void _thumbnailForwards() {
-    _resetThumbnailsWithPreviousCycles();
-    _thumbnails = _thumbnails + const Cycle();
-  }
+  void _thumbnailForwards() => _thumbnails = _thumbnails + const Cycle();
 
-  // The thumnails need to be created because their HTML won't be fully loaded
-  // when `yt-navigate-start` occurs, and more might be loaded later on.
-  void _resetThumbnailsWithPreviousCycles() => _thumbnails =
-      Thumbnails(tags: UrlHandler.tags(_url), cycles: _thumbnails.cycles);
-
-  void _thumbnailBackwards() {
-    _resetThumbnailsWithPreviousCycles();
-    _thumbnails = _thumbnails - const Cycle();
-  }
+  void _thumbnailBackwards() => _thumbnails = _thumbnails - const Cycle();
 
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);
 
@@ -169,30 +180,6 @@ class Kbd {
 
   void _navigateToVideoChannel() {
     if (_isVideo) _navigate(_videoButtons?.channelLink);
-  }
-
-  void _togglePlayerFocus() {
-    if (_player != null) {
-      if (document.activeElement == _player) {
-        _player.blur();
-        _decorateUnfocusedPlayer();
-      } else {
-        _player.focus();
-        _decorateFocusedPlayer();
-      }
-    }
-  }
-
-  Element get _player => document.querySelector('#movie_player');
-
-  void _decorateUnfocusedPlayer() {
-    _player.style.borderBottom = '#483D8B solid';
-    _player.style.borderWidth = '0.5px';
-  }
-
-  void _decorateFocusedPlayer() {
-    _player.style.borderBottom = '#FF8C00 solid';
-    _player.style.borderWidth = '0.5px';
   }
 
   void _toggleDescription() {
