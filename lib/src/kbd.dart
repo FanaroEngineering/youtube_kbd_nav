@@ -88,7 +88,7 @@ class Kbd {
           _commentBoxFocus();
           break;
         case ']':
-          _showMore();
+          _toggleDescription();
           break;
         case ';':
           _navigateToChannel();
@@ -195,7 +195,7 @@ class Kbd {
     _player.style.borderWidth = '0.5px';
   }
 
-  void _showMore() {
-    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.showMore();
+  void _toggleDescription() {
+    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons.toggleDescription();
   }
 }

@@ -54,7 +54,7 @@ class Thumbnails {
   }
 
   Element get _currentThumbnail =>
-      _cycles.total >= 0 ? _thumbnails[_cycles.total] : null;
+      _cycles.isValid ? _thumbnails[_cycles.total] : null;
 
   void resetCurrentThumbnail() => _currentThumbnail?.removeAttribute('style');
 

@@ -1,10 +1,10 @@
 import 'dart:html' show AnchorElement, Document, document, Element;
 
-import 'package:meta/meta.dart' show immutable;
+enum DescriptionState { showMore, showLess }
 
-@immutable
 class VideoButtons {
   final Document _document;
+  DescriptionState _descriptionState = DescriptionState.showLess;
 
   /// [doc] is a parameter mainly for injecting a [Document] during tests.
   VideoButtons({Document doc}) : _document = doc ?? document;
@@ -59,5 +59,20 @@ class VideoButtons {
     return channelAnchorElement?.href;
   }
 
-  void showMore() => _document.querySelector('paper-button#more')?.click();
+  void toggleDescription() {
+    switch (_descriptionState) {
+      case DescriptionState.showLess:
+        final Element showMoreButton =
+            _document.querySelector('paper-button#more');
+        showMoreButton.click();
+        _descriptionState = DescriptionState.showMore;
+        break;
+      case DescriptionState.showMore:
+        final Element showLessButton =
+            _document.querySelector('paper-button#less');
+        showLessButton.click();
+        _descriptionState = DescriptionState.showLess;
+        break;
+    }
+  }
 }

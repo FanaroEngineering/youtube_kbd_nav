@@ -1,7 +1,6 @@
 import 'dart:html' show Document, DomParser, Element;
 
-import 'package:test/test.dart'
-    show contains, expect, group, setUp, test;
+import 'package:test/test.dart' show contains, expect, group, setUp, test;
 
 import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
 
@@ -76,13 +75,23 @@ void main() {
       showMoreButton.onClick
           .listen((_) => changesOnShowMore = ChangesOnClick.showMore);
 
-      videoButtons.showMore();
+      videoButtons.toggleDescription();
 
       expect(changesOnShowMore, ChangesOnClick.showMore);
     });
 
-    test('Show less of the description', () {
-      
+    test('Show less of the description after showing more', () {
+      ChangesOnClick changesOnShow;
+
+      final Element showLessButton = document.querySelector('#less');
+
+      showLessButton.onClick
+          .listen((_) => changesOnShow = ChangesOnClick.showLess);
+
+      videoButtons.toggleDescription();
+      videoButtons.toggleDescription();
+
+      expect(changesOnShow, ChangesOnClick.showLess);
     });
   });
 }
