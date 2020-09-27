@@ -1,6 +1,10 @@
 @startuml youtube_kbd_nav
 set namespaceSeparator ::
 
+class "youtube_kbd_nav::src::annotations.dart::VisibleForTesting" {
+  +String description
+}
+
 class "youtube_kbd_nav::src::cycle.dart::Cycle" {
   +int total
   +int max
@@ -17,13 +21,19 @@ class "youtube_kbd_nav::src::kbd.dart::Kbd" {
   -Thumbnails _thumbnails
   -VideoButtons _videoButtons
   -KeyboardEvent _keyboardEvent
+  -Element _player
   -bool _noInputFocus
   -bool _isVideo
+  -void _handleKeyboardEvent()
+  -void _completeReset()
+  -void _listenForOtherPlayerFocusEvents()
+  -void _togglePlayerFocus()
+  -void _decorateUnfocusedPlayer()
+  -void _decorateFocusedPlayer()
   -void _resetStylesAndCyclerAndUrl()
-  -void _deactivateFilterButton()
+  -void _deactivateFilterButtonIfSearchPage()
   -Future _keySwitch()
   -void _thumbnailForwards()
-  -void _resetThumbnailsWithPreviousCycles()
   -void _thumbnailBackwards()
   -void _navigateHome()
   -void _navigateThumbnailLink()
@@ -37,21 +47,26 @@ class "youtube_kbd_nav::src::kbd.dart::Kbd" {
   -void _commentBoxFocus()
   -void _navigateToChannel()
   -void _navigateToVideoChannel()
+  -void _toggleDescription()
 }
 
 "youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::thumbnails.dart::Thumbnails"
 "youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::video_buttons.dart::VideoButtons"
 "youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::KeyboardEvent"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::Element"
 
 class "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" {
+  -String _tags
   -List<Element> _thumbnails
+  -Document _document
   -Cycle _cycles
   +Cycle cycles
   -Element _currentThumbnail
   +String thumbnailLink
   +String channelLink
-  +void +()
-  +void -()
+  +Thumbnails +()
+  -Thumbnails _resetThumbnails()
+  +Thumbnails -()
   -void _addBorder()
   -void _deleteNeighborsStyles()
   -bool _neighborIndexValidRange()
@@ -59,6 +74,7 @@ class "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" {
   +void resetCurrentThumbnail()
 }
 
+"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "dart::html::Document"
 "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "youtube_kbd_nav::src::cycle.dart::Cycle"
 "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "dart::html::Element"
 
@@ -75,7 +91,17 @@ class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
   {static} +String shortenLink()
 }
 
+class "youtube_kbd_nav::src::video_buttons.dart::DescriptionState" {
+  +int index
+  {static} +List<DescriptionState> values
+  {static} +DescriptionState showMore
+  {static} +DescriptionState showLess
+}
+
+"youtube_kbd_nav::src::video_buttons.dart::DescriptionState" o-- "youtube_kbd_nav::src::video_buttons.dart::DescriptionState"
+
 class "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" {
+  -DescriptionState _descriptionState
   -Document _document
   {static} -String _likeDislikeButtonsQuery
   +String channelLink
@@ -84,8 +110,10 @@ class "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" {
   +void dislike()
   +void notiticationPopUp()
   +void commentBoxFocus()
+  +VideoButtons toggleDescription()
 }
 
+"youtube_kbd_nav::src::video_buttons.dart::VideoButtons" o-- "youtube_kbd_nav::src::video_buttons.dart::DescriptionState"
 "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" o-- "dart::html::Document"
 
 
