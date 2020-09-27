@@ -9,5 +9,6 @@ fi
 dart2js --csp -O4 -o build/content.dart.js web/content.dart
 
 cp web/manifest.json build
+cp assets/favicon.png build
 
 zip -r build.zip build 

@@ -15,5 +15,8 @@
   ],
   "permissions": [
     "clipboardWrite"
-  ]
+  ],
+  "icons": {
+    "128": "favicon.png"
+  }
 }
