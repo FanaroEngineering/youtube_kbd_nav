@@ -35,3 +35,7 @@ Features added:
 - Fixed the bug of having to double-press like/dislike/subscribe initially.
 - Fixed the bug of disabling the shortcuts when editing a comment.
 - Mac users can use <kbd>⌘</kbd> instead of <kbd>Ctrl</kbd> as a modifier.
+
+## 0.0.2-alpha
+
+First functional sketch.
