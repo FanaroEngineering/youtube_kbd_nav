@@ -1,4 +1,4 @@
-## 1.0.1
+## 1.0.1 (Under Development)
 
 - Added a shortcut for *Picture-in-Picture* (PIP) (fixes #36).
 - Separated player-related stuff into another object (`Player`) (fixes #66).
