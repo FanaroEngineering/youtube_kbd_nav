@@ -1,6 +1,7 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
 import 'cycle.dart' show Cycle;
+import 'player.dart';
 import 'thumbnails.dart' show Thumbnails;
 import 'url_handler.dart' show UrlHandler;
 import 'video_buttons.dart' show VideoButtons;
@@ -82,9 +83,11 @@ class Kbd {
     switch (_keyboardEvent.key) {
       case 'z':
         _thumbnailForwards();
+        Player().reqPip();
         break;
       case 'x':
         _thumbnailBackwards();
+        Player().exitPip();
         break;
       case 'q':
         _navigateHome();
@@ -137,8 +140,7 @@ class Kbd {
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);
 
   void _navigateThumbnailLink() {
-    if (_thumbnails.thumbnailLink != null)
-      _navigate(_thumbnails?.thumbnailLink);
+    if (_thumbnails.thumbnailLink != null) _navigate(_thumbnails?.thumbnailLink);
   }
 
   void _navigate(String url) {
@@ -146,9 +148,7 @@ class Kbd {
         ? _keyboardEvent.metaKey
         : _keyboardEvent.ctrlKey;
 
-    modifierKey
-        ? window.open(url, '_blank', 'noreferrer')
-        : window.location.href = url;
+    modifierKey ? window.open(url, '_blank', 'noreferrer') : window.location.href = url;
   }
 
   void _navigateHistory() => _navigate(UrlHandler.history);
@@ -168,8 +168,7 @@ class Kbd {
   void _notificationPopUp() => _videoButtons?.notiticationPopUp();
 
   Future<void> _copyVideoUrl() async {
-    if (_isVideo)
-      await window.navigator.clipboard.writeText(UrlHandler.shortenLink(_url));
+    if (_isVideo) await window.navigator.clipboard.writeText(UrlHandler.shortenLink(_url));
   }
 
   void _commentBoxFocus() {
@@ -177,8 +176,7 @@ class Kbd {
   }
 
   void _navigateToChannel() {
-    if (!_isVideo && _thumbnails.channelLink != null)
-      _navigate(_thumbnails?.channelLink);
+    if (!_isVideo && _thumbnails.channelLink != null) _navigate(_thumbnails?.channelLink);
   }
 
   void _navigateToVideoChannel() {
@@ -186,7 +184,6 @@ class Kbd {
   }
 
   void _toggleDescription() {
-    if (_isVideo && _keyboardEvent.ctrlKey)
-      _videoButtons = _videoButtons.toggleDescription();
+    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons = _videoButtons.toggleDescription();
   }
 }

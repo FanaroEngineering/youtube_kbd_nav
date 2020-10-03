@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Added a shortcut for *Picture-in-Picture* (PIP).
+
 ## 1.0.0
 
 Hopefully this doesn't have any hidden bugs. All of the major core features have now been included. Take a look a previous (pre-)releases for more info on the history of development.
