@@ -119,7 +119,9 @@ class Kbd {
     }
   }
 
-  void _togglePip() => _player = _player.togglePip();
+  void _togglePip() {
+    if (_isVideo) _player = _player.togglePip();
+  }
 
   bool get _isVideo => _url.contains('watch');
 
