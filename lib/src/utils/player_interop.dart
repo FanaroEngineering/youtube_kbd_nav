@@ -8,3 +8,6 @@ external void requestPictureInPicture();
 
 @JS('exitPictureInPicture')
 external void exitPictureInPicture();
+
+@JS('fullscreen')
+external bool get isFullScreen;

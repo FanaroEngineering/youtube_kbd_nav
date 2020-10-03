@@ -4,7 +4,7 @@ import 'package:meta/meta.dart' show immutable;
 
 import '../utils/annotations.dart' show NecessaryInterop, VisibleForTesting;
 import '../utils/player_interop.dart'
-    show exitPictureInPicture, requestPictureInPicture;
+    show exitPictureInPicture, isFullScreen, requestPictureInPicture;
 
 @immutable
 class Player {
@@ -13,7 +13,13 @@ class Player {
 
   Player({bool inPip = false, @VisibleForTesting.document() Document doc})
       : _inPip = inPip,
-        _document = doc ?? document;
+        _document = doc ?? document {
+    document.addEventListener('fullscreenchange',
+        (_) => isFullScreen ? _playerDiv.blur() : _playerDiv.focus());
+  }
+
+  Player.inPip() : this(inPip: true);
+  Player.outOfPip() : this(inPip: false);
 
   DivElement get _playerDiv => _document.querySelector('#movie_player');
 
@@ -23,15 +29,9 @@ class Player {
     return Player(inPip: _inPip ? false : true, doc: _document);
   }
 
-  void togglePlayerFocus() {
-    if (_document.activeElement == _playerDiv) {
-      _playerDiv.blur();
-      decorateUnfocusedPlayer();
-    } else {
-      _playerDiv.focus();
-      decorateFocusedPlayer();
-    }
-  }
+  void togglePlayerFocus() => _document.activeElement == _playerDiv
+      ? _playerDiv.blur()
+      : _playerDiv.focus();
 
   void decorateUnfocusedPlayer() {
     _playerDiv?.style?.borderBottom = '#483D8B solid';

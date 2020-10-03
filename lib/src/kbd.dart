@@ -23,9 +23,9 @@ class Kbd {
     // The user might use his mouse to trigger the events, so we need to
     // recreate the player since it is *immutable*.
     document.addEventListener(
-        'enterpictureinpicture', (_) => _player = Player(inPip: true));
+        'enterpictureinpicture', (_) => _player = Player.inPip());
     document.addEventListener(
-        'leavepictureinpicture', (_) => _player = Player(inPip: false));
+        'leavepictureinpicture', (_) => _player = Player.outOfPip());
   }
 
   void _handleKeyboardEvent(KeyboardEvent keyboardEvent) {
