@@ -2,7 +2,7 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show immutable;
 
-import 'annotations.dart' show VisibleForTesting;
+import 'utils/annotations.dart' show VisibleForTesting;
 
 enum DescriptionState { showMore, showLess }
 

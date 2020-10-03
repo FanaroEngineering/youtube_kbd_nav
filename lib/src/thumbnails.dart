@@ -2,7 +2,7 @@ import 'dart:html' show AnchorElement, Document, document, Element;
 
 import 'package:meta/meta.dart' show immutable, required;
 
-import 'annotations.dart' show VisibleForTesting;
+import 'utils/annotations.dart' show VisibleForTesting;
 import 'cycle.dart' show Cycle;
 
 @immutable

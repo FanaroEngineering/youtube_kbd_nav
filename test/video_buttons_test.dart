@@ -2,7 +2,7 @@ import 'dart:html' show Document, DomParser, Element;
 
 import 'package:test/test.dart' show contains, expect, group, setUp, test;
 
-import 'package:youtube_kbd_nav/src/video_buttons.dart' show VideoButtons;
+import 'package:youtube_kbd_nav/youtube_kbd_nav.dart' show VideoButtons;
 
 void main() {
   final Document document =
