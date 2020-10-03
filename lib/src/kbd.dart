@@ -1,10 +1,10 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
-import 'cycle.dart' show Cycle;
-import 'player.dart' show Player;
-import 'thumbnails.dart' show Thumbnails;
-import 'url_handler.dart' show UrlHandler;
-import 'video_buttons.dart' show VideoButtons;
+import 'components/cycle.dart' show Cycle;
+import 'components/player.dart' show Player;
+import 'components/thumbnails.dart' show Thumbnails;
+import 'components/url_handler.dart' show UrlHandler;
+import 'components/video_buttons.dart' show VideoButtons;
 
 class Kbd {
   String _url = document.baseUri;
