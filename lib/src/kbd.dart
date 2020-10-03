@@ -1,7 +1,7 @@
 import 'dart:html' show document, Element, KeyboardEvent, window;
 
 import 'cycle.dart' show Cycle;
-import 'player.dart';
+import 'player.dart' show Player;
 import 'thumbnails.dart' show Thumbnails;
 import 'url_handler.dart' show UrlHandler;
 import 'video_buttons.dart' show VideoButtons;
@@ -11,7 +11,7 @@ class Kbd {
   Thumbnails _thumbnails = Thumbnails(tags: UrlHandler.tags(document.baseUri));
   VideoButtons _videoButtons = VideoButtons();
   KeyboardEvent _keyboardEvent;
-
+  
   Kbd() {
     window.onLoad.listen((_) => _completeReset());
     // If we take the `yt-navigate-start` event out, the thumbnails might not be
