@@ -35,4 +35,3 @@ const String videoPlayerHtmlsAsString = '''
     <video></video>
   </div>
 ''';
-
