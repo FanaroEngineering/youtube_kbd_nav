@@ -1,6 +1,8 @@
 ## 1.0.1
 
-- Added a shortcut for *Picture-in-Picture* (PIP).
+- Added a shortcut for *Picture-in-Picture* (PIP) (fixes #36).
+- Separated player-related stuff into another object (`Player`) (fixes #66).
+- Added interoperability with JS (`lib/src/utils/player_interop.dart`).
 
 ## 1.0.0
 
