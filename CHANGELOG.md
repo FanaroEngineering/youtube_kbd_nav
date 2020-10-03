@@ -3,6 +3,7 @@
 - Added a shortcut for *Picture-in-Picture* (PIP) (fixes #36).
 - Separated player-related stuff into another object (`Player`) (fixes #66).
 - Added interoperability with JS (`lib/src/utils/player_interop.dart`).
+- Now going in or out of fullscreen toggles the active video element.
 
 ## 1.0.0
 
