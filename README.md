@@ -106,6 +106,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>                |
 | <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup>   |
 | <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>          |
+| <kbd>w</kbd>                       | Toggle Picture-in-Picture (PIP) mode                 |
 
 
 <sub>1: Only works when signed-in and on a video page.</sub> \

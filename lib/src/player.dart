@@ -9,18 +9,19 @@ import 'utils/player_interop.dart'
 @immutable
 class Player {
   final Document _document;
+  final bool _inPip;
 
-  Player({@VisibleForTesting.document() Document doc})
-      : _document = doc ?? document;
+  Player({bool inPip = false, @VisibleForTesting.document() Document doc})
+      : _inPip = inPip,
+        _document = doc ?? document;
 
-  DivElement get _playerDiv =>
-      _document.querySelector('#movie_player');
-
-  @NecessaryInterop()
-  void reqPip() => requestPictureInPicture();
+  DivElement get _playerDiv => _document.querySelector('#movie_player');
 
   @NecessaryInterop()
-  void exitPip() => exitPictureInPicture();
+  Player togglePip() {
+    _inPip ? exitPictureInPicture() : requestPictureInPicture();
+    return Player(inPip: _inPip ? false : true, doc: _document);
+  }
 
   void togglePlayerFocus() {
     if (_document.activeElement == _playerDiv) {
@@ -40,5 +41,10 @@ class Player {
   void decorateFocusedPlayer() {
     _playerDiv?.style?.borderBottom = '#FF8C00 solid';
     _playerDiv?.style?.borderWidth = '0.5px';
+  }
+
+  void listenForOtherPlayerFocusEvents() {
+    _playerDiv?.onBlur?.listen((_) => decorateUnfocusedPlayer());
+    _playerDiv?.onFocus?.listen((_) => decorateFocusedPlayer());
   }
 }

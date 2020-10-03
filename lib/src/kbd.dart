@@ -10,8 +10,9 @@ class Kbd {
   String _url = document.baseUri;
   Thumbnails _thumbnails = Thumbnails(tags: UrlHandler.tags(document.baseUri));
   VideoButtons _videoButtons = VideoButtons();
+  Player _player = Player();
   KeyboardEvent _keyboardEvent;
-  
+
   Kbd() {
     window.onLoad.listen((_) => _completeReset());
     // If we take the `yt-navigate-start` event out, the thumbnails might not be
@@ -19,6 +20,12 @@ class Kbd {
     // loaded (`onLoad`).
     window.addEventListener('yt-navigate-start', (_) => _completeReset());
     document.body.onKeyDown.listen(_handleKeyboardEvent);
+    // The user might use his mouse to trigger the events, so we need to
+    // recreate the player since it is *immutable*.
+    document.addEventListener(
+        'enterpictureinpicture', (_) => _player = Player(inPip: true));
+    document.addEventListener(
+        'leavepictureinpicture', (_) => _player = Player(inPip: false));
   }
 
   void _handleKeyboardEvent(KeyboardEvent keyboardEvent) {
@@ -30,29 +37,9 @@ class Kbd {
   void _completeReset() {
     _resetStylesAndCyclerAndUrl();
     if (_isVideo) {
-      _decorateFocusedPlayer();
-      _listenForOtherPlayerFocusEvents();
+      _player.decorateFocusedPlayer();
+      _player.listenForOtherPlayerFocusEvents();
     }
-  }
-
-  void _listenForOtherPlayerFocusEvents() {
-    _player?.onBlur?.listen((_) => _decorateUnfocusedPlayer());
-    _player?.onFocus?.listen((_) => _decorateFocusedPlayer());
-  }
-
-  void _togglePlayerFocus() =>
-      document.activeElement == _player ? _player?.blur() : _player?.focus();
-
-  Element get _player => document.querySelector('#movie_player');
-
-  void _decorateUnfocusedPlayer() {
-    _player?.style?.borderBottom = '#483D8B solid';
-    _player?.style?.borderWidth = '0.5px';
-  }
-
-  void _decorateFocusedPlayer() {
-    _player?.style?.borderBottom = '#FF8C00 solid';
-    _player?.style?.borderWidth = '0.5px';
   }
 
   void _resetStylesAndCyclerAndUrl() {
@@ -83,11 +70,9 @@ class Kbd {
     switch (_keyboardEvent.key) {
       case 'z':
         _thumbnailForwards();
-        Player().reqPip();
         break;
       case 'x':
         _thumbnailBackwards();
-        Player().exitPip();
         break;
       case 'q':
         _navigateHome();
@@ -128,8 +113,13 @@ class Kbd {
       case '\\':
         _togglePlayerFocus();
         break;
+      case 'w':
+        _togglePip();
+        break;
     }
   }
+
+  void _togglePip() => _player = _player.togglePip();
 
   bool get _isVideo => _url.contains('watch');
 
@@ -140,7 +130,8 @@ class Kbd {
   void _navigateHome() => _navigate(UrlHandler.youtubeHome);
 
   void _navigateThumbnailLink() {
-    if (_thumbnails.thumbnailLink != null) _navigate(_thumbnails?.thumbnailLink);
+    if (_thumbnails.thumbnailLink != null)
+      _navigate(_thumbnails?.thumbnailLink);
   }
 
   void _navigate(String url) {
@@ -148,7 +139,9 @@ class Kbd {
         ? _keyboardEvent.metaKey
         : _keyboardEvent.ctrlKey;
 
-    modifierKey ? window.open(url, '_blank', 'noreferrer') : window.location.href = url;
+    modifierKey
+        ? window.open(url, '_blank', 'noreferrer')
+        : window.location.href = url;
   }
 
   void _navigateHistory() => _navigate(UrlHandler.history);
@@ -168,7 +161,8 @@ class Kbd {
   void _notificationPopUp() => _videoButtons?.notiticationPopUp();
 
   Future<void> _copyVideoUrl() async {
-    if (_isVideo) await window.navigator.clipboard.writeText(UrlHandler.shortenLink(_url));
+    if (_isVideo)
+      await window.navigator.clipboard.writeText(UrlHandler.shortenLink(_url));
   }
 
   void _commentBoxFocus() {
@@ -176,7 +170,8 @@ class Kbd {
   }
 
   void _navigateToChannel() {
-    if (!_isVideo && _thumbnails.channelLink != null) _navigate(_thumbnails?.channelLink);
+    if (!_isVideo && _thumbnails.channelLink != null)
+      _navigate(_thumbnails?.channelLink);
   }
 
   void _navigateToVideoChannel() {
@@ -184,6 +179,9 @@ class Kbd {
   }
 
   void _toggleDescription() {
-    if (_isVideo && _keyboardEvent.ctrlKey) _videoButtons = _videoButtons.toggleDescription();
+    if (_isVideo && _keyboardEvent.ctrlKey)
+      _videoButtons = _videoButtons.toggleDescription();
   }
+
+  void _togglePlayerFocus() => _player.togglePlayerFocus();
 }
