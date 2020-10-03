@@ -1,11 +1,7 @@
 @startuml youtube_kbd_nav
 set namespaceSeparator ::
 
-class "youtube_kbd_nav::src::annotations.dart::VisibleForTesting" {
-  +String description
-}
-
-class "youtube_kbd_nav::src::cycle.dart::Cycle" {
+class "youtube_kbd_nav::src::components::cycle.dart::Cycle" {
   +int total
   +int max
   +bool isValid
@@ -16,46 +12,21 @@ class "youtube_kbd_nav::src::cycle.dart::Cycle" {
   +String toString()
 }
 
-class "youtube_kbd_nav::src::kbd.dart::Kbd" {
-  -String _url
-  -Thumbnails _thumbnails
-  -VideoButtons _videoButtons
-  -KeyboardEvent _keyboardEvent
-  -Element _player
-  -bool _noInputFocus
-  -bool _isVideo
-  -void _handleKeyboardEvent()
-  -void _completeReset()
-  -void _listenForOtherPlayerFocusEvents()
-  -void _togglePlayerFocus()
-  -void _decorateUnfocusedPlayer()
-  -void _decorateFocusedPlayer()
-  -void _resetStylesAndCyclerAndUrl()
-  -void _deactivateFilterButtonIfSearchPage()
-  -Future _keySwitch()
-  -void _thumbnailForwards()
-  -void _thumbnailBackwards()
-  -void _navigateHome()
-  -void _navigateThumbnailLink()
-  -void _navigate()
-  -void _navigateHistory()
-  -void _subscribe()
-  -void _like()
-  -void _dislike()
-  -void _notificationPopUp()
-  -Future _copyVideoUrl()
-  -void _commentBoxFocus()
-  -void _navigateToChannel()
-  -void _navigateToVideoChannel()
-  -void _toggleDescription()
+class "youtube_kbd_nav::src::components::player.dart::Player" {
+  -Document _document
+  -bool _inPip
+  -DivElement _playerDiv
+  +Player togglePip()
+  +void togglePlayerFocus()
+  +void decorateUnfocusedPlayer()
+  +void decorateFocusedPlayer()
+  +void listenForOtherPlayerFocusEvents()
 }
 
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::thumbnails.dart::Thumbnails"
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::video_buttons.dart::VideoButtons"
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::KeyboardEvent"
-"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::Element"
+"youtube_kbd_nav::src::components::player.dart::Player" o-- "dart::html::Document"
+"youtube_kbd_nav::src::components::player.dart::Player" o-- "dart::html::DivElement"
 
-class "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" {
+class "youtube_kbd_nav::src::components::thumbnails.dart::Thumbnails" {
   -String _tags
   -List<Element> _thumbnails
   -Document _document
@@ -74,11 +45,11 @@ class "youtube_kbd_nav::src::thumbnails.dart::Thumbnails" {
   +void resetCurrentThumbnail()
 }
 
-"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "dart::html::Document"
-"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "youtube_kbd_nav::src::cycle.dart::Cycle"
-"youtube_kbd_nav::src::thumbnails.dart::Thumbnails" o-- "dart::html::Element"
+"youtube_kbd_nav::src::components::thumbnails.dart::Thumbnails" o-- "dart::html::Document"
+"youtube_kbd_nav::src::components::thumbnails.dart::Thumbnails" o-- "youtube_kbd_nav::src::components::cycle.dart::Cycle"
+"youtube_kbd_nav::src::components::thumbnails.dart::Thumbnails" o-- "dart::html::Element"
 
-class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
+class "youtube_kbd_nav::src::components::url_handler.dart::UrlHandler" {
   {static} +String youtubeHome
   {static} +String history
   {static} -String _watchTags
@@ -91,16 +62,16 @@ class "youtube_kbd_nav::src::url_handler.dart::UrlHandler" {
   {static} +String shortenLink()
 }
 
-class "youtube_kbd_nav::src::video_buttons.dart::DescriptionState" {
+class "youtube_kbd_nav::src::components::video_buttons.dart::DescriptionState" {
   +int index
   {static} +List<DescriptionState> values
   {static} +DescriptionState showMore
   {static} +DescriptionState showLess
 }
 
-"youtube_kbd_nav::src::video_buttons.dart::DescriptionState" o-- "youtube_kbd_nav::src::video_buttons.dart::DescriptionState"
+"youtube_kbd_nav::src::components::video_buttons.dart::DescriptionState" o-- "youtube_kbd_nav::src::components::video_buttons.dart::DescriptionState"
 
-class "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" {
+class "youtube_kbd_nav::src::components::video_buttons.dart::VideoButtons" {
   -DescriptionState _descriptionState
   -Document _document
   {static} -String _likeDislikeButtonsQuery
@@ -113,8 +84,53 @@ class "youtube_kbd_nav::src::video_buttons.dart::VideoButtons" {
   +VideoButtons toggleDescription()
 }
 
-"youtube_kbd_nav::src::video_buttons.dart::VideoButtons" o-- "youtube_kbd_nav::src::video_buttons.dart::DescriptionState"
-"youtube_kbd_nav::src::video_buttons.dart::VideoButtons" o-- "dart::html::Document"
+"youtube_kbd_nav::src::components::video_buttons.dart::VideoButtons" o-- "youtube_kbd_nav::src::components::video_buttons.dart::DescriptionState"
+"youtube_kbd_nav::src::components::video_buttons.dart::VideoButtons" o-- "dart::html::Document"
+
+class "youtube_kbd_nav::src::kbd.dart::Kbd" {
+  -String _url
+  -Thumbnails _thumbnails
+  -VideoButtons _videoButtons
+  -Player _player
+  -KeyboardEvent _keyboardEvent
+  -bool _noInputFocus
+  -bool _isVideo
+  -void _handleKeyboardEvent()
+  -void _completeReset()
+  -void _resetStylesAndCyclerAndUrl()
+  -void _deactivateFilterButtonIfSearchPage()
+  -Future _keySwitch()
+  -void _togglePip()
+  -void _thumbnailForwards()
+  -void _thumbnailBackwards()
+  -void _navigateHome()
+  -void _navigateThumbnailLink()
+  -void _navigate()
+  -void _navigateHistory()
+  -void _subscribe()
+  -void _like()
+  -void _dislike()
+  -void _notificationPopUp()
+  -Future _copyVideoUrl()
+  -void _commentBoxFocus()
+  -void _navigateToChannel()
+  -void _navigateToVideoChannel()
+  -void _toggleDescription()
+  -void _togglePlayerFocus()
+}
+
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::components::thumbnails.dart::Thumbnails"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::components::video_buttons.dart::VideoButtons"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "youtube_kbd_nav::src::components::player.dart::Player"
+"youtube_kbd_nav::src::kbd.dart::Kbd" o-- "dart::html::KeyboardEvent"
+
+class "youtube_kbd_nav::src::utils::annotations.dart::VisibleForTesting" {
+  +String description
+}
+
+class "youtube_kbd_nav::src::utils::annotations.dart::NecessaryInterop" {
+  +String description
+}
 
 
 @enduml
