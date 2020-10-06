@@ -2,7 +2,7 @@ name: youtube_kbd_nav
 description: >-
   A keyboard navigation extension for Youtube, enabling more accessibility
   shortcuts on the platform.
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
