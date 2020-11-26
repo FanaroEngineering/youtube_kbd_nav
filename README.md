@@ -31,6 +31,7 @@
 - [1. For the User](#1-for-the-user)
     - [1.1. Releases](#11-releases)
     - [1.2. How to install it with a zip file](#12-how-to-install-it-with-a-zip-file)
+        - [1.2.1. From the Different Stores](#121-from-the-different-stores)
         - [1.2.1. Chrome](#121-chrome)
         - [1.2.2. Firefox](#122-firefox)
         - [1.2.3. Microsoft Edge](#123-microsoft-edge)
@@ -69,6 +70,21 @@ You can directly download this extension's files from the [Releases][release_lin
 [release_link]: https://github.com/FanaroEngineering/youtube_kbd_nav/releases
 
 ### 1.2. How to install it with a zip file
+
+#### 1.2.1. From the Different Stores
+
+Choose one of the links below:
+
+| Browser Extension Store |
+| ----------------------- |
+| [Chrome][chrome]        |
+| [Firefox][firefox]      |
+| [Edge][edge]            |
+
+
+[chrome]: https://chrome.google.com/webstore/detail/youtubekbdnav/lfhpmfgaahemloddkjioinadcoighoih?hl=en&authuser=0
+[edge]: https://microsoftedge.microsoft.com/addons/detail/youtube-kbd-nav/kagdmnehbppginlkcdeiimdkglafgcji
+[firefox]: https://addons.mozilla.org/en-US/firefox/addon/youtube-kbd-nav/
 
 #### 1.2.1. Chrome
 
