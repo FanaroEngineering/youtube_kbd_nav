@@ -26,6 +26,27 @@
 [gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [shortcuts_table]: ###1.3.-Available-Shortcuts
 
+<!-- TOC depthFrom:2 -->
+
+- [1. For the User](#1-for-the-user)
+    - [1.1. Releases](#11-releases)
+    - [1.2. How to install it with a zip file](#12-how-to-install-it-with-a-zip-file)
+        - [1.2.1. Chrome](#121-chrome)
+        - [1.2.2. Firefox](#122-firefox)
+        - [1.2.3. Microsoft Edge](#123-microsoft-edge)
+    - [1.3. Available Shortcuts](#13-available-shortcuts)
+    - [1.4. Natively Available Shortcuts on YouTube](#14-natively-available-shortcuts-on-youtube)
+        - [1.4.1. Playback](#141-playback)
+        - [1.4.2. General](#142-general)
+        - [1.4.3. Subtitle and Closed Captions](#143-subtitle-and-closed-captions)
+        - [1.4.4. Spherical Videos](#144-spherical-videos)
+- [2. For the Developer](#2-for-the-developer)
+    - [2.1. Future Improvements (Development)](#21-future-improvements-development)
+    - [2.2. Building with `dart2js`](#22-building-with-dart2js)
+    - [2.3. Visualizing the Extension's Design with UML](#23-visualizing-the-extensions-design-with-uml)
+
+<!-- /TOC -->
+
 ## 1. For the User
 
 An extension to make navigating possible with only the keyboard.
