@@ -2,6 +2,7 @@
 
 - More comprehensive fix to shortcuts still working when typing in an input field.
 - Explicitly Excluded YouTube Studio from this extension.
+- Now we can also unsubscribe from the channel.
 
 ## 1.0.1
 
