@@ -1,4 +1,8 @@
-## 1.0.1 (Under Development)
+## 1.0.2
+
+- More comprehensive fix to shortcuts still working when typing in an input field.
+
+## 1.0.1
 
 - Added a shortcut for *Picture-in-Picture* (PIP) (fixes #36).
 - Separated player-related stuff into another object (`Player`) (fixes #66).
