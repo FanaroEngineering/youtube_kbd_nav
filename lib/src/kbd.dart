@@ -1,4 +1,4 @@
-import 'dart:html' show document, Element, KeyboardEvent, window;
+import 'dart:html' show document, Element, InputElement, KeyboardEvent, window;
 
 import 'components/cycle.dart' show Cycle;
 import 'components/player.dart' show Player;
@@ -30,7 +30,6 @@ class Kbd {
 
   void _handleKeyboardEvent(KeyboardEvent keyboardEvent) {
     _keyboardEvent = keyboardEvent;
-    _deactivateFilterButtonIfSearchPage();
     if (_noInputFocus) _keySwitch();
   }
 
@@ -48,10 +47,6 @@ class Kbd {
     _thumbnails = Thumbnails(tags: UrlHandler.tags(_url));
   }
 
-  void _deactivateFilterButtonIfSearchPage() {
-    if (_url.contains('results')) document.activeElement.blur();
-  }
-
   bool get _noInputFocus {
     const String commentBoxQuery = 'yt-formatted-string.ytd-commentbox > div';
     bool noInputFocus = true;
@@ -63,6 +58,7 @@ class Kbd {
     ].forEach((Element element) {
       if (element == document.activeElement) noInputFocus = false;
     });
+    if (document.activeElement is InputElement) noInputFocus = false;
     return noInputFocus;
   }
 
