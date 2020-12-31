@@ -9,6 +9,9 @@
       "matches": [
         "*://*.youtube.com/*"
       ],
+      "exclude_matches": [
+        "*://*.studio.youtube.com/*"
+      ],
       "js": [
         "content.dart.js"
       ]
