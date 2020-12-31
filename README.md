@@ -1,30 +1,31 @@
+<p align="center">
+  <img src="assets/favicon.svg" height="250px">
+</p>
+
+<p align="center">
+  <a href="https://github.com/FanaroEngineering/youtube_kbd_nav/releases"><img src="https://img.shields.io/github/downloads/FanaroEngineering/youtube_kbd_nav/total.svg" alt="Releases/Downloads" /></a>
+  <a href="https://gitter.im/youtube_kbd_nav/community"><img src="https://badges.gitter.im/youtube_kbd_nav/community.svg" alt="Gitter" /></a>
+  <a href="https://github.com/FanaroEngineering/youtube_kbd_nav/actions"><img src="https://github.com/FanaroEngineering/youtube_kbd_nav/workflows/Dart%20%7C%7C%20Tests%20%7C%20Formatting%20%7C%20Analyzer/badge.svg?branch=master" alt="Github CI" /></a>
+  <a href="https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master"><img src="https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master" alt="Codefactor" /></a>
+  <a href="https://www.buymeacoffee.com/psygo"><img src="assets/buy_me_a_coffee_shield.svg" alt="Buy me a coffee! | Sponsor Me!" /></a>
+  <a href=""><img src="" alt="" /></a>
+  <a href=""><img src="" alt="" /></a>
+  <a href=""><img src="" alt="" /></a>
+  <a href=""><img src="" alt="" /></a>
+  <a href=""><img src="" alt="" /></a>
+</p>
+
+---
+
 # YouTube Keyboard Navigation Browser Extension
 
-<!-- [![Release Version][github_latest_release]][github_latest_release] -->
-[![Downloads][github_downloads]][github_releases]
-[![Gitter][gitter_svg]][gitter_badge]
-[![Dart || Tests | Formatting | Analyzer][github_ci_badge]][github_workflow]
-[![CodeFactor][codefactor_badge]][codefactor_repo]
-[![Buy Me A Coffee][buy_me_a_coffee_badge]][buy_me_a_coffee_donation]
+<p align="center">
+  <img src="assets/demo.gif" alt="Demo GIF" />
+</p>
 
-[![GIF][gif]][github_releases] \
-<sub>The GIF above may not reflect the latest set of features. For example, currently, a decoration for showing if the video element is the active element extists. Check the [table of shortcuts][shortcuts_table] below for more info.</sub>
-
-
-[buy_me_a_coffee_badge]: assets/buy_me_a_coffee_shield.svg
-[buy_me_a_coffee_donation]: https://www.buymeacoffee.com/psygo
-[codefactor_badge]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master
-[codefactor_repo]: https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master
-[gif]: assets/demo.gif
-[github_ci_badge]: https://github.com/FanaroEngineering/youtube_kbd_nav/workflows/Dart%20%7C%7C%20Tests%20%7C%20Formatting%20%7C%20Analyzer/badge.svg?branch=master
-[github_downloads]: https://img.shields.io/github/downloads/FanaroEngineering/youtube_kbd_nav/total.svg
-[github_latest_release]: https://img.shields.io/release/FanaroEngineering/youtube_kbd_nav.svg
-[github_releases]: https://github.com/FanaroEngineering/youtube_kbd_nav/releases
-[github_workflow]: https://github.com/FanaroEngineering/youtube_kbd_nav/actions
-[gitter_svg]: https://badges.gitter.im/youtube_kbd_nav/community.svg
-[gitter_community]: https://gitter.im/youtube_kbd_nav/community
-[gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-[shortcuts_table]: ###1.3.-Available-Shortcuts
+<p align="center">
+  <sub>The GIF above may not reflect the latest set of features. For example, currently, a decoration for showing if the video element is the active element extists. Check the <a href="#13-available-shortcuts">table of shortcuts</a> below for more info.</sub>
+</p>
 
 ---
 
