@@ -1,6 +1,7 @@
 ## 1.0.2
 
 - More comprehensive fix to shortcuts still working when typing in an input field.
+- Explicitly Excluded YouTube Studio from this extension.
 
 ## 1.0.1
 

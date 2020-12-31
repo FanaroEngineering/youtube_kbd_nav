@@ -26,27 +26,73 @@
 [gitter_badge]: https://gitter.im/youtube_kbd_nav/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [shortcuts_table]: ###1.3.-Available-Shortcuts
 
-<!-- TOC depthFrom:2 -->
+---
 
-- [1. For the User](#1-for-the-user)
-    - [1.1. Releases](#11-releases)
-    - [1.2. How to install it with a zip file](#12-how-to-install-it-with-a-zip-file)
-        - [1.2.1. From the Different Stores](#121-from-the-different-stores)
-        - [1.2.1. Chrome](#121-chrome)
-        - [1.2.2. Firefox](#122-firefox)
-        - [1.2.3. Microsoft Edge](#123-microsoft-edge)
-    - [1.3. Available Shortcuts](#13-available-shortcuts)
-    - [1.4. Natively Available Shortcuts on YouTube](#14-natively-available-shortcuts-on-youtube)
-        - [1.4.1. Playback](#141-playback)
-        - [1.4.2. General](#142-general)
-        - [1.4.3. Subtitle and Closed Captions](#143-subtitle-and-closed-captions)
-        - [1.4.4. Spherical Videos](#144-spherical-videos)
-- [2. For the Developer](#2-for-the-developer)
-    - [2.1. Future Improvements (Development)](#21-future-improvements-development)
-    - [2.2. Building with `dart2js`](#22-building-with-dart2js)
-    - [2.3. Visualizing the Extension's Design with UML](#23-visualizing-the-extensions-design-with-uml)
+**Table of Contents**
 
-<!-- /TOC -->
+<div id="user-content-toc">
+  <ul>
+    <li>
+      <a href="#1-for-the-user">1. For the User</a>
+      <ul>
+        <li><a href="#11-releases">1.1. Releases</a></li>
+        <li>
+          <a href="#12-how-to-install-it-with-a-zip-file"
+            >1.2. How to install it with a zip file</a
+          >
+          <ul>
+            <li>
+              <a href="#121-from-the-different-stores"
+                >1.2.1. From the Different Stores</a
+              >
+            </li>
+            <li><a href="#122-chrome">1.2.2. Chrome</a></li>
+            <li><a href="#123-firefox">1.2.3. Firefox</a></li>
+            <li><a href="#124-microsoft-edge">1.2.4. Microsoft Edge</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-available-shortcuts">1.3. Available Shortcuts</a></li>
+        <li>
+          <a href="#14-natively-available-shortcuts-on-youtube"
+            >1.4. Natively Available Shortcuts on YouTube</a
+          >
+          <ul>
+            <li><a href="#141-playback">1.4.1. Playback</a></li>
+            <li><a href="#142-general">1.4.2. General</a></li>
+            <li>
+              <a href="#143-subtitle-and-closed-captions"
+                >1.4.3. Subtitle and Closed Captions</a
+              >
+            </li>
+            <li><a href="#144-spherical-videos">1.4.4. Spherical Videos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#2-for-the-developer">2. For the Developer</a>
+      <ul>
+        <li>
+          <a href="#21-future-improvements-development"
+            >2.1. Future Improvements (Development)</a
+          >
+        </li>
+        <li>
+          <a href="#22-building-with-dart2js"
+            >2.2. Building with <code>dart2js</code></a
+          >
+        </li>
+        <li>
+          <a href="#23-visualizing-the-extensions-design-with-uml"
+            >2.3. Visualizing the Extension&#39;s Design with UML</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+---
 
 ## 1. For the User
 
@@ -86,7 +132,7 @@ Choose one of the links below:
 [edge]: https://microsoftedge.microsoft.com/addons/detail/youtube-kbd-nav/kagdmnehbppginlkcdeiimdkglafgcji
 [firefox]: https://addons.mozilla.org/en-US/firefox/addon/youtube-kbd-nav/
 
-#### 1.2.1. Chrome
+#### 1.2.2. Chrome
 
 1. Unzip the extension in a local folder.
 1. Go to [chrome://extensions/][chrome_extensions]
@@ -96,7 +142,7 @@ Choose one of the links below:
 
 [chrome_extensions]: chrome://extensions/
 
-#### 1.2.2. Firefox
+#### 1.2.3. Firefox
 
 1. Go to [about:debugging][about_debugging]
 1. Click on <kbd>This Firefox</kbd>.
@@ -105,7 +151,7 @@ Choose one of the links below:
 
 [about_debugging]: about:debugging
 
-#### 1.2.3. Microsoft Edge
+#### 1.2.4. Microsoft Edge
 
 1. Unzip the extension in a local folder.
 1. Go to [edge://extensions][edge_extensions]
