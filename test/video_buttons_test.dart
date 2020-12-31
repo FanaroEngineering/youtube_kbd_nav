@@ -20,7 +20,7 @@ void main() {
     subscribeButton.onClick
         .listen((_) => changesOnSubscribe = ChangesOnClick.subscribed);
 
-    videoButtons.subscribe();
+    videoButtons.toggleSubscription();
 
     expect(changesOnSubscribe, ChangesOnClick.subscribed);
   });

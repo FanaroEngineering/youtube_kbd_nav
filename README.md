@@ -178,7 +178,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                              |
 | <kbd>h</kbd>                       | YouTube History                                      |
 | <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                           |
-| <kbd>e</kbd>                       | Subscribe to the channel<sup>1</sup>                 |
+| <kbd>e</kbd>                       | Toggle subscription to the channel<sup>1</sup>       |
 | <kbd>v</kbd>                       | Like the video<sup>1</sup>                           |
 | <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                        |
 | <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>    |

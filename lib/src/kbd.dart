@@ -80,7 +80,7 @@ class Kbd {
         _navigateHistory();
         break;
       case 'e':
-        _subscribe();
+        _toggleSubscription();
         break;
       case 'v':
         _like();
@@ -144,8 +144,8 @@ class Kbd {
 
   void _navigateHistory() => _navigate(UrlHandler.history);
 
-  void _subscribe() {
-    if (_isVideo) _videoButtons?.subscribe();
+  void _toggleSubscription() {
+    if (_isVideo) _videoButtons?.toggleSubscription();
   }
 
   void _like() {

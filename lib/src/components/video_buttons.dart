@@ -17,11 +17,22 @@ class VideoButtons {
   })  : _descriptionState = descriptionState,
         _document = doc ?? document;
 
-  void subscribe() {
-    const String subscribeQuery = '#subscribe-button.style-scope > '
-        'ytd-subscribe-button-renderer > paper-button';
-    final Element subscribeButton = _document.querySelector(subscribeQuery);
-    subscribeButton?.click();
+  void toggleSubscription() {
+    const String unsubscribeQuery =
+        'paper-button.style-blue-text > yt-formatted-string';
+    final Element ytFormattedStrings = document.querySelector(unsubscribeQuery);
+    const String subscribedQuery =
+        'paper-button.ytd-subscribe-button-renderer > yt-formatted-string';
+    final Element subscribed = document.querySelector(subscribedQuery);
+    if (subscribed?.text?.toLowerCase() == 'subscribed' &&
+        ytFormattedStrings?.text?.toLowerCase() == 'unsubscribe') {
+      ytFormattedStrings?.click();
+    } else {
+      const String subscribeQuery = '#subscribe-button.style-scope > '
+          'ytd-subscribe-button-renderer > paper-button';
+      final Element subscribeButton = _document.querySelector(subscribeQuery);
+      subscribeButton?.click();
+    }
   }
 
   void like() {
