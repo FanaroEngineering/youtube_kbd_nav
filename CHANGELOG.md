@@ -5,6 +5,7 @@
 - Now we can also unsubscribe from the channel.
 - Playlists are also scrollable through the extension.
 - Add videos to the Watch Later Playlist with <kbd>Ctrl</kbd> + <kbd>y</kbd>.
+    - Access the Watch Later playlist through <kbd>Ctrl</kbd> + <kbd>.</kbd>.
 - Global switch for the whole extension.
 - Now the extension logo appears right next to the YouTube logo, signaling that the extension is on.
 
