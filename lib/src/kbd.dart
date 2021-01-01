@@ -223,13 +223,9 @@ class Kbd {
 
   void _togglePlayerFocus() => _player.togglePlayerFocus();
 
-  void _watchLater() {
-    if (window.location.href != UrlHandler.watchLater) {
-      _navigate(UrlHandler.watchLater);
-    } else {
-      final Element watchLaterThumbnail =
-          document.querySelector('ytd-thumbnail-overlay-side-panel-renderer');
-      watchLaterThumbnail.click();
-    }
-  }
+  void _watchLater() => window.location.href != UrlHandler.watchLater
+      ? _navigate(UrlHandler.watchLater)
+      : document
+          .querySelector('ytd-thumbnail-overlay-side-panel-renderer')
+          .click();
 }
