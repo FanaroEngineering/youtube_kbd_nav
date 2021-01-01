@@ -12,6 +12,7 @@ class Kbd {
   VideoButtons _videoButtons = VideoButtons();
   Player _player = Player();
   KeyboardEvent _keyboardEvent;
+  bool _onSwitch = true;
 
   Kbd() {
     window.onLoad.listen((_) => _completeReset());
@@ -63,6 +64,7 @@ class Kbd {
   }
 
   Future<void> _keySwitch() async {
+    
     switch (_keyboardEvent.key) {
       case 'z':
         _thumbnailForwards();

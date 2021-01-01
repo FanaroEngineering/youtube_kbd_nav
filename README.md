@@ -183,7 +183,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 | <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                        |
 | <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>    |
 | <kbd>y</kbd>                       | Opens the notification pop-up                        |
-| <kbd>Ctrl</kbd> + <kbd>y</kbd>     | Add video to the watch later playlist                |
+| <kbd>Ctrl</kbd> + <kbd>y</kbd>     | Add video to the watch later<sup>6</sup> playlist    |
 | <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>          |
 | <kbd>Ctrl</kbd> + <kbd>]</kbd>     | Toggles the expansion of the description<sup>2</sup> |
 | <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>                 |
@@ -198,7 +198,8 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 <sub>2: Only works when on a video page.</sub> \
 <sub>3: The comment section needs to be loaded for this to work.</sub> \
 <sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.</sub> \
-<sub>5: Changes the decoration of the video player.</sub>
+<sub>5: Changes the decoration of the video player.</sub> \
+<sub>6: You actually have to press it twice, once for the popup and another when the popup is on the screen.</sub>
 
 
 [kbd_dart]: lib/src/kbd.dart
