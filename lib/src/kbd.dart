@@ -108,7 +108,7 @@ class Kbd {
       case 'h':
         _navigateHistory();
         break;
-      case 'w':
+      case '.':
         _watchLater();
         break;
       case 'e':
@@ -224,8 +224,12 @@ class Kbd {
   void _togglePlayerFocus() => _player.togglePlayerFocus();
 
   void _watchLater() {
-    const String watchLaterPath = '/playlist?list=WL';
-    if (window.location.pathname != watchLaterPath)
+    if (window.location.href != UrlHandler.watchLater) {
       _navigate(UrlHandler.watchLater);
+    } else {
+      final Element watchLaterThumbnail =
+          document.querySelector('ytd-thumbnail-overlay-side-panel-renderer');
+      watchLaterThumbnail.click();
+    }
   }
 }

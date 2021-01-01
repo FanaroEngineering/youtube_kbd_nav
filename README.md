@@ -168,31 +168,33 @@ If you're a Mac user, replace <kbd>Ctrl</kbd> by <kbd>&#8984;</kbd> &mdash; i.e.
 
 If, due to a mistake, the table below isn't working as expected, go to the [`lib/src/kbd.dart`][kbd_dart] file and examine the `switch` statement to truly get a hold of what's going on.
 
-| Shortcut                           | Action                                               |
-| ---------------------------------- | ---------------------------------------------------- |
-| <kbd>Ctrl</kbd> + <kbd>/</kbd>     | Toggle the whole extension<sup>7</sup>               |
-| <kbd>z</kbd>                       | Cycle forwards on the thumbnails                     |
-| <kbd>x</kbd>                       | Cycle backwards on the thumbnails                    |
-| <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                   |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail            |
-| <kbd>q</kbd>                       | YouTube Home                                         |
-| <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                              |
-| <kbd>h</kbd>                       | YouTube History                                      |
-| <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                           |
-| <kbd>e</kbd>                       | Toggle subscription to the channel<sup>1</sup>       |
-| <kbd>v</kbd>                       | Like the video<sup>1</sup>                           |
-| <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                        |
-| <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>    |
-| <kbd>y</kbd>                       | Opens the notification pop-up                        |
-| <kbd>Ctrl</kbd> + <kbd>y</kbd>     | Add video to the watch later<sup>6</sup> playlist    |
-| <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>          |
-| <kbd>Ctrl</kbd> + <kbd>]</kbd>     | Toggles the expansion of the description<sup>2</sup> |
-| <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>                 |
-| <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>    |
-| <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>                |
-| <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup>   |
-| <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>          |
-| <kbd>w</kbd>                       | Toggle Picture-in-Picture (PIP) mode                 |
+| Shortcut                           | Action                                                  |
+| ---------------------------------- | ------------------------------------------------------- |
+| <kbd>Ctrl</kbd> + <kbd>/</kbd>     | Toggle the whole extension<sup>7</sup>                  |
+| <kbd>z</kbd>                       | Cycle forwards on the thumbnails                        |
+| <kbd>x</kbd>                       | Cycle backwards on the thumbnails                       |
+| <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                      |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open a new tab for the selected thumbnail               |
+| <kbd>q</kbd>                       | YouTube Home                                            |
+| <kbd>Ctrl</kbd> + <kbd>q</kbd>     | New Tab to YouTube Home                                 |
+| <kbd>h</kbd>                       | YouTube History                                         |
+| <kbd>Ctrl</kbd> + <kbd>h</kbd>     | New Tab to YouTube History                              |
+| <kbd>e</kbd>                       | Toggle subscription to the channel<sup>1</sup>          |
+| <kbd>v</kbd>                       | Like the video<sup>1</sup>                              |
+| <kbd>n</kbd>                       | Dislike the video<sup>1</sup>                           |
+| <kbd>b</kbd>                       | Copies the shortened URL of the video<sup>2</sup>       |
+| <kbd>y</kbd>                       | Opens the notification pop-up                           |
+| <kbd>Ctrl</kbd> + <kbd>y</kbd>     | Add video to the watch later<sup>6</sup> playlist       |
+| <kbd>Ctrl</kbd> + <kbd>[</kbd>     | Focuses on the comment box<sup>2 \| 3</sup>             |
+| <kbd>Ctrl</kbd> + <kbd>]</kbd>     | Toggles the expansion of the description<sup>2</sup>    |
+| <kbd>;</kbd>                       | Go to the channel's page<sup>4</sup>                    |
+| <kbd>Ctrl</kbd> + <kbd>;</kbd>     | Go to the channel's page on a new tab<sup>4</sup>       |
+| <kbd>=</kbd>                       | Go to the video's channel<sup>2</sup>                   |
+| <kbd>Ctrl</kbd> + <kbd>=</kbd>     | Go to the video's channel on a new tab<sup>2</sup>      |
+| <kbd>\\</kbd>                      | Toggle the video player's focus<sup>5</sup>             |
+| <kbd>w</kbd>                       | Toggle Picture-in-Picture (PIP) mode                    |
+| <kbd>.</kbd>                       | Go to the Watch Later playlist<sup>8</sup>              |
+| <kbd>Ctrl</kbd> + <kbd>.</kbd>     | Go to the Watch Later playlist in a new tab<sup>8</sup> |
 
 
 <sub>1: Only works when signed-in and on a video page.</sub> \
@@ -201,7 +203,8 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 <sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.</sub> \
 <sub>5: Changes the decoration of the video player.</sub> \
 <sub>6: You actually have to press it twice, once for the popup and another when the popup is on the screen.</sub> \
-<sub>7: The extension logo appears right next to YouTube's when the extension is enabled.
+<sub>7: The extension logo appears right next to YouTube's when the extension is enabled.</sub> \
+<sub>8: Once in the Watch Later playlist page, press <kbd>.</kbd> again to play the videos.</sub>
 
 
 [kbd_dart]: lib/src/kbd.dart
