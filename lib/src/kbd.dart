@@ -118,7 +118,7 @@ class Kbd {
   void _yShortcut() {
     if (_keyboardEvent.ctrlKey) {
       if (_thumbnails.cycles.uncycled) {
-        // _videoButtons
+        if (_isVideo) _videoButtons.addToWatchLater();
       } else {
         _thumbnails.addToWatchLater();
       }

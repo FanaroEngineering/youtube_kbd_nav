@@ -17,6 +17,31 @@ class VideoButtons {
   })  : _descriptionState = descriptionState,
         _document = doc ?? document;
 
+  void addToWatchLater() {
+    const String playlistItemsQuery =
+        'yt-formatted-string.ytd-playlist-add-to-option-renderer';
+    final List<Element> playlistItems =
+        document.querySelectorAll(playlistItemsQuery);
+
+    if (playlistItems.isNotEmpty) {
+      final Element watchLater = playlistItems
+          .where(
+              (Element element) => element.text.toLowerCase() == 'watch later')
+          .first;
+      watchLater.click();
+    } else {
+      _playlistAdd();
+    }
+  }
+
+  void _playlistAdd() {
+    const String playlistAddQuery = 'ytd-menu-renderer > div > '
+        'ytd-button-renderer > a > yt-icon-button';
+    final Element playlistAddButton =
+        document.querySelectorAll(playlistAddQuery).last;
+    playlistAddButton.click();
+  }
+
   void toggleSubscription() {
     const String unsubscribeQuery =
         'paper-button.style-blue-text > yt-formatted-string';
@@ -24,7 +49,7 @@ class VideoButtons {
     const String subscribedQuery =
         'paper-button.ytd-subscribe-button-renderer > yt-formatted-string';
     final Element subscribed = document.querySelector(subscribedQuery);
-    
+
     final bool isUnsubscribedForSure =
         subscribed?.text?.toLowerCase() == 'subscribed' &&
             ytFormattedStrings?.text?.toLowerCase() == 'unsubscribe';
