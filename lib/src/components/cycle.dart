@@ -16,6 +16,8 @@ class Cycle {
 
   bool get isValid => total > -1 && total <= max;
 
+  bool get uncycled => total == -1;
+
   @override
   bool operator ==(Object cycle) => cycle is Cycle && total == cycle.total;
 

@@ -3,6 +3,8 @@
 - More comprehensive fix to shortcuts still working when typing in an input field.
 - Explicitly Excluded YouTube Studio from this extension.
 - Now we can also unsubscribe from the channel.
+- Playlists are also scrollable through the extension.
+- Add videos to the Watch Later Playlist with <kbd>Ctrl</kbd> + <kbd>y</kbd>.
 
 ## 1.0.1
 

@@ -21,6 +21,36 @@ class Thumbnails {
         _thumbnails = (doc ?? document).querySelectorAll(tags),
         _cycles = cycles ?? Cycle();
 
+  void addToWatchLater() {
+    const String popupRendererQuery = 'ytd-menu-popup-renderer';
+    final Element popupRenderer = document.querySelector(popupRendererQuery);
+    popupRenderer == document.activeElement
+        ? _clickOnWatchLater()
+        : _clickOnThreeDots();
+  }
+
+  void _clickOnThreeDots() {
+    const String threeDotsQuery = 'yt-icon.ytd-menu-renderer';
+    final Element threeDotsIconButton =
+        _currentThumbnail?.querySelector(threeDotsQuery);
+    threeDotsIconButton?.click();
+  }
+
+  void _clickOnWatchLater() {
+    const String popUpButtonsQuery = 'ytd-menu-popup-renderer > '
+        'paper-listbox paper-item > yt-formatted-string';
+    final List<Element> popUpButtons =
+        document.body.querySelectorAll(popUpButtonsQuery);
+    if (popUpButtons.isNotEmpty) {
+      popUpButtons?.forEach((Element element) {
+        if (element.text.toLowerCase().contains('save to watch later')) {
+          element.click();
+          document.body.click();
+        }
+      });
+    }
+  }
+
   Cycle get cycles => _cycles;
 
   Thumbnails operator +(Cycle cycle) {

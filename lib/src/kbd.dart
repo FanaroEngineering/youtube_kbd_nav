@@ -89,7 +89,7 @@ class Kbd {
         _dislike();
         break;
       case 'y':
-        _notificationPopUp();
+        _yShortcut();
         break;
       case 'b':
         await _copyVideoUrl();
@@ -114,6 +114,16 @@ class Kbd {
         break;
     }
   }
+
+  void _yShortcut() {
+    if (_thumbnails.cycles.uncycled) {
+      // _videoButtons
+    } else {
+      _keyboardEvent.ctrlKey ? _addToWatchLater() : _notificationPopUp();
+    }
+  }
+
+  void _addToWatchLater() => _thumbnails.addToWatchLater();
 
   void _togglePip() {
     if (_isVideo) _player = _player.togglePip();
