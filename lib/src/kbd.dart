@@ -115,17 +115,13 @@ class Kbd {
     }
   }
 
-  void _yShortcut() {
-    if (_keyboardEvent.ctrlKey) {
-      if (_thumbnails.cycles.uncycled) {
-        if (_isVideo) _videoButtons.addToWatchLater();
-      } else {
-        _thumbnails.addToWatchLater();
-      }
-    } else {
-      _notificationPopUp();
-    }
-  }
+  void _yShortcut() => _keyboardEvent.ctrlKey
+      ? _thumbnails.cycles.uncycled
+          ? _isVideo
+              ? _videoButtons.addToWatchLater()
+              : null
+          : _thumbnails.addToWatchLater()
+      : _notificationPopUp();
 
   void _togglePip() {
     if (_isVideo) _player = _player.togglePip();
