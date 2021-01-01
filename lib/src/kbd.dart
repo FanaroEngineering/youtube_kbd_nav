@@ -18,15 +18,17 @@ class Kbd {
   bool _onSwitch = true;
   final Logo _logo = const Logo();
 
-  Kbd() {
-    Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
-      final DivElement logoDiv = document.querySelector('div#start');
-      if (logoDiv != null) {
-        _logo.toggle();
-        timer.cancel();
-      }
-    });
+  void _initialLogo() =>
+      Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
+        final DivElement logoDiv = document.querySelector('div#start');
+        if (logoDiv != null) {
+          _logo.toggle();
+          timer.cancel();
+        }
+      });
 
+  Kbd() {
+    _initialLogo();
     window.onLoad.listen((_) => _completeReset());
     // If we take the `yt-navigate-start` event out, the thumbnails might not be
     // completely loaded at first, but only when everything has been completely
