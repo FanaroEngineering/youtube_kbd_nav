@@ -8,11 +8,6 @@
   <a href="https://github.com/FanaroEngineering/youtube_kbd_nav/actions"><img src="https://github.com/FanaroEngineering/youtube_kbd_nav/workflows/Dart%20%7C%7C%20Tests%20%7C%20Formatting%20%7C%20Analyzer/badge.svg?branch=master" alt="Github CI" /></a>
   <a href="https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/overview/master"><img src="https://www.codefactor.io/repository/github/fanaroengineering/youtube_kbd_nav/badge/master" alt="Codefactor" /></a>
   <a href="https://www.buymeacoffee.com/psygo"><img src="assets/buy_me_a_coffee_shield.svg" alt="Buy me a coffee! | Sponsor Me!" /></a>
-  <a href=""><img src="" alt="" /></a>
-  <a href=""><img src="" alt="" /></a>
-  <a href=""><img src="" alt="" /></a>
-  <a href=""><img src="" alt="" /></a>
-  <a href=""><img src="" alt="" /></a>
 </p>
 
 ---
