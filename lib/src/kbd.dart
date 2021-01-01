@@ -1,6 +1,7 @@
 import 'dart:html' show document, Element, InputElement, KeyboardEvent, window;
 
 import 'components/cycle.dart' show Cycle;
+import 'components/logo.dart' show Logo;
 import 'components/player.dart' show Player;
 import 'components/thumbnails.dart' show Thumbnails;
 import 'components/url_handler.dart' show UrlHandler;
@@ -13,8 +14,10 @@ class Kbd {
   Player _player = Player();
   KeyboardEvent _keyboardEvent;
   bool _onSwitch = true;
+  final Logo _logo = const Logo();
 
   Kbd() {
+    _logo.toggle();
     window.onLoad.listen((_) => _completeReset());
     // If we take the `yt-navigate-start` event out, the thumbnails might not be
     // completely loaded at first, but only when everything has been completely
@@ -29,9 +32,23 @@ class Kbd {
         'leavepictureinpicture', (_) => _player = Player.outOfPip());
   }
 
+  void _toggleExtension() {
+    _onSwitch = !_onSwitch;
+    _completeReset();
+    _logo.toggle();
+  }
+
+  bool get _toggleShortcut =>
+      _keyboardEvent.ctrlKey && _keyboardEvent.key == '/';
+
   void _handleKeyboardEvent(KeyboardEvent keyboardEvent) {
     _keyboardEvent = keyboardEvent;
-    if (_noInputFocus) _keySwitch();
+
+    if (_toggleShortcut) {
+      _toggleExtension();
+    } else {
+      if (_onSwitch && _noInputFocus) _keySwitch();
+    }
   }
 
   void _completeReset() {
@@ -64,7 +81,6 @@ class Kbd {
   }
 
   Future<void> _keySwitch() async {
-    
     switch (_keyboardEvent.key) {
       case 'z':
         _thumbnailForwards();

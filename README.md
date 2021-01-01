@@ -170,6 +170,7 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 
 | Shortcut                           | Action                                               |
 | ---------------------------------- | ---------------------------------------------------- |
+| <kbd>Ctrl</kbd> + <kbd>/</kbd>     | Toggle the whole extension<sup>7</sup>               |
 | <kbd>z</kbd>                       | Cycle forwards on the thumbnails                     |
 | <kbd>x</kbd>                       | Cycle backwards on the thumbnails                    |
 | <kbd>Enter</kbd>                   | Navigate to the selected thumbnail                   |
@@ -199,7 +200,8 @@ If, due to a mistake, the table below isn't working as expected, go to the [`lib
 <sub>3: The comment section needs to be loaded for this to work.</sub> \
 <sub>4: Since YouTube doesn't expose the channel's link when you're on a video page, this shortcut won't work on video pages.</sub> \
 <sub>5: Changes the decoration of the video player.</sub> \
-<sub>6: You actually have to press it twice, once for the popup and another when the popup is on the screen.</sub>
+<sub>6: You actually have to press it twice, once for the popup and another when the popup is on the screen.</sub> \
+<sub>7: The extension logo appears right next to YouTube's when the extension is enabled.
 
 
 [kbd_dart]: lib/src/kbd.dart

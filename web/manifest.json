@@ -18,7 +18,8 @@
     }
   ],
   "permissions": [
-    "clipboardWrite"
+    "clipboardWrite",
+    "webRequest"
   ],
   "icons": {
     "128": "favicon.png"
