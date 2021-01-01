@@ -1,6 +1,7 @@
 class UrlHandler {
   static const String youtubeHome = 'https://www.youtube.com',
       history = 'https://www.youtube.com/feed/history',
+      watchLater = 'https://www.youtube.com/playlist?list=WL',
       _watchTags = 'ytd-compact-video-renderer, '
           'ytd-compact-radio-renderer, '
           'ytd-compact-playlist-renderer, '
@@ -15,17 +16,20 @@ class UrlHandler {
           'ytd-grid-video-renderer, '
           'ytd-channel-video-renderer, '
           'ytd-playlist-renderer, '
-          'ytd-grid-channel-renderer';
+          'ytd-grid-channel-renderer',
+      _playlistTags = 'ytd-playlist-video-renderer';
 
   static String tags(String url) => url.contains('watch')
       ? _watchTags
       : url.contains('history')
           ? _historyTags
-          : url.contains('results')
-              ? _resultsTags
-              : url.contains(RegExp('/c|/channel|/user'))
-                  ? _channelTags
-                  : _homeTags;
+          : url.contains('playlist')
+              ? _playlistTags
+              : url.contains('results')
+                  ? _resultsTags
+                  : url.contains(RegExp('/c|/channel|/user'))
+                      ? _channelTags
+                      : _homeTags;
 
   static String prefixedLink(String url) =>
       url.startsWith('https://') ? url : youtubeHome + url;
