@@ -24,15 +24,21 @@ class VideoButtons {
     const String subscribedQuery =
         'paper-button.ytd-subscribe-button-renderer > yt-formatted-string';
     final Element subscribed = document.querySelector(subscribedQuery);
-    if (subscribed?.text?.toLowerCase() == 'subscribed' &&
-        ytFormattedStrings?.text?.toLowerCase() == 'unsubscribe') {
-      ytFormattedStrings?.click();
-    } else {
-      const String subscribeQuery = '#subscribe-button.style-scope > '
-          'ytd-subscribe-button-renderer > paper-button';
-      final Element subscribeButton = _document.querySelector(subscribeQuery);
-      subscribeButton?.click();
-    }
+    
+    final bool isUnsubscribedForSure =
+        subscribed?.text?.toLowerCase() == 'subscribed' &&
+            ytFormattedStrings?.text?.toLowerCase() == 'unsubscribe';
+
+    isUnsubscribedForSure
+        ? ytFormattedStrings?.click()
+        : _clickSubscribeButton();
+  }
+
+  void _clickSubscribeButton() {
+    const String subscribeQuery = '#subscribe-button.style-scope > '
+        'ytd-subscribe-button-renderer > paper-button';
+    final Element subscribeButton = _document.querySelector(subscribeQuery);
+    subscribeButton?.click();
   }
 
   void like() {
