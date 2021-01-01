@@ -108,6 +108,9 @@ class Kbd {
       case 'h':
         _navigateHistory();
         break;
+      case 'w':
+        _watchLater();
+        break;
       case 'e':
         _toggleSubscription();
         break;
@@ -219,4 +222,10 @@ class Kbd {
   }
 
   void _togglePlayerFocus() => _player.togglePlayerFocus();
+
+  void _watchLater() {
+    const String watchLaterPath = '/playlist?list=WL';
+    if (window.location.pathname != watchLaterPath)
+      _navigate(UrlHandler.watchLater);
+  }
 }
