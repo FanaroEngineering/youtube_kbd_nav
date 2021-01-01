@@ -1,4 +1,6 @@
-import 'dart:html' show document, Element, InputElement, KeyboardEvent, window;
+import 'dart:async' show Timer;
+import 'dart:html'
+    show document, DivElement, Element, InputElement, KeyboardEvent, window;
 
 import 'components/cycle.dart' show Cycle;
 import 'components/logo.dart' show Logo;
@@ -17,7 +19,14 @@ class Kbd {
   final Logo _logo = const Logo();
 
   Kbd() {
-    _logo.toggle();
+    Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
+      final DivElement logoDiv = document.querySelector('div#start');
+      if (logoDiv != null) {
+        _logo.toggle();
+        timer.cancel();
+      }
+    });
+
     window.onLoad.listen((_) => _completeReset());
     // If we take the `yt-navigate-start` event out, the thumbnails might not be
     // completely loaded at first, but only when everything has been completely

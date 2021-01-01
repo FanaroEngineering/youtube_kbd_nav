@@ -32,20 +32,20 @@ class Logo {
 
   const Logo();
 
-  void toggle() {
+  void _insert() {
     final DivElement youtubeLogoDiv = document.querySelector('div#start');
+
+    final SvgSvgElement svgSvgElement = SvgSvgElement();
+    svgSvgElement.innerHtml = _svgHtml;
+    svgSvgElement.id = _id;
+    svgSvgElement.style.height = "24";
+    svgSvgElement.style.width = "40";
+
+    youtubeLogoDiv.append(svgSvgElement);
+  }
+
+  void toggle() {
     final SvgSvgElement extractedLogo = document.querySelector('#' + _id);
-
-    if (extractedLogo == null) {
-      final SvgSvgElement svgSvgElement = SvgSvgElement();
-      svgSvgElement.innerHtml = _svgHtml;
-      svgSvgElement.id = _id;
-      svgSvgElement.style.height = "24";
-      svgSvgElement.style.width = "40";
-
-      youtubeLogoDiv.append(svgSvgElement);
-    } else {
-      extractedLogo.remove();
-    }
+    extractedLogo == null ? _insert() : extractedLogo.remove();
   }
 }
